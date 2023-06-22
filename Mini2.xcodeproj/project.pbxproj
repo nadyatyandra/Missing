@@ -18,6 +18,11 @@
 		04CAE96F2A32D68100F59461 /* Mini2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CAE96E2A32D68100F59461 /* Mini2Tests.swift */; };
 		04CAE9792A32D68100F59461 /* Mini2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CAE9782A32D68100F59461 /* Mini2UITests.swift */; };
 		04CAE97B2A32D68100F59461 /* Mini2UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CAE97A2A32D68100F59461 /* Mini2UITestsLaunchTests.swift */; };
+		B17654832A420141001706D4 /* Scene1.sks in Resources */ = {isa = PBXBuildFile; fileRef = B17654822A420141001706D4 /* Scene1.sks */; };
+		B17654852A4203EC001706D4 /* Scene1.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17654842A4203EC001706D4 /* Scene1.swift */; };
+		B17654872A420A35001706D4 /* sound_note.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B17654862A420A34001706D4 /* sound_note.mp3 */; };
+		B17654892A433CD4001706D4 /* PuzzleLock.sks in Resources */ = {isa = PBXBuildFile; fileRef = B17654882A433CD4001706D4 /* PuzzleLock.sks */; };
+		B176548B2A43416B001706D4 /* PuzzleLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B176548A2A43416B001706D4 /* PuzzleLock.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +57,11 @@
 		04CAE9742A32D68100F59461 /* Mini2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Mini2UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		04CAE9782A32D68100F59461 /* Mini2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mini2UITests.swift; sourceTree = "<group>"; };
 		04CAE97A2A32D68100F59461 /* Mini2UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mini2UITestsLaunchTests.swift; sourceTree = "<group>"; };
+		B17654822A420141001706D4 /* Scene1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Scene1.sks; sourceTree = "<group>"; };
+		B17654842A4203EC001706D4 /* Scene1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene1.swift; sourceTree = "<group>"; };
+		B17654862A420A34001706D4 /* sound_note.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = sound_note.mp3; path = ../../../Downloads/sound_note.mp3; sourceTree = "<group>"; };
+		B17654882A433CD4001706D4 /* PuzzleLock.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PuzzleLock.sks; sourceTree = "<group>"; };
+		B176548A2A43416B001706D4 /* PuzzleLock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleLock.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,11 +115,16 @@
 				04CAE9542A32D68000F59461 /* AppDelegate.swift */,
 				04CAE9562A32D68000F59461 /* GameScene.sks */,
 				04CAE9582A32D68000F59461 /* Actions.sks */,
+				B17654822A420141001706D4 /* Scene1.sks */,
+				B17654882A433CD4001706D4 /* PuzzleLock.sks */,
+				B176548A2A43416B001706D4 /* PuzzleLock.swift */,
+				B17654842A4203EC001706D4 /* Scene1.swift */,
 				04CAE95A2A32D68000F59461 /* GameScene.swift */,
 				04CAE95C2A32D68000F59461 /* GameViewController.swift */,
 				04CAE95E2A32D68000F59461 /* Main.storyboard */,
-				04CAE9612A32D68100F59461 /* Assets.xcassets */,
 				04CAE9632A32D68100F59461 /* LaunchScreen.storyboard */,
+				04CAE9612A32D68100F59461 /* Assets.xcassets */,
+				B17654862A420A34001706D4 /* sound_note.mp3 */,
 			);
 			path = Mini2;
 			sourceTree = "<group>";
@@ -235,10 +250,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B17654892A433CD4001706D4 /* PuzzleLock.sks in Resources */,
 				04CAE9602A32D68000F59461 /* Main.storyboard in Resources */,
 				04CAE9572A32D68000F59461 /* GameScene.sks in Resources */,
 				04CAE9622A32D68100F59461 /* Assets.xcassets in Resources */,
+				B17654872A420A35001706D4 /* sound_note.mp3 in Resources */,
 				04CAE9652A32D68100F59461 /* LaunchScreen.storyboard in Resources */,
+				B17654832A420141001706D4 /* Scene1.sks in Resources */,
 				04CAE9592A32D68000F59461 /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -265,7 +283,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				04CAE95B2A32D68000F59461 /* GameScene.swift in Sources */,
+				B176548B2A43416B001706D4 /* PuzzleLock.swift in Sources */,
 				04CAE95D2A32D68000F59461 /* GameViewController.swift in Sources */,
+				B17654852A4203EC001706D4 /* Scene1.swift in Sources */,
 				04CAE9552A32D68000F59461 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -448,8 +468,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationLandscapeLeft;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -475,8 +494,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationLandscapeLeft;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
