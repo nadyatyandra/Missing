@@ -26,7 +26,6 @@ class MovementComponent: GKComponent{
     public func move(to point: CGFloat){
         let velocity = point * spriteSpeed
         let clampedVelocity = max(-maxSpriteSpeed, min(maxSpriteSpeed, velocity))
-        
         node.position.x += clampedVelocity
     }
 }
