@@ -20,26 +20,6 @@ class KalimbaKeySpriteNode: SKSpriteNode {
     }
 }
 
-class SpriteComponent: GKComponent {
-    let node: SKSpriteNode
-    
-    init(node: SKSpriteNode) {
-        self.node = node
-        super.init()
-    }
-    
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    override func didAddToEntity() {
-        guard (entity?.component(ofType: SpriteComponent.self)?.node) != nil else { return }
-        
-        // Add any additional setup for the sprite node
-    }
-}
-
-
 class KalimbaScene: SKScene {
     var playSoundAction = [SKAction.playSoundFileNamed("bamboo", waitForCompletion: false), SKAction.playSoundFileNamed("hello", waitForCompletion: false)]
 //    var playSoundAction = SKAction.playSoundFileNamed("bamboo", waitForCompletion: false)
@@ -52,11 +32,21 @@ class KalimbaScene: SKScene {
     
     //    var audioPlayer: AVAudioPlayer?
     
+    //sound component test
+    var kalimbaSprite: SKSpriteNode!
+    var soundComponent: SoundComponent!
+    let soundComponentKalimbaSystem = GKComponentSystem(componentClass: SoundComponent.self)
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
     override func didMove(to view: SKView) {
+        //test sound component
+        kalimbaSprite = self.childNode(withName: "bg") as? SKSpriteNode
+        soundComponent = SoundComponent(node: kalimbaSprite, soundName: "bamboo")
+        let kalimbaComponent = GKEntity()
+        kalimbaComponent.addComponent(soundComponent)
 //        kalimbaSprite = self.childNode(withName: "Kalimba") as SKSpriteNode?
         // Get label node from scene and store it for use later
         for i in 0..<7 {
@@ -71,8 +61,10 @@ class KalimbaScene: SKScene {
             let location = touch.location(in: self)
             for i in 0..<7 {
                 if let touchedNode = atPoint(location) as? SKSpriteNode, touchedNode == kalimbaKeys[i] {
-                    print("touch key\(i + 1)")
-                    self.run(playSoundAction[i])
+                    let id = i+1
+                    print("touch key\(id)")
+//                    self.run(playSoundAction[i])
+                    soundComponent.playSound(soundName: "k" + String(id))
                     //                    let test = SoundComponent(soundFileName: "bamboo")
                     //                    test.playSound()
                     
