@@ -17,7 +17,11 @@ class GameScene: SKScene {
     
     //Player
     var playerSprite: SKSpriteNode!
-    let playerEntity = GKEntity()
+    var playerEntity: GKEntity!
+    
+    //NPC
+    var enemySprite: SKSpriteNode!
+    var enemyEntity: GKEntity!
     
     //Camera
     var cameraNode: SKCameraNode!
@@ -27,6 +31,7 @@ class GameScene: SKScene {
     var rightWall: SKSpriteNode!
     
     //Component
+    let movementComponentSystem = GKComponentSystem(componentClass: MovementComponent.self)
     var movementComponent: MovementComponent?
     
     //Joystick variables
@@ -49,10 +54,20 @@ class GameScene: SKScene {
         cameraNode = self.childNode(withName: "Camera") as? SKCameraNode
         leftWall = self.childNode(withName: "LeftWall") as? SKSpriteNode
         rightWall = self.childNode(withName: "RightWall") as? SKSpriteNode
+        enemySprite = self.childNode(withName: "Enemy") as? SKSpriteNode
         
         //Assign movement component to playerEntity
-        movementComponent = MovementComponent(node: playerSprite)
-        playerEntity.addComponent(movementComponent!)
+        playerEntity = createEntity(node: playerSprite, wantMovementComponent: true)
+        entities.append(playerEntity)
+        
+        //Assign movement component to enemy
+        enemyEntity = createEntity(node: enemySprite, wantMovementComponent: true)
+        entities.append(enemyEntity)
+        
+        //Add movement component to system
+        for entity in entities {
+            movementComponentSystem.addComponent(foundIn: entity)
+        }
         
         //Camera Constraints
         let range = SKRange(constantValue: 0)
@@ -88,7 +103,14 @@ class GameScene: SKScene {
         self.lastUpdateTime = currentTime
         
         //Move Player
-        movementComponent?.move(to: joystickVelocity)
+        for case let component as MovementComponent in movementComponentSystem.components {
+            if component.node.name == "Player" {
+                component.move(to: joystickVelocity)
+            } else {
+                component.move(to: 50)
+            }
+        }
+        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -107,16 +129,23 @@ class GameScene: SKScene {
             
             joystickVelocity = delta
         }
-        
-        
-//        print(leftWall.position.x)
-//        print(cameraNode.position.x)
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         // Reset the joystick movement when the touch ends
         joystickVelocity = 0
         initialTouchPosition = nil
+    }
+    
+    func createEntity(node: SKNode, wantMovementComponent: Bool) -> GKEntity {
+        let entity = GKEntity()
+        
+        if wantMovementComponent {
+            let movementComponent = MovementComponent(node: node)
+            entity.addComponent(movementComponent)
+        }
+        
+        return entity
     }
     
     
