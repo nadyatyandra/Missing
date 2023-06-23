@@ -8,7 +8,7 @@
 import SpriteKit
 import GameplayKit
 
-class GameScene: SKScene {
+class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var entities = [GKEntity]()
     var graphs = [String : GKGraph]()
@@ -18,10 +18,12 @@ class GameScene: SKScene {
     //Player
     var playerSprite: SKSpriteNode!
     var playerEntity: GKEntity!
+    var playerPhysics: SKPhysicsBody!
     
     //NPC
     var enemySprite: SKSpriteNode!
     var enemyEntity: GKEntity!
+    var enemyPhysics: SKPhysicsBody!
     
     //Camera
     var cameraNode: SKCameraNode!
@@ -45,8 +47,7 @@ class GameScene: SKScene {
     
     override func didMove(to view: SKView) {
         self.lastUpdateTime = 0
-        
-        
+        physicsWorld.contactDelegate = self
         self.isUserInteractionEnabled = true
         
         //Assign objects from scene editor
@@ -55,6 +56,7 @@ class GameScene: SKScene {
         leftWall = self.childNode(withName: "LeftWall") as? SKSpriteNode
         rightWall = self.childNode(withName: "RightWall") as? SKSpriteNode
         enemySprite = self.childNode(withName: "Enemy") as? SKSpriteNode
+        
         
         //Assign movement component to playerEntity
         playerEntity = createEntity(node: playerSprite, wantMovementComponent: true)
@@ -146,6 +148,24 @@ class GameScene: SKScene {
         }
         
         return entity
+    }
+    
+    func Physics(_ contact:SKPhysicsContact){
+        
+        let nodeA = contact.bodyA.node
+        let nodeB = contact.bodyB.node
+        
+        if (nodeA == playerSprite && nodeB == enemySprite) || (nodeA == enemySprite && nodeB == playerSprite) {
+            if nodeA == playerSprite {
+                nodeA?.removeFromParent()
+            } else {
+                nodeB?.removeFromParent()
+            }
+        }
+    }
+    
+    func didBegin(_ contact: SKPhysicsContact) {
+        Physics(contact)
     }
     
     
