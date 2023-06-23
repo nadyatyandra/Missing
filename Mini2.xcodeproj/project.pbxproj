@@ -18,6 +18,10 @@
 		04CAE96F2A32D68100F59461 /* Mini2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CAE96E2A32D68100F59461 /* Mini2Tests.swift */; };
 		04CAE9792A32D68100F59461 /* Mini2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CAE9782A32D68100F59461 /* Mini2UITests.swift */; };
 		04CAE97B2A32D68100F59461 /* Mini2UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CAE97A2A32D68100F59461 /* Mini2UITestsLaunchTests.swift */; };
+		34B9B2042A458BA6001F4A39 /* KalimbaScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B9B2032A458BA6001F4A39 /* KalimbaScene.swift */; };
+		34B9B2082A458C48001F4A39 /* KalimbaScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 34B9B2072A458C48001F4A39 /* KalimbaScene.sks */; };
+		34B9B2112A45A10A001F4A39 /* bamboo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 34B9B20F2A45991C001F4A39 /* bamboo.mp3 */; };
+		34B9B2122A45A10D001F4A39 /* hello.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 34B9B2102A45991C001F4A39 /* hello.mp3 */; };
 		53B979B02A433AD8004F71D5 /* MovementComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B979AF2A433AD8004F71D5 /* MovementComponent.swift */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +57,10 @@
 		04CAE9742A32D68100F59461 /* Mini2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Mini2UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		04CAE9782A32D68100F59461 /* Mini2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mini2UITests.swift; sourceTree = "<group>"; };
 		04CAE97A2A32D68100F59461 /* Mini2UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mini2UITestsLaunchTests.swift; sourceTree = "<group>"; };
+		34B9B2032A458BA6001F4A39 /* KalimbaScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KalimbaScene.swift; sourceTree = "<group>"; };
+		34B9B2072A458C48001F4A39 /* KalimbaScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = KalimbaScene.sks; sourceTree = "<group>"; };
+		34B9B20F2A45991C001F4A39 /* bamboo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bamboo.mp3; sourceTree = "<group>"; };
+		34B9B2102A45991C001F4A39 /* hello.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = hello.mp3; sourceTree = "<group>"; };
 		53B979AF2A433AD8004F71D5 /* MovementComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementComponent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -104,6 +112,8 @@
 		04CAE9532A32D68000F59461 /* Mini2 */ = {
 			isa = PBXGroup;
 			children = (
+				34B9B2132A45A15A001F4A39 /* Assets */,
+				34B9B2062A458BF3001F4A39 /* Scene */,
 				04CAE9542A32D68000F59461 /* AppDelegate.swift */,
 				04CAE9562A32D68000F59461 /* GameScene.sks */,
 				04CAE9582A32D68000F59461 /* Actions.sks */,
@@ -111,7 +121,6 @@
 				53B979AF2A433AD8004F71D5 /* MovementComponent.swift */,
 				04CAE95C2A32D68000F59461 /* GameViewController.swift */,
 				04CAE95E2A32D68000F59461 /* Main.storyboard */,
-				04CAE9612A32D68100F59461 /* Assets.xcassets */,
 				04CAE9632A32D68100F59461 /* LaunchScreen.storyboard */,
 			);
 			path = Mini2;
@@ -132,6 +141,49 @@
 				04CAE97A2A32D68100F59461 /* Mini2UITestsLaunchTests.swift */,
 			);
 			path = Mini2UITests;
+			sourceTree = "<group>";
+		};
+		34B9B2052A458BBB001F4A39 /* Kalimba */ = {
+			isa = PBXGroup;
+			children = (
+				34B9B2032A458BA6001F4A39 /* KalimbaScene.swift */,
+				34B9B2072A458C48001F4A39 /* KalimbaScene.sks */,
+			);
+			path = Kalimba;
+			sourceTree = "<group>";
+		};
+		34B9B2062A458BF3001F4A39 /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				34B9B2052A458BBB001F4A39 /* Kalimba */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
+		34B9B20D2A45990C001F4A39 /* Sound */ = {
+			isa = PBXGroup;
+			children = (
+				34B9B20E2A459916001F4A39 /* Kalimba */,
+			);
+			path = Sound;
+			sourceTree = "<group>";
+		};
+		34B9B20E2A459916001F4A39 /* Kalimba */ = {
+			isa = PBXGroup;
+			children = (
+				34B9B2102A45991C001F4A39 /* hello.mp3 */,
+				34B9B20F2A45991C001F4A39 /* bamboo.mp3 */,
+			);
+			path = Kalimba;
+			sourceTree = "<group>";
+		};
+		34B9B2132A45A15A001F4A39 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				04CAE9612A32D68100F59461 /* Assets.xcassets */,
+				34B9B20D2A45990C001F4A39 /* Sound */,
+			);
+			path = Assets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -240,6 +292,9 @@
 			files = (
 				04CAE9602A32D68000F59461 /* Main.storyboard in Resources */,
 				04CAE9572A32D68000F59461 /* GameScene.sks in Resources */,
+				34B9B2082A458C48001F4A39 /* KalimbaScene.sks in Resources */,
+				34B9B2122A45A10D001F4A39 /* hello.mp3 in Resources */,
+				34B9B2112A45A10A001F4A39 /* bamboo.mp3 in Resources */,
 				04CAE9622A32D68100F59461 /* Assets.xcassets in Resources */,
 				04CAE9652A32D68100F59461 /* LaunchScreen.storyboard in Resources */,
 				04CAE9592A32D68000F59461 /* Actions.sks in Resources */,
@@ -271,6 +326,7 @@
 				04CAE95B2A32D68000F59461 /* GameScene.swift in Sources */,
 				04CAE95D2A32D68000F59461 /* GameViewController.swift in Sources */,
 				04CAE9552A32D68000F59461 /* AppDelegate.swift in Sources */,
+				34B9B2042A458BA6001F4A39 /* KalimbaScene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -454,6 +510,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -481,6 +538,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
