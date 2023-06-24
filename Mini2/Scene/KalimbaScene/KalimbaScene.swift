@@ -25,6 +25,7 @@ class KalimbaScene: SKScene {
 //    var playSoundAction = SKAction.playSoundFileNamed("bamboo", waitForCompletion: false)
 //    let playSoundAction = SKAction.playSoundFileNamed("bamboo", waitForCompletion: false)
     var kalimbaKeys: [SKSpriteNode] = []
+    var correctKalimbaKeys =  ["k1", "k2", "k3", "k4", "k5"]
     private var label: SKLabelNode?
     private var spinnyNode: SKShapeNode?
     
@@ -40,7 +41,11 @@ class KalimbaScene: SKScene {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    
+//    func validationKalimbaKeys(userInputKalimba:String){
+//        for i in 0...6{
+//            
+//        }
+//    }
     override func didMove(to view: SKView) {
         //test sound component
         kalimbaSprite = self.childNode(withName: "bg") as? SKSpriteNode
