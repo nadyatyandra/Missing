@@ -63,6 +63,10 @@ class LockScene: SKScene{
             if let touchedNode = atPoint(location) as? SKSpriteNode, touchedNode == confirmLock {
                 if(lockNumbers[0].texture?.description.components(separatedBy: "'")[1] == "lock9" && lockNumbers[1].texture?.description.components(separatedBy: "'")[1] == "lock9" && lockNumbers[2].texture?.description.components(separatedBy: "'")[1] == "lock9" && lockNumbers[3].texture?.description.components(separatedBy: "'")[1] == "lock9" ){
                     print("success")
+                    
+                    let playScene = SKScene(fileNamed: "PlaytestScreen")
+                    playScene?.scaleMode = .aspectFit
+                    self.view?.presentScene(playScene)
                 }else{
                     print("gagal")
                 }

@@ -20,6 +20,8 @@ class Scene1: SKScene, SKPhysicsContactDelegate{
     let playSoundAction = SKAction.playSoundFileNamed("sound_note", waitForCompletion: false)
     var walkAnimation: SKAction?
     
+    var playerScale: CGFloat?
+    
     override func didMove(to view: SKView) {
         note = childNode(withName: "note") as? SKSpriteNode
         player = childNode(withName: "player") as? SKSpriteNode
@@ -39,6 +41,8 @@ class Scene1: SKScene, SKPhysicsContactDelegate{
         // Membuat animasi berjalan
         let walkAnimation = SKAction.animate(with: walkFrames, timePerFrame: 0.1)
         self.walkAnimation = SKAction.repeatForever(walkAnimation)
+        
+        playerScale = player!.xScale
     }
     
     func presentLockScene() {
@@ -68,9 +72,11 @@ class Scene1: SKScene, SKPhysicsContactDelegate{
                 if location.x < player!.position.x {
                     isMovingLeft = true
                     player?.run(walkAnimation!, withKey: "walking")
+                    player?.xScale = -playerScale!
                 } else {
                     isMovingRight = true
                     player?.run(walkAnimation!, withKey: "walking")
+                    player?.xScale = playerScale!
                 }
             }
         }
