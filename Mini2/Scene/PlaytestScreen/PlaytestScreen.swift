@@ -27,6 +27,12 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
     var enemyEntity: GKEntity!
     var enemyPhysics: SKPhysicsBody!
     
+    // scene
+    var kalimbaSceneButton: SKSpriteNode!
+    var lockSceneButton: SKSpriteNode!
+    var kalimbaScene: SKScene!
+    var lockScene: SKScene!
+    
     //Camera
     var cameraNode: SKCameraNode!
     
@@ -64,6 +70,8 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
         floor = self.childNode(withName: "Floor") as? SKSpriteNode
         enemySprite = self.childNode(withName: "Enemy") as? SKSpriteNode
         
+        kalimbaSceneButton = self.childNode(withName: "kalimbaScene") as? SKSpriteNode
+        lockSceneButton = self.childNode(withName: "lockScene") as? SKSpriteNode
         
         //Assign movement component to playerEntity
         playerEntity = createEntity(node: playerSprite, wantMovementComponent: true)
@@ -128,11 +136,31 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
         playerMovementComponent.move(to: joystickVelocity)
     }
     
+    func presentPopUpScene(popUpSceneName: String){
+        let popUpScene = SKScene(fileNamed: popUpSceneName)
+        popUpScene?.scaleMode = .aspectFit
+        self.view?.presentScene(popUpScene)
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         // Get the initial touch position
         if let touch = touches.first {
             initialTouchPosition = touch.location(in: view)
             startMoving = true
+        }
+        
+        for touch in touches {
+            let location = touch.location(in: self)
+            
+            if let touchedNode = atPoint(location) as? SKSpriteNode, touchedNode == kalimbaSceneButton {
+                print("kalimba")
+                presentPopUpScene(popUpSceneName: "KalimbaScene")
+            }
+            
+            if let touchedNode = atPoint(location) as? SKSpriteNode, touchedNode == lockSceneButton {
+                print("lock")
+                presentPopUpScene(popUpSceneName: "LockScene")
+            }
         }
     }
     
