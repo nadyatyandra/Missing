@@ -45,7 +45,10 @@ class KalimbaScene: SKScene {
         
         if index == 4 {
             print("congrats you won")
-
+            let playScene = SKScene(fileNamed: "PlaytestScreen")
+            playScene?.scaleMode = .aspectFit
+            self.view?.presentScene(playScene)
+            
         }
         
         if userInputKalimba.elementsEqual(correctKalimbaKeys[index]){
