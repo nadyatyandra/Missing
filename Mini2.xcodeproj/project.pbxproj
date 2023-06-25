@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04AF7D7D2A484862005D930F /* PeelOffScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AF7D7C2A484862005D930F /* PeelOffScene.swift */; };
+		04AF7D7F2A48486F005D930F /* PeelOffScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 04AF7D7E2A48486F005D930F /* PeelOffScene.sks */; };
 		04CAE9552A32D68000F59461 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CAE9542A32D68000F59461 /* AppDelegate.swift */; };
 		04CAE9572A32D68000F59461 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 04CAE9562A32D68000F59461 /* GameScene.sks */; };
 		04CAE95B2A32D68000F59461 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CAE95A2A32D68000F59461 /* GameScene.swift */; };
@@ -54,6 +56,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		04AF7D7C2A484862005D930F /* PeelOffScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeelOffScene.swift; sourceTree = "<group>"; };
+		04AF7D7E2A48486F005D930F /* PeelOffScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PeelOffScene.sks; sourceTree = "<group>"; };
 		04CAE9512A32D68000F59461 /* Mini2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mini2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04CAE9542A32D68000F59461 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04CAE9562A32D68000F59461 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -111,6 +115,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04AF7D7B2A484852005D930F /* PeelOffScene */ = {
+			isa = PBXGroup;
+			children = (
+				04AF7D7C2A484862005D930F /* PeelOffScene.swift */,
+				04AF7D7E2A48486F005D930F /* PeelOffScene.sks */,
+			);
+			path = PeelOffScene;
+			sourceTree = "<group>";
+		};
 		04CAE9482A32D68000F59461 = {
 			isa = PBXGroup;
 			children = (
@@ -174,6 +187,7 @@
 		34B9B2062A458BF3001F4A39 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				04AF7D7B2A484852005D930F /* PeelOffScene */,
 				53B979B72A47466A004F71D5 /* PlaytestScreen */,
 				B119E13B2A472A82001C7CEB /* DummyScreen */,
 				B119E1362A4728ED001C7CEB /* LockScene */,
@@ -378,6 +392,7 @@
 				B185ED1F2A472C0400CA0241 /* Scene1.sks in Resources */,
 				04CAE9622A32D68100F59461 /* Assets.xcassets in Resources */,
 				34B9B2282A473CE0001F4A39 /* k5.mp3 in Resources */,
+				04AF7D7F2A48486F005D930F /* PeelOffScene.sks in Resources */,
 				04CAE9652A32D68100F59461 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -412,6 +427,7 @@
 				04CAE9552A32D68000F59461 /* AppDelegate.swift in Sources */,
 				B185ED1D2A472BF900CA0241 /* Scene1.swift in Sources */,
 				34B9B2042A458BA6001F4A39 /* KalimbaScene.swift in Sources */,
+				04AF7D7D2A484862005D930F /* PeelOffScene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
