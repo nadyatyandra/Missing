@@ -30,9 +30,10 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
     //Camera
     var cameraNode: SKCameraNode!
     
-    //Walls
+    //Environment
     var leftWall: SKSpriteNode!
     var rightWall: SKSpriteNode!
+    var floor: SKSpriteNode!
     
     //Component
     let movementComponentSystem = GKComponentSystem(componentClass: MovementComponent.self)
@@ -60,6 +61,7 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
         cameraNode = self.childNode(withName: "Camera") as? SKCameraNode
         leftWall = self.childNode(withName: "LeftWall") as? SKSpriteNode
         rightWall = self.childNode(withName: "RightWall") as? SKSpriteNode
+        floor = self.childNode(withName: "Floor") as? SKSpriteNode
         enemySprite = self.childNode(withName: "Enemy") as? SKSpriteNode
         
         
@@ -69,7 +71,7 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
         playerMovementComponent = playerEntity.component(ofType: MovementComponent.self)
         
         //Load animation frames
-        playerMovementComponent.loadAnim(frames: 6)
+        playerMovementComponent.loadWalkAnim(frames: 17)
         
         //Assign movement component to enemy
 //        enemyEntity = createEntity(node: enemySprite, wantMovementComponent: true)
@@ -86,9 +88,10 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
         let playerConstraint = SKConstraint.distance(range, to: playerSprite)
         
         let xInset = view.bounds.width * cameraNode.xScale
+        let yInset = view.bounds.height * cameraNode.yScale
         
-        let xRange = SKRange(lowerLimit: leftWall.frame.minX + xInset, upperLimit: rightWall.frame.maxX - xInset)
-        let yRange = SKRange(lowerLimit: 0, upperLimit: 50)
+        let xRange = SKRange(lowerLimit: leftWall.frame.maxX + xInset, upperLimit: rightWall.frame.minX - xInset)
+        let yRange = SKRange(lowerLimit: floor.frame.minY + yInset, upperLimit: 1000)
         let edgeConstraint = SKConstraint.positionX(xRange, y: yRange)
         
         
@@ -140,7 +143,6 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
             let delta = currentPosition.x - initialPosition.x
             
             joystickVelocity = delta
-            print(startMoving)
             if startMoving {
                 startMoving = false
                 playerMovementComponent.startMoving()
