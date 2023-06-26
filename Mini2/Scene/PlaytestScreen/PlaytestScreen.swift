@@ -35,6 +35,10 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
     var rightWall: SKSpriteNode!
     var floor: SKSpriteNode!
     
+    //Inner Thought
+    var innTot: SKNode!
+    var innTotLabel: SKLabelNode!
+    
     //Component
     let movementComponentSystem = GKComponentSystem(componentClass: MovementComponent.self)
     var movementComponent: MovementComponent?
@@ -63,7 +67,8 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
         rightWall = self.childNode(withName: "RightWall") as? SKSpriteNode
         floor = self.childNode(withName: "Floor") as? SKSpriteNode
         enemySprite = self.childNode(withName: "Enemy") as? SKSpriteNode
-        
+        innTot = cameraNode.childNode(withName: "InnTot")
+        innTotLabel = innTot.childNode(withName: "InnTotLabel") as? SKLabelNode
         
         //Assign movement component to playerEntity
         playerEntity = createEntity(node: playerSprite, wantMovementComponent: true)
@@ -96,8 +101,10 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
         
         
         cameraNode.constraints = [playerConstraint,edgeConstraint]
+        
+        //Hide InnTot
+        innTot.alpha = 0
     }
-    
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
@@ -133,6 +140,8 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
         if let touch = touches.first {
             initialTouchPosition = touch.location(in: view)
             startMoving = true
+            
+            createInnTot(duration: 3, label: "Togi = Tolol Gila")
         }
     }
     
@@ -191,5 +200,17 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
         Physics(contact)
     }
     
-    
+    func createInnTot(duration: Double, label: String) {
+        let fadeIn = SKAction.fadeIn(withDuration: 1)
+        let wait = SKAction.wait(forDuration: duration)
+        let fadeOut = SKAction.fadeOut(withDuration: 1)
+        let sequence = SKAction.sequence([fadeIn,wait,fadeOut])
+        
+        innTot.alpha = 0
+        innTot.removeAllActions()
+        
+        innTotLabel.text = label
+        
+        innTot.run(sequence)
+    }
 }
