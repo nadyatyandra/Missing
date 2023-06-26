@@ -21,20 +21,13 @@ class KalimbaKeySpriteNode: SKSpriteNode {
 }
 
 class KalimbaScene: SKScene {
-    var playSoundAction = [SKAction.playSoundFileNamed("bamboo", waitForCompletion: false), SKAction.playSoundFileNamed("hello", waitForCompletion: false)]
-//    var playSoundAction = SKAction.playSoundFileNamed("bamboo", waitForCompletion: false)
-//    let playSoundAction = SKAction.playSoundFileNamed("bamboo", waitForCompletion: false)
     var kalimbaKeys: [SKSpriteNode] = []
     var correctKalimbaKeys =  ["k1", "k2", "k3", "k4", "k5"]
     var userInputKalimbaKeys: [String] = []
     var index = 0
     
-    private var label: SKLabelNode?
-    private var spinnyNode: SKShapeNode?
-    
     var kalimbaSprite: SKSpriteNode!
     var soundComponent: SoundComponent!
-    let soundComponentKalimbaSystem = GKComponentSystem(componentClass: SoundComponent.self)
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -44,7 +37,6 @@ class KalimbaScene: SKScene {
         print("correct keys" + correctKalimbaKeys[index])
         
         if index == 4 {
-            print("congrats you won")
             let playScene = SKScene(fileNamed: "PlaytestScreen")
             playScene?.scaleMode = .aspectFit
             self.view?.presentScene(playScene)
@@ -61,10 +53,9 @@ class KalimbaScene: SKScene {
     override func didMove(to view: SKView) {
         //test sound component
         kalimbaSprite = self.childNode(withName: "bg") as? SKSpriteNode
-        soundComponent = SoundComponent(node: kalimbaSprite, soundName: "bamboo")
+        soundComponent = SoundComponent(node: kalimbaSprite)
         let kalimbaComponent = GKEntity()
         kalimbaComponent.addComponent(soundComponent)
-//        kalimbaSprite = self.childNode(withName: "Kalimba") as SKSpriteNode?
         // Get label node from scene and store it for use later
         for i in 0..<7 {
             let kalimbaKey = childNode(withName: "k\(i + 1)") as? SKSpriteNode
@@ -97,8 +88,6 @@ class KalimbaScene: SKScene {
                     }
                     // Access the associated KalimbaKeyEntity and play the sound
                     
-                    
-                    print(userInputKalimbaKeys)
                 }
             }
         }
