@@ -71,7 +71,7 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
         playerMovementComponent = playerEntity.component(ofType: MovementComponent.self)
         
         //Load animation frames
-        playerMovementComponent.loadWalkAnim(frames: 17)
+        playerMovementComponent.loadWalkAnim(frames: 14)
         
         //Assign movement component to enemy
 //        enemyEntity = createEntity(node: enemySprite, wantMovementComponent: true)
@@ -142,11 +142,14 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
             let currentPosition = touch.location(in: view)
             let delta = currentPosition.x - initialPosition.x
             
-            joystickVelocity = delta
-            if startMoving {
-                startMoving = false
-                playerMovementComponent.startMoving()
+            if delta > 25 || delta < -25 {
+                joystickVelocity = delta
+                if startMoving {
+                    startMoving = false
+                    playerMovementComponent.startMoving()
+                }
             }
+            
         }
     }
     
