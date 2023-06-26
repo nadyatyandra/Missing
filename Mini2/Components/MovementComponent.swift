@@ -16,8 +16,8 @@ class MovementComponent: GKComponent{
     var spriteNode: SKSpriteNode?
     var spriteScale: CGFloat?
     
-    let maxSpriteSpeed: CGFloat = 10
-    let spriteSpeed: CGFloat = 10
+    let maxSpriteSpeed: CGFloat = 20
+    let spriteSpeed: CGFloat = 0.1
     
     var walkFrames: [SKTexture] = []
     var walkAnimation: SKAction?
@@ -46,17 +46,12 @@ class MovementComponent: GKComponent{
             spriteNode?.xScale = spriteScale!
         }
         
-        
     }
     
     public func loadWalkAnim(frames: Int){
-        let fileName = "\(node.name ?? "Player")Walk"
-        let animationAtlas = SKTextureAtlas(named: fileName)
-        
-        for i in 1...animationAtlas.textureNames.count {
-//            let texture = SKTexture(imageNamed: "\(node.name ?? "Player")Walk\(i)")
-//            walkFrames.append(texture)
-            walkFrames.append(animationAtlas.textureNamed("\(fileName)\(i)"))
+        for i in 1...frames {
+            let texture = SKTexture(imageNamed: "\(node.name ?? "Player")Walk\(i)")
+            walkFrames.append(texture)
         }
         
         walkAnimation = SKAction.animate(with: walkFrames, timePerFrame: 0.08)
