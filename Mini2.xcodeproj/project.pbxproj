@@ -14,7 +14,6 @@
 		04CAE95B2A32D68000F59461 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CAE95A2A32D68000F59461 /* GameScene.swift */; };
 		04CAE95D2A32D68000F59461 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CAE95C2A32D68000F59461 /* GameViewController.swift */; };
 		04CAE9602A32D68000F59461 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04CAE95E2A32D68000F59461 /* Main.storyboard */; };
-		04CAE9622A32D68100F59461 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04CAE9612A32D68100F59461 /* Assets.xcassets */; };
 		04CAE9652A32D68100F59461 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04CAE9632A32D68100F59461 /* LaunchScreen.storyboard */; };
 		04CAE96F2A32D68100F59461 /* Mini2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CAE96E2A32D68100F59461 /* Mini2Tests.swift */; };
 		04CAE9792A32D68100F59461 /* Mini2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CAE9782A32D68100F59461 /* Mini2UITests.swift */; };
@@ -29,6 +28,7 @@
 		34B9B2292A473CE0001F4A39 /* k6.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 34B9B2242A473CDF001F4A39 /* k6.mp3 */; };
 		34B9B22A2A473CE0001F4A39 /* k4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 34B9B2252A473CE0001F4A39 /* k4.mp3 */; };
 		34B9B22B2A473CE0001F4A39 /* k7.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 34B9B2262A473CE0001F4A39 /* k7.mp3 */; };
+		5339FBEE2A49318A00647CF1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04CAE9612A32D68100F59461 /* Assets.xcassets */; };
 		53B979B02A433AD8004F71D5 /* MovementComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B979AF2A433AD8004F71D5 /* MovementComponent.swift */; };
 		53B979B92A4746A3004F71D5 /* PlaytestScreen.sks in Resources */ = {isa = PBXBuildFile; fileRef = 53B979B82A4746A3004F71D5 /* PlaytestScreen.sks */; };
 		53B979BB2A4746AF004F71D5 /* PlaytestScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B979BA2A4746AF004F71D5 /* PlaytestScreen.swift */; };
@@ -377,6 +377,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5339FBEE2A49318A00647CF1 /* Assets.xcassets in Resources */,
 				04CAE9602A32D68000F59461 /* Main.storyboard in Resources */,
 				04CAE9572A32D68000F59461 /* GameScene.sks in Resources */,
 				34B9B22B2A473CE0001F4A39 /* k7.mp3 in Resources */,
@@ -388,9 +389,7 @@
 				34B9B2122A45A10D001F4A39 /* k1.mp3 in Resources */,
 				34B9B2292A473CE0001F4A39 /* k6.mp3 in Resources */,
 				34B9B2112A45A10A001F4A39 /* k2.mp3 in Resources */,
-				04CAE9622A32D68100F59461 /* Assets.xcassets in Resources */,
 				B185ED1F2A472C0400CA0241 /* Scene1.sks in Resources */,
-				04CAE9622A32D68100F59461 /* Assets.xcassets in Resources */,
 				34B9B2282A473CE0001F4A39 /* k5.mp3 in Resources */,
 				04AF7D7F2A48486F005D930F /* PeelOffScene.sks in Resources */,
 				04CAE9652A32D68100F59461 /* LaunchScreen.storyboard in Resources */,
@@ -533,7 +532,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -587,7 +586,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -609,6 +608,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
@@ -637,6 +637,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
