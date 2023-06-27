@@ -10,11 +10,9 @@ import GameplayKit
 
 class SoundComponent: GKComponent {
     var node: SKNode
-//    var soundName: String
     
-    init(node: SKNode, soundName: String) {
+    init(node: SKNode) {
         self.node = node
-//        self.soundName = soundName
         super.init()
     }
     

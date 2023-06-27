@@ -75,9 +75,9 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
         enemySprite = self.childNode(withName: "Enemy") as? SKSpriteNode
         innTot = cameraNode.childNode(withName: "InnTot")
         innTotLabel = innTot.childNode(withName: "InnTotLabel") as? SKLabelNode
-        
         kalimbaSceneButton = self.childNode(withName: "kalimbaScene") as? SKSpriteNode
         lockSceneButton = self.childNode(withName: "lockScene") as? SKSpriteNode
+        
         
         //Assign movement component to playerEntity
         playerEntity = createEntity(node: playerSprite, wantMovementComponent: true)
@@ -164,12 +164,10 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
             createInnTot(duration: 3, label: "Togi = Tolol Gila")
             
             if let touchedNode = atPoint(location) as? SKSpriteNode, touchedNode == kalimbaSceneButton {
-                print("kalimba")
                 presentPopUpScene(popUpSceneName: "KalimbaScene")
             }
             
             if let touchedNode = atPoint(location) as? SKSpriteNode, touchedNode == lockSceneButton {
-                print("lock")
                 presentPopUpScene(popUpSceneName: "LockScene")
             }
         }
