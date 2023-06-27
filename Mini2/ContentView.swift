@@ -32,6 +32,7 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             SpriteView(scene: scene)
+                .ignoresSafeArea()
             if isPopUpVisible {
                 SpriteView(scene: popUp)
                     .frame(width: 500, height: 300)
