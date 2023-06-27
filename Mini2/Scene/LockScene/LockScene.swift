@@ -35,11 +35,11 @@ class LockScene: SKScene{
                 if let touchedNode = atPoint(location) as? SKSpriteNode, touchedNode == arrowUpLocks[i] {
                     
                     for j in 0..<10{
-                        if lockNumbers[i].texture?.description.components(separatedBy: "'")[1] == "lock9"{
-                            lockNumbers[i].texture = SKTexture(imageNamed: "lock0")
+                        if lockNumbers[i].texture?.description.components(separatedBy: "'")[1] == "number9"{
+                            lockNumbers[i].texture = SKTexture(imageNamed: "number0")
                             break
-                        }else if lockNumbers[i].texture?.description.components(separatedBy: "'")[1] == "lock\(j)"{
-                            lockNumbers[i].texture = SKTexture(imageNamed: "lock\(j+1)")
+                        }else if lockNumbers[i].texture?.description.components(separatedBy: "'")[1] == "number\(j)"{
+                            lockNumbers[i].texture = SKTexture(imageNamed: "number\(j+1)")
                             break
                         }
                     }
@@ -49,11 +49,11 @@ class LockScene: SKScene{
             for i in 0..<4{
                 if let touchedNode = atPoint(location) as? SKSpriteNode, touchedNode == arrowDownLocks[i] {
                     for j in 0..<10{
-                        if lockNumbers[i].texture?.description.components(separatedBy: "'")[1] == "lock0"{
-                            lockNumbers[i].texture = SKTexture(imageNamed: "lock9")
+                        if lockNumbers[i].texture?.description.components(separatedBy: "'")[1] == "number0"{
+                            lockNumbers[i].texture = SKTexture(imageNamed: "number9")
                             break
-                        }else if lockNumbers[i].texture?.description.components(separatedBy: "'")[1] == "lock\(j)"{
-                            lockNumbers[i].texture = SKTexture(imageNamed: "lock\(j-1)")
+                        }else if lockNumbers[i].texture?.description.components(separatedBy: "'")[1] == "number\(j)"{
+                            lockNumbers[i].texture = SKTexture(imageNamed: "number\(j-1)")
                             break
                         }
                     }
@@ -61,7 +61,7 @@ class LockScene: SKScene{
             }
             
             if let touchedNode = atPoint(location) as? SKSpriteNode, touchedNode == confirmLock {
-                if(lockNumbers[0].texture?.description.components(separatedBy: "'")[1] == "lock9" && lockNumbers[1].texture?.description.components(separatedBy: "'")[1] == "lock9" && lockNumbers[2].texture?.description.components(separatedBy: "'")[1] == "lock9" && lockNumbers[3].texture?.description.components(separatedBy: "'")[1] == "lock9" ){
+                if(lockNumbers[0].texture?.description.components(separatedBy: "'")[1] == "number9" && lockNumbers[1].texture?.description.components(separatedBy: "'")[1] == "number9" && lockNumbers[2].texture?.description.components(separatedBy: "'")[1] == "number9" && lockNumbers[3].texture?.description.components(separatedBy: "'")[1] == "number9" ){
                     print("success")
                     
                     let playScene = SKScene(fileNamed: "PlaytestScreen")
