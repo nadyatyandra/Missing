@@ -27,10 +27,15 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
     var enemyEntity: GKEntity!
     var enemyPhysics: SKPhysicsBody!
     
-    // scene
-    var kalimbaSceneButton: SKSpriteNode!
-    var lockSceneButton: SKSpriteNode!
+    //Kalimba
+    var kalimbaSprite: SKSpriteNode!
     var kalimbaScene: SKScene!
+    var kalimbaCollision: SKNode!
+    var kalimbaLight: SKLightNode!
+    var kalimbaIsDropped: Bool = false
+    
+    //Lock
+    var lockSprite: SKSpriteNode!
     var lockScene: SKScene!
     
     //Camera
@@ -57,7 +62,6 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
     var startMoving: Bool = false
     
     override func sceneDidLoad() {
-        
         self.lastUpdateTime = 0
     }
     
@@ -75,8 +79,10 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
         enemySprite = self.childNode(withName: "Enemy") as? SKSpriteNode
         innTot = cameraNode.childNode(withName: "InnTot")
         innTotLabel = innTot.childNode(withName: "InnTotLabel") as? SKLabelNode
-        kalimbaSceneButton = self.childNode(withName: "kalimbaScene") as? SKSpriteNode
-        lockSceneButton = self.childNode(withName: "lockScene") as? SKSpriteNode
+        kalimbaSprite = self.childNode(withName: "Kalimba") as? SKSpriteNode
+        lockSprite = self.childNode(withName: "Lock") as? SKSpriteNode
+        kalimbaCollision = kalimbaSprite.childNode(withName: "KalimbaCollision")
+        kalimbaLight = kalimbaSprite.childNode(withName: "KalimbaLight") as? SKLightNode
         
         
         //Assign movement component to playerEntity
@@ -113,6 +119,7 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
         
         //Hide InnTot
         innTot.alpha = 0
+        createInnTot(duration: 5, label: "What the, where am I?")
     }
     
     
@@ -161,13 +168,11 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
         for touch in touches {
             let location = touch.location(in: self)
             
-            createInnTot(duration: 3, label: "Togi = Tolol Gila")
-            
-            if let touchedNode = atPoint(location) as? SKSpriteNode, touchedNode == kalimbaSceneButton {
+            if let touchedNode = atPoint(location) as? SKSpriteNode, touchedNode == kalimbaSprite && kalimbaIsDropped{
                 presentPopUpScene(popUpSceneName: "KalimbaScene")
             }
             
-            if let touchedNode = atPoint(location) as? SKSpriteNode, touchedNode == lockSceneButton {
+            if let touchedNode = atPoint(location) as? SKSpriteNode, touchedNode == lockSprite {
                 presentPopUpScene(popUpSceneName: "LockScene")
             }
         }
@@ -215,11 +220,32 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
         let nodeA = contact.bodyA.node
         let nodeB = contact.bodyB.node
         
-        if (nodeA == playerSprite && nodeB == enemySprite) || (nodeA == enemySprite && nodeB == playerSprite) {
-            if nodeA == playerSprite {
+        //        if (nodeA == playerSprite && nodeB == enemySprite) || (nodeA == enemySprite && nodeB == playerSprite) {
+        //            if nodeA == playerSprite {
+        //                nodeA?.removeFromParent()
+        //            } else {
+        //                nodeB?.removeFromParent()
+        //            }
+        //        }
+        
+        if (nodeA == playerSprite && nodeB == kalimbaCollision) || (nodeA == kalimbaCollision && nodeB == playerSprite) {
+            
+            if nodeA == kalimbaCollision {
                 nodeA?.removeFromParent()
             } else {
                 nodeB?.removeFromParent()
+            }
+            
+            kalimbaSprite.physicsBody?.isDynamic = true
+        }
+        
+        if (nodeA == kalimbaSprite && nodeB == floor) || (nodeA == kalimbaSprite && nodeB == floor) {
+            
+            if !kalimbaIsDropped {
+                createInnTot(duration: 5, label: "What was that?")
+                
+                kalimbaLight.falloff = 3
+                kalimbaIsDropped = true
             }
         }
     }
