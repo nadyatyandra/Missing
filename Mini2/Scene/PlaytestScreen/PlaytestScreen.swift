@@ -41,6 +41,10 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
     var rightWall: SKSpriteNode!
     var floor: SKSpriteNode!
     
+    //Inner Thought
+    var innTot: SKNode!
+    var innTotLabel: SKLabelNode!
+    
     //Component
     let movementComponentSystem = GKComponentSystem(componentClass: MovementComponent.self)
     var movementComponent: MovementComponent?
@@ -69,9 +73,11 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
         rightWall = self.childNode(withName: "RightWall") as? SKSpriteNode
         floor = self.childNode(withName: "Floor") as? SKSpriteNode
         enemySprite = self.childNode(withName: "Enemy") as? SKSpriteNode
-        
+        innTot = cameraNode.childNode(withName: "InnTot")
+        innTotLabel = innTot.childNode(withName: "InnTotLabel") as? SKLabelNode
         kalimbaSceneButton = self.childNode(withName: "kalimbaScene") as? SKSpriteNode
         lockSceneButton = self.childNode(withName: "lockScene") as? SKSpriteNode
+        
         
         //Assign movement component to playerEntity
         playerEntity = createEntity(node: playerSprite, wantMovementComponent: true)
@@ -79,16 +85,16 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
         playerMovementComponent = playerEntity.component(ofType: MovementComponent.self)
         
         //Load animation frames
-        playerMovementComponent.loadWalkAnim(frames: 17)
+        playerMovementComponent.loadWalkAnim(frames: 14)
         
         //Assign movement component to enemy
-//        enemyEntity = createEntity(node: enemySprite, wantMovementComponent: true)
-//        entities.append(enemyEntity)
+        //        enemyEntity = createEntity(node: enemySprite, wantMovementComponent: true)
+        //        entities.append(enemyEntity)
         
         //Add movement component to system
-//        for entity in entities {
-//            movementComponentSystem.addComponent(foundIn: entity)
-//        }
+        //        for entity in entities {
+        //            movementComponentSystem.addComponent(foundIn: entity)
+        //        }
         
         
         //Camera Constraints
@@ -104,6 +110,9 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
         
         
         cameraNode.constraints = [playerConstraint,edgeConstraint]
+        
+        //Hide InnTot
+        innTot.alpha = 0
     }
     
     
@@ -126,13 +135,13 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
         self.lastUpdateTime = currentTime
         
         //Move Player
-//        for case let component as MovementComponent in movementComponentSystem.components {
-//            if component.node.name == "Player" {
-//                component.move(to: joystickVelocity)
-//            } else {
-//                component.move(to: 50)
-//            }
-//        }
+        //        for case let component as MovementComponent in movementComponentSystem.components {
+        //            if component.node.name == "Player" {
+        //                component.move(to: joystickVelocity)
+        //            } else {
+        //                component.move(to: 50)
+        //            }
+        //        }
         playerMovementComponent.move(to: joystickVelocity)
     }
     
@@ -152,13 +161,13 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
         for touch in touches {
             let location = touch.location(in: self)
             
+            createInnTot(duration: 3, label: "Togi = Tolol Gila")
+            
             if let touchedNode = atPoint(location) as? SKSpriteNode, touchedNode == kalimbaSceneButton {
-                print("kalimba")
                 presentPopUpScene(popUpSceneName: "KalimbaScene")
             }
             
             if let touchedNode = atPoint(location) as? SKSpriteNode, touchedNode == lockSceneButton {
-                print("lock")
                 presentPopUpScene(popUpSceneName: "LockScene")
             }
         }
@@ -170,11 +179,14 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
             let currentPosition = touch.location(in: view)
             let delta = currentPosition.x - initialPosition.x
             
-            joystickVelocity = delta
-            if startMoving {
-                startMoving = false
-                playerMovementComponent.startMoving()
+            if delta > 25 || delta < -25 {
+                joystickVelocity = delta
+                if startMoving {
+                    startMoving = false
+                    playerMovementComponent.startMoving()
+                }
             }
+            
         }
     }
     
@@ -216,5 +228,17 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
         Physics(contact)
     }
     
-    
+    func createInnTot(duration: Double, label: String) {
+        let fadeIn = SKAction.fadeIn(withDuration: 1)
+        let wait = SKAction.wait(forDuration: duration)
+        let fadeOut = SKAction.fadeOut(withDuration: 1)
+        let sequence = SKAction.sequence([fadeIn,wait,fadeOut])
+        
+        innTot.alpha = 0
+        innTot.removeAllActions()
+        
+        innTotLabel.text = label
+        
+        innTot.run(sequence)
+    }
 }
