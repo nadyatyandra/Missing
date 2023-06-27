@@ -36,6 +36,7 @@
 		B119E13A2A472916001C7CEB /* LockScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B119E1392A472916001C7CEB /* LockScene.swift */; };
 		B185ED1D2A472BF900CA0241 /* Scene1.swift in Sources */ = {isa = PBXBuildFile; fileRef = B185ED1C2A472BF900CA0241 /* Scene1.swift */; };
 		B185ED1F2A472C0400CA0241 /* Scene1.sks in Resources */ = {isa = PBXBuildFile; fileRef = B185ED1E2A472C0400CA0241 /* Scene1.sks */; };
+		B18E56022A4A8DD700C3F9E1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18E56012A4A8DD700C3F9E1 /* ContentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +89,7 @@
 		B119E1392A472916001C7CEB /* LockScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScene.swift; sourceTree = "<group>"; };
 		B185ED1C2A472BF900CA0241 /* Scene1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene1.swift; sourceTree = "<group>"; };
 		B185ED1E2A472C0400CA0241 /* Scene1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Scene1.sks; sourceTree = "<group>"; };
+		B18E56012A4A8DD700C3F9E1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +153,7 @@
 				34B9B2202A45A5CA001F4A39 /* Components */,
 				34B9B2062A458BF3001F4A39 /* Scene */,
 				04CAE9542A32D68000F59461 /* AppDelegate.swift */,
+				B18E56012A4A8DD700C3F9E1 /* ContentView.swift */,
 				04CAE95C2A32D68000F59461 /* GameViewController.swift */,
 				04CAE95E2A32D68000F59461 /* Main.storyboard */,
 				04CAE9632A32D68100F59461 /* LaunchScreen.storyboard */,
@@ -418,6 +421,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				53B979B02A433AD8004F71D5 /* MovementComponent.swift in Sources */,
+				B18E56022A4A8DD700C3F9E1 /* ContentView.swift in Sources */,
 				53B979BB2A4746AF004F71D5 /* PlaytestScreen.swift in Sources */,
 				34B9B2152A45A310001F4A39 /* SoundComponent.swift in Sources */,
 				04CAE95B2A32D68000F59461 /* GameScene.swift in Sources */,
