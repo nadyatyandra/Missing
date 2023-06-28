@@ -28,10 +28,15 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
     var enemyEntity: GKEntity!
     var enemyPhysics: SKPhysicsBody!
     
-    // scene
-    var kalimbaSceneButton: SKSpriteNode!
-    var lockSceneButton: SKSpriteNode!
+    //Kalimba
+    var kalimbaSprite: SKSpriteNode!
     var kalimbaScene: SKScene!
+    var kalimbaCollision: SKNode!
+    var kalimbaLight: SKLightNode!
+    var kalimbaIsDropped: Bool = false
+    
+    //Lock
+    var lockSprite: SKSpriteNode!
     var lockScene: SKScene!
     
     //Camera
@@ -75,8 +80,10 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
         enemySprite = self.childNode(withName: "Enemy") as? SKSpriteNode
         innTot = cameraNode.childNode(withName: "InnTot")
         innTotLabel = innTot.childNode(withName: "InnTotLabel") as? SKLabelNode
-        kalimbaSceneButton = self.childNode(withName: "kalimbaScene") as? SKSpriteNode
-        lockSceneButton = self.childNode(withName: "lockScene") as? SKSpriteNode
+        kalimbaSprite = self.childNode(withName: "Kalimba") as? SKSpriteNode
+        lockSprite = self.childNode(withName: "Lock") as? SKSpriteNode
+        kalimbaCollision = kalimbaSprite.childNode(withName: "KalimbaCollision")
+        kalimbaLight = kalimbaSprite.childNode(withName: "KalimbaLight") as? SKLightNode
         
         
         //Assign movement component to playerEntity
@@ -113,6 +120,7 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
         
         //Hide InnTot
         innTot.alpha = 0
+        createInnTot(duration: 5, label: "What the, where am I?")
     }
     
     
@@ -223,11 +231,32 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
         let nodeA = contact.bodyA.node
         let nodeB = contact.bodyB.node
         
-        if (nodeA == playerSprite && nodeB == enemySprite) || (nodeA == enemySprite && nodeB == playerSprite) {
-            if nodeA == playerSprite {
+        //        if (nodeA == playerSprite && nodeB == enemySprite) || (nodeA == enemySprite && nodeB == playerSprite) {
+        //            if nodeA == playerSprite {
+        //                nodeA?.removeFromParent()
+        //            } else {
+        //                nodeB?.removeFromParent()
+        //            }
+        //        }
+        
+        if (nodeA == playerSprite && nodeB == kalimbaCollision) || (nodeA == kalimbaCollision && nodeB == playerSprite) {
+            
+            if nodeA == kalimbaCollision {
                 nodeA?.removeFromParent()
             } else {
                 nodeB?.removeFromParent()
+            }
+            
+            kalimbaSprite.physicsBody?.isDynamic = true
+        }
+        
+        if (nodeA == kalimbaSprite && nodeB == floor) || (nodeA == kalimbaSprite && nodeB == floor) {
+            
+            if !kalimbaIsDropped {
+                createInnTot(duration: 5, label: "What was that?")
+                
+                kalimbaLight.falloff = 3
+                kalimbaIsDropped = true
             }
         }
     }
@@ -248,5 +277,28 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
         innTotLabel.text = label
         
         innTot.run(sequence)
+    }
+    
+    func processTouch(touchedNode: SKSpriteNode) {
+        let combos: [String: String] = [
+            "Boxes":"There are boxes",
+            "Books":"There are dropped books",
+            "BookshelfLeft":"There are old bookshelves",
+            "BookshelfMid":"There are old bookshelves",
+            "BookshelfRight":"There are old bookshelves",
+            "Clock":"There is a clock",
+            "Window":"The window is locked shut",
+            "Door":"The door is stuck"
+        ]
+        
+        if touchedNode == kalimbaSprite && kalimbaIsDropped{
+            presentPopUpScene(popUpSceneName: "KalimbaScene")
+        } else  if touchedNode == lockSprite {
+            presentPopUpScene(popUpSceneName: "LockScene")
+        } else {
+            if let nodeName = touchedNode.name, let comboDescription = combos[nodeName] {
+                createInnTot(duration: 3, label: comboDescription)
+            }
+        }
     }
 }

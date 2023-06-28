@@ -24,7 +24,7 @@ class KalimbaKeySpriteNode: SKSpriteNode {
 class KalimbaScene: SKScene {
     @ObservedObject var viewModel = GameData.shared
     var kalimbaKeys: [SKSpriteNode] = []
-    var correctKalimbaKeys =  ["k1", "k2", "k3", "k4", "k5"]
+    var correctKalimbaKeys =  ["k1", "k3", "k1", "k3", "k4", "k5", "k5"]
     var userInputKalimbaKeys: [String] = []
     var index = 0
     var bgKalimba : SKSpriteNode?
@@ -34,6 +34,11 @@ class KalimbaScene: SKScene {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+    }
+    func successScreen(){
+        let playScene = SKScene(fileNamed: "PlaytestScreen")
+        playScene?.scaleMode = .aspectFit
+        self.view?.presentScene(playScene)
     }
     
     func validationKalimbaKeys(userInputKalimba:String, index:Int) -> Bool{
@@ -77,22 +82,41 @@ class KalimbaScene: SKScene {
             let location = touch.location(in: self)
             for i in 0..<7 {
                 if let touchedNode = atPoint(location) as? SKSpriteNode, touchedNode == kalimbaKeys[i] {
-                    
                     let id = i+1
+                    
                     print("touch k\(id)")
+                    
+                    print("play sound")
                     soundComponent.playSound(soundName: "k" + String(id))
+                   
+                    let scaleUpAction = SKAction.scale(to: 1.2, duration: 0.1)
+                    let scaleDownAction = SKAction.scale(to: 1.0, duration: 0.1)
+                    let buttonAnimation = SKAction.sequence([scaleUpAction, scaleDownAction])
+                    
+                    touchedNode.run(buttonAnimation)
+                    
                     print(validationKalimbaKeys(userInputKalimba: "k\(id)", index: index))
                     print("index = \(index)")
                     
                     if validationKalimbaKeys(userInputKalimba: "k\(id)", index: index){
                         userInputKalimbaKeys.append("k\(id)")
-                        index = index+1
+                        if userInputKalimbaKeys.count == correctKalimbaKeys.count{
+                            print("win")
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                                self.successScreen()
+                            }
+                            
+                        }
+                        index = index + 1
                     } else {
                         index = 0
                         userInputKalimbaKeys.removeAll()
                     }
-                    // Access the associated KalimbaKeyEntity and play the sound
                     
+                    
+                    
+                    // Access the associated KalimbaKeyEntity and play the sound
+                   
                 }
             }
             

@@ -33,7 +33,6 @@ struct ContentView: View {
         popup.backgroundColor = .clear
         popup.scaleMode = .aspectFit
         
-        
         return popup
     }
     
