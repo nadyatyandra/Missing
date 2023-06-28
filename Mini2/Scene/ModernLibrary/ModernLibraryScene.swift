@@ -9,7 +9,7 @@ import Foundation
 import SpriteKit
 import GameplayKit
 
-class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
+class ModernLibraryScene: SKScene, SKPhysicsContactDelegate {
     
     var entities = [GKEntity]()
     var graphs = [String : GKGraph]()
@@ -21,22 +21,6 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
     var playerEntity: GKEntity!
     var playerPhysics: SKPhysicsBody!
     var playerMovementComponent: MovementComponent!
-    
-    //NPC
-    var enemySprite: SKSpriteNode!
-    var enemyEntity: GKEntity!
-    var enemyPhysics: SKPhysicsBody!
-    
-    //Kalimba
-    var kalimbaSprite: SKSpriteNode!
-    var kalimbaScene: SKScene!
-    var kalimbaCollision: SKNode!
-    var kalimbaLight: SKLightNode!
-    var kalimbaIsDropped: Bool = false
-    
-    //Lock
-    var lockSprite: SKSpriteNode!
-    var lockScene: SKScene!
     
     //Camera
     var cameraNode: SKCameraNode!
@@ -76,14 +60,8 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
         leftWall = self.childNode(withName: "LeftWall") as? SKSpriteNode
         rightWall = self.childNode(withName: "RightWall") as? SKSpriteNode
         floor = self.childNode(withName: "Floor") as? SKSpriteNode
-        enemySprite = self.childNode(withName: "Enemy") as? SKSpriteNode
         innTot = cameraNode.childNode(withName: "InnTot")
         innTotLabel = innTot.childNode(withName: "InnTotLabel") as? SKLabelNode
-        kalimbaSprite = self.childNode(withName: "Kalimba") as? SKSpriteNode
-        lockSprite = self.childNode(withName: "Lock") as? SKSpriteNode
-        kalimbaCollision = kalimbaSprite.childNode(withName: "KalimbaCollision")
-        kalimbaLight = kalimbaSprite.childNode(withName: "KalimbaLight") as? SKLightNode
-        
         
         //Assign movement component to playerEntity
         playerEntity = createEntity(node: playerSprite, wantMovementComponent: true)
@@ -119,7 +97,7 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
         
         //Hide InnTot
         innTot.alpha = 0
-        createInnTot(duration: 5, label: "What the, where am I?")
+        createInnTot(duration: 5, label: "TolGil")
     }
     
     
@@ -224,26 +202,6 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
         //            }
         //        }
         
-        if (nodeA == playerSprite && nodeB == kalimbaCollision) || (nodeA == kalimbaCollision && nodeB == playerSprite) {
-            
-            if nodeA == kalimbaCollision {
-                nodeA?.removeFromParent()
-            } else {
-                nodeB?.removeFromParent()
-            }
-            
-            kalimbaSprite.physicsBody?.isDynamic = true
-        }
-        
-        if (nodeA == kalimbaSprite && nodeB == floor) || (nodeA == kalimbaSprite && nodeB == floor) {
-            
-            if !kalimbaIsDropped {
-                createInnTot(duration: 5, label: "What was that?")
-                
-                kalimbaLight.falloff = 3
-                kalimbaIsDropped = true
-            }
-        }
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
@@ -276,14 +234,18 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
             "Door":"The door is stuck"
         ]
         
-        if touchedNode == kalimbaSprite && kalimbaIsDropped{
-            presentPopUpScene(popUpSceneName: "KalimbaScene")
-        } else  if touchedNode == lockSprite {
-            presentPopUpScene(popUpSceneName: "LockScene")
-        } else {
-            if let nodeName = touchedNode.name, let comboDescription = combos[nodeName] {
-                createInnTot(duration: 3, label: comboDescription)
-            }
+//        if touchedNode == kalimbaSprite && kalimbaIsDropped{
+//            presentPopUpScene(popUpSceneName: "KalimbaScene")
+//        } else  if touchedNode == lockSprite {
+//            presentPopUpScene(popUpSceneName: "LockScene")
+//        } else {
+//            if let nodeName = touchedNode.name, let comboDescription = combos[nodeName] {
+//                createInnTot(duration: 3, label: comboDescription)
+//            }
+//        }
+        
+        if let nodeName = touchedNode.name, let comboDescription = combos[nodeName] {
+            createInnTot(duration: 3, label: comboDescription)
         }
     }
 }
