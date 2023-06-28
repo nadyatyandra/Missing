@@ -8,9 +8,10 @@
 import Foundation
 import SpriteKit
 import GameplayKit
+import SwiftUI
 
 class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
-    
+    @ObservedObject var viewModel = GameData.shared
     var entities = [GKEntity]()
     var graphs = [String : GKGraph]()
     
@@ -152,10 +153,15 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
         playerMovementComponent.move(to: joystickVelocity)
     }
     
+//    @EnvironmentObject var gameData: GameData
+    
     func presentPopUpScene(popUpSceneName: String){
         let popUpScene = SKScene(fileNamed: popUpSceneName)
         popUpScene?.scaleMode = .aspectFit
-        self.view?.presentScene(popUpScene)
+        
+        viewModel.popUpName = popUpSceneName
+        viewModel.isPopUpVisible.toggle()
+        self.isPaused = true
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -163,12 +169,16 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
         if let touch = touches.first {
             initialTouchPosition = touch.location(in: view)
             startMoving = true
+            viewModel.isPopUpVisible = false
+            self.isPaused = false
         }
         
         for touch in touches {
             let location = touch.location(in: self)
             
-            guard let touchedNode = atPoint(location) as? SKSpriteNode else { return  }
+            createInnTot(duration: 3, label: "Togi = Tolol Gila")
+            
+            guard let touchedNode = atPoint(location) as? SKSpriteNode else{ return}
             
             processTouch(touchedNode: touchedNode)
         }

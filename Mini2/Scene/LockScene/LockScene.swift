@@ -6,13 +6,15 @@
 //
 
 import SpriteKit
+import SwiftUI
 
 class LockScene: SKScene{
-    
+    @ObservedObject var viewModel = GameData.shared
     var lockNumbers: [SKSpriteNode] = []
     var arrowUpLocks: [SKSpriteNode] = []
     var arrowDownLocks: [SKSpriteNode] = []
     var confirmLock: SKSpriteNode?
+    var bgLock: SKSpriteNode?
     
     override func didMove(to view: SKView) {
         for i in 0..<4 {
@@ -25,6 +27,8 @@ class LockScene: SKScene{
             arrowDownLocks.append(arrowDownLock!)
         }
         confirmLock = childNode(withName: "confirmLock") as? SKSpriteNode
+        bgLock = childNode(withName: "bg_lock") as? SKSpriteNode
+        bgLock?.color = .clear
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -64,12 +68,14 @@ class LockScene: SKScene{
                 if(lockNumbers[0].texture?.description.components(separatedBy: "'")[1] == "number9" && lockNumbers[1].texture?.description.components(separatedBy: "'")[1] == "number9" && lockNumbers[2].texture?.description.components(separatedBy: "'")[1] == "number9" && lockNumbers[3].texture?.description.components(separatedBy: "'")[1] == "number9" ){
                     print("success")
                     
-                    let playScene = SKScene(fileNamed: "PlaytestScreen")
-                    playScene?.scaleMode = .aspectFit
-                    self.view?.presentScene(playScene)
+                    viewModel.isPopUpVisible = false
                 }else{
                     print("gagal")
                 }
+            }
+            
+            if let touchedNode = atPoint(location) as? SKSpriteNode, touchedNode == bgLock {
+                viewModel.isPopUpVisible = false
             }
         }
     }

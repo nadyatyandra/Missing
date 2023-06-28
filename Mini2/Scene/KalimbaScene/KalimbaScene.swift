@@ -8,6 +8,7 @@
 
 import SpriteKit
 import GameplayKit
+import SwiftUI
 
 class KalimbaKeySpriteNode: SKSpriteNode {
     var onTap: (() -> Void)?
@@ -21,10 +22,12 @@ class KalimbaKeySpriteNode: SKSpriteNode {
 }
 
 class KalimbaScene: SKScene {
+    @ObservedObject var viewModel = GameData.shared
     var kalimbaKeys: [SKSpriteNode] = []
     var correctKalimbaKeys =  ["k1", "k3", "k1", "k3", "k4", "k5", "k5"]
     var userInputKalimbaKeys: [String] = []
     var index = 0
+    var bgKalimba : SKSpriteNode?
     
     var kalimbaSprite: SKSpriteNode!
     var soundComponent: SoundComponent!
@@ -39,11 +42,16 @@ class KalimbaScene: SKScene {
     }
     
     func validationKalimbaKeys(userInputKalimba:String, index:Int) -> Bool{
-//        print("correct keys" + correctKalimbaKeys[index])
-//        if index == correctKalimbaKeys.count{
-//            print("you won")
-////                        successScreen()
+        print("correct keys" + correctKalimbaKeys[index])
+        
+//        if index == 4 {
+//            //kalau benar
+//            viewModel.isPopUpVisible = false
+////            let playScene = SKScene(fileNamed: "PlaytestScreen")
+////            playScene?.scaleMode = .aspectFit
+////            self.view?.presentScene(playScene)
 //        }
+        
         if userInputKalimba.elementsEqual(correctKalimbaKeys[index]){
             return true
         } else {
@@ -55,6 +63,9 @@ class KalimbaScene: SKScene {
         //test sound component
         kalimbaSprite = self.childNode(withName: "bg") as? SKSpriteNode
         soundComponent = SoundComponent(node: kalimbaSprite)
+        bgKalimba = self.childNode(withName: "bg_kalimba") as? SKSpriteNode
+        bgKalimba?.color = .clear
+        
         let kalimbaComponent = GKEntity()
         kalimbaComponent.addComponent(soundComponent)
         // Get label node from scene and store it for use later
@@ -85,13 +96,15 @@ class KalimbaScene: SKScene {
                     touchedNode.run(buttonAnimation)
                     
                     print(validationKalimbaKeys(userInputKalimba: "k\(id)", index: index))
-                    print ("index = \(index)")
+                    print("index = \(index)")
+                    
                     if validationKalimbaKeys(userInputKalimba: "k\(id)", index: index){
                         userInputKalimbaKeys.append("k\(id)")
                         if userInputKalimbaKeys.count == correctKalimbaKeys.count{
                             print("win")
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                                self.successScreen()
+//                                self.successScreen()
+                                self.viewModel.isPopUpVisible = false
                             }
                             
                         }
@@ -106,6 +119,10 @@ class KalimbaScene: SKScene {
                     // Access the associated KalimbaKeyEntity and play the sound
                    
                 }
+            }
+            
+            if let touchedNode = atPoint(location) as? SKSpriteNode, touchedNode == bgKalimba {
+                viewModel.isPopUpVisible = false
             }
         }
     }
