@@ -26,7 +26,11 @@ class MovementComponent: GKComponent{
     init(node: SKNode) {
         self.node = node
         self.spriteNode = self.node as? SKSpriteNode
-        self.spriteScale = spriteNode?.xScale
+        if spriteNode!.xScale > 0 {
+            self.spriteScale = -spriteNode!.xScale
+        } else {
+            self.spriteScale = spriteNode!.xScale
+        }
         self.idleTexture = (self.spriteNode?.texture)!
         super.init()
     }
