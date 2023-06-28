@@ -8,9 +8,10 @@
 import Foundation
 import SpriteKit
 import GameplayKit
+import SwiftUI
 
 class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
-    
+    @ObservedObject var viewModel = GameData.shared
     var entities = [GKEntity]()
     var graphs = [String : GKGraph]()
     
@@ -57,7 +58,6 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
     var startMoving: Bool = false
     
     override func sceneDidLoad() {
-        
         self.lastUpdateTime = 0
     }
     
@@ -145,10 +145,15 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
         playerMovementComponent.move(to: joystickVelocity)
     }
     
+//    @EnvironmentObject var gameData: GameData
+    
     func presentPopUpScene(popUpSceneName: String){
         let popUpScene = SKScene(fileNamed: popUpSceneName)
         popUpScene?.scaleMode = .aspectFit
-        self.view?.presentScene(popUpScene)
+        
+        viewModel.popUpName = popUpSceneName
+        viewModel.isPopUpVisible.toggle()
+        self.isPaused = true
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -156,6 +161,8 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
         if let touch = touches.first {
             initialTouchPosition = touch.location(in: view)
             startMoving = true
+            viewModel.isPopUpVisible = false
+            self.isPaused = false
         }
         
         for touch in touches {
@@ -165,6 +172,7 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
             
             if let touchedNode = atPoint(location) as? SKSpriteNode, touchedNode == kalimbaSceneButton {
                 presentPopUpScene(popUpSceneName: "KalimbaScene")
+                
             }
             
             if let touchedNode = atPoint(location) as? SKSpriteNode, touchedNode == lockSceneButton {

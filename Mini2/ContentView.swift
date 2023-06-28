@@ -9,22 +9,30 @@ import Foundation
 import SwiftUI
 import SpriteKit
 
-struct ContentView: View {
-    @State var isPopUpVisible : Bool = false
+class GameData : ObservableObject {
+    @Published var isPopUpVisible = false
+    @Published var popUpName = ""
+    static let shared = GameData()
     
+}
+
+struct ContentView: View {
+//    @EnvironmentObject var gameData: GameData
+    @ObservedObject var viewModel = GameData.shared
+    @State var isPopupOn = GameData.shared
     var scene: SKScene {
         let scene: SKScene = SKScene(fileNamed: "PlaytestScreen")!
-        
         scene.size = CGSize(width: 2732, height: 2048)
         scene.scaleMode = .aspectFit
-        
         return scene
     }
     
     var popUp: SKScene {
-        let popup: SKScene = SKScene(fileNamed: "LockScene")!
-        popup.size = CGSize(width: 1920, height: 1080)
+        let popup: SKScene = SKScene(fileNamed: viewModel.popUpName)!
+        popup.size = CGSize(width: 2732, height: 2048)
+        popup.backgroundColor = .clear
         popup.scaleMode = .aspectFit
+        
         
         return popup
     }
@@ -32,11 +40,25 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             SpriteView(scene: scene)
-            if isPopUpVisible {
-                SpriteView(scene: popUp)
-                    .frame(width: 500, height: 300)
+                .ignoresSafeArea()
+            
+            if viewModel.isPopUpVisible {
+                Button{
+                    viewModel.isPopUpVisible = false
+                }label: {
+                    Rectangle()
+                        .fill(Color.black.opacity(0.5))
+                        .ignoresSafeArea()
+                }
             }
+            
+            if viewModel.isPopUpVisible {
+                SpriteView(scene: popUp, options: [.allowsTransparency])
+                    .frame(width: scene.size.width/3, height: scene.size.height/3)
+                    .ignoresSafeArea()
+            }
+            
+            
         }
-        
     }
 }
