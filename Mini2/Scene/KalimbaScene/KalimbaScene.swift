@@ -22,7 +22,7 @@ class KalimbaKeySpriteNode: SKSpriteNode {
 
 class KalimbaScene: SKScene {
     var kalimbaKeys: [SKSpriteNode] = []
-    var correctKalimbaKeys =  ["k1", "k2", "k3"]
+    var correctKalimbaKeys =  ["k1", "k3", "k1", "k3", "k4", "k5", "k5"]
     var userInputKalimbaKeys: [String] = []
     var index = 0
     
@@ -90,7 +90,10 @@ class KalimbaScene: SKScene {
                         userInputKalimbaKeys.append("k\(id)")
                         if userInputKalimbaKeys.count == correctKalimbaKeys.count{
                             print("win")
-                            successScreen()
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                                self.successScreen()
+                            }
+                            
                         }
                         index = index + 1
                     } else {
