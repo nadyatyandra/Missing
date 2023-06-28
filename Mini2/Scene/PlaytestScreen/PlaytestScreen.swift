@@ -36,8 +36,15 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
     var kalimbaIsDropped: Bool = false
     
     //Lock
-    var lockSprite: SKSpriteNode!
+//    var lockSprite: SKSpriteNode!
     var lockScene: SKScene!
+    
+    //Shelf
+    var cupboardSprite: SKSpriteNode!
+    var shelfScene: SKScene!
+    
+    //photo
+    var photoSprite: SKSpriteNode!
     
     //Camera
     var cameraNode: SKCameraNode!
@@ -74,6 +81,8 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
         //Assign objects from scene editor
         playerSprite = self.childNode(withName: "Player") as? SKSpriteNode
         cameraNode = self.childNode(withName: "Camera") as? SKCameraNode
+        cupboardSprite = self.childNode(withName: "Cupboard") as? SKSpriteNode
+        photoSprite = self.childNode(withName: "Photo") as? SKSpriteNode
         leftWall = self.childNode(withName: "LeftWall") as? SKSpriteNode
         rightWall = self.childNode(withName: "RightWall") as? SKSpriteNode
         floor = self.childNode(withName: "Floor") as? SKSpriteNode
@@ -81,10 +90,9 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
         innTot = cameraNode.childNode(withName: "InnTot")
         innTotLabel = innTot.childNode(withName: "InnTotLabel") as? SKLabelNode
         kalimbaSprite = self.childNode(withName: "Kalimba") as? SKSpriteNode
-        lockSprite = self.childNode(withName: "Lock") as? SKSpriteNode
+        viewModel.lockSprite = self.childNode(withName: "Lock") as? SKSpriteNode
         kalimbaCollision = kalimbaSprite.childNode(withName: "KalimbaCollision")
         kalimbaLight = kalimbaSprite.childNode(withName: "KalimbaLight") as? SKLightNode
-        
         
         //Assign movement component to playerEntity
         playerEntity = createEntity(node: playerSprite, wantMovementComponent: true)
@@ -164,12 +172,20 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
         self.isPaused = true
     }
     
+    func presentImageDetail(imageDetailName: String){
+        viewModel.imageDetailName = imageDetailName
+        viewModel.isSecondPopUpVisible.toggle()
+        self.isPaused = true
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         // Get the initial touch position
         if let touch = touches.first {
             initialTouchPosition = touch.location(in: view)
             startMoving = true
+            
             viewModel.isPopUpVisible = false
+            viewModel.isSecondPopUpVisible = false
             self.isPaused = false
         }
         
@@ -179,7 +195,6 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
             guard let touchedNode = atPoint(location) as? SKSpriteNode else{ return}
             
             processTouch(touchedNode: touchedNode)
-//            print(touchedNode.name)
         }
     }
     
@@ -287,9 +302,13 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
         
         if touchedNode == kalimbaSprite && kalimbaIsDropped{
             presentPopUpScene(popUpSceneName: "KalimbaScene")
-        } else  if touchedNode == lockSprite {
+        } else  if touchedNode == viewModel.lockSprite {
             presentPopUpScene(popUpSceneName: "LockScene")
-        } else {
+        }else if touchedNode == cupboardSprite && viewModel.lockUnlocked {
+            presentPopUpScene(popUpSceneName: "ShelfScene")
+        }else if touchedNode == photoSprite {
+            presentImageDetail(imageDetailName: "OL Photo Detail")
+        }else {
             if let nodeName = touchedNode.name, let comboDescription = combos[nodeName] {
                 createInnTot(duration: 3, label: comboDescription)
             }
