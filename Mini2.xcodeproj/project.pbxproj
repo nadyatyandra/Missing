@@ -31,6 +31,8 @@
 		5339FBEE2A49318A00647CF1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04CAE9612A32D68100F59461 /* Assets.xcassets */; };
 		534C8CFF2A4BD4A60033D8D1 /* ModernLibraryScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 534C8CFE2A4BD4A60033D8D1 /* ModernLibraryScene.swift */; };
 		534C8D022A4BD4C50033D8D1 /* ModernLibraryScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 534C8D012A4BD4C50033D8D1 /* ModernLibraryScene.sks */; };
+		534C8D052A4BFC440033D8D1 /* CorridorScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 534C8D042A4BFC440033D8D1 /* CorridorScene.swift */; };
+		534C8D072A4BFC590033D8D1 /* CorridorScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 534C8D062A4BFC590033D8D1 /* CorridorScene.sks */; };
 		53B979B02A433AD8004F71D5 /* MovementComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B979AF2A433AD8004F71D5 /* MovementComponent.swift */; };
 		53B979B92A4746A3004F71D5 /* PlaytestScreen.sks in Resources */ = {isa = PBXBuildFile; fileRef = 53B979B82A4746A3004F71D5 /* PlaytestScreen.sks */; };
 		53B979BB2A4746AF004F71D5 /* PlaytestScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B979BA2A4746AF004F71D5 /* PlaytestScreen.swift */; };
@@ -86,6 +88,8 @@
 		34B9B2262A473CE0001F4A39 /* k7.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = k7.mp3; sourceTree = "<group>"; };
 		534C8CFE2A4BD4A60033D8D1 /* ModernLibraryScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModernLibraryScene.swift; sourceTree = "<group>"; };
 		534C8D012A4BD4C50033D8D1 /* ModernLibraryScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ModernLibraryScene.sks; sourceTree = "<group>"; };
+		534C8D042A4BFC440033D8D1 /* CorridorScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorridorScene.swift; sourceTree = "<group>"; };
+		534C8D062A4BFC590033D8D1 /* CorridorScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CorridorScene.sks; sourceTree = "<group>"; };
 		53B979AF2A433AD8004F71D5 /* MovementComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementComponent.swift; sourceTree = "<group>"; };
 		53B979B82A4746A3004F71D5 /* PlaytestScreen.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PlaytestScreen.sks; sourceTree = "<group>"; };
 		53B979BA2A4746AF004F71D5 /* PlaytestScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaytestScreen.swift; sourceTree = "<group>"; };
@@ -194,6 +198,7 @@
 		34B9B2062A458BF3001F4A39 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				534C8D032A4BFC360033D8D1 /* CorridorScene */,
 				534C8D002A4BD4AC0033D8D1 /* ModernLibrary */,
 				04AF7D7B2A484852005D930F /* PeelOffScene */,
 				53B979B72A47466A004F71D5 /* PlaytestScreen */,
@@ -261,6 +266,15 @@
 				534C8D012A4BD4C50033D8D1 /* ModernLibraryScene.sks */,
 			);
 			path = ModernLibrary;
+			sourceTree = "<group>";
+		};
+		534C8D032A4BFC360033D8D1 /* CorridorScene */ = {
+			isa = PBXGroup;
+			children = (
+				534C8D042A4BFC440033D8D1 /* CorridorScene.swift */,
+				534C8D062A4BFC590033D8D1 /* CorridorScene.sks */,
+			);
+			path = CorridorScene;
 			sourceTree = "<group>";
 		};
 		53B979B72A47466A004F71D5 /* PlaytestScreen */ = {
@@ -406,6 +420,7 @@
 				34B9B2122A45A10D001F4A39 /* k1.mp3 in Resources */,
 				34B9B2292A473CE0001F4A39 /* k6.mp3 in Resources */,
 				34B9B2112A45A10A001F4A39 /* k2.mp3 in Resources */,
+				534C8D072A4BFC590033D8D1 /* CorridorScene.sks in Resources */,
 				B185ED1F2A472C0400CA0241 /* Scene1.sks in Resources */,
 				34B9B2282A473CE0001F4A39 /* k5.mp3 in Resources */,
 				04AF7D7F2A48486F005D930F /* PeelOffScene.sks in Resources */,
@@ -437,6 +452,7 @@
 			files = (
 				53B979B02A433AD8004F71D5 /* MovementComponent.swift in Sources */,
 				B18E56022A4A8DD700C3F9E1 /* ContentView.swift in Sources */,
+				534C8D052A4BFC440033D8D1 /* CorridorScene.swift in Sources */,
 				53B979BB2A4746AF004F71D5 /* PlaytestScreen.swift in Sources */,
 				34B9B2152A45A310001F4A39 /* SoundComponent.swift in Sources */,
 				04CAE95B2A32D68000F59461 /* GameScene.swift in Sources */,
