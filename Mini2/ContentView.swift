@@ -10,8 +10,16 @@ import SwiftUI
 import SpriteKit
 
 class GameData : ObservableObject {
-    @Published var isPopUpVisible = false
+    @Published var isPopUpVisible = false //scene
+    @Published var isSecondPopUpVisible = false //image
+    
     @Published var popUpName = ""
+    
+    @Published var imageDetailName = ""
+    
+    @Published var lockSprite: SKSpriteNode?
+    @Published var lockUnlocked = false
+    
     static let shared = GameData()
 }
 
@@ -39,9 +47,13 @@ struct ContentView: View {
             SpriteView(scene: scene)
                 .ignoresSafeArea()
             
-            if viewModel.isPopUpVisible {
+            if viewModel.isPopUpVisible || viewModel.isSecondPopUpVisible {
                 Button{
-                    viewModel.isPopUpVisible = false
+                    if viewModel.isSecondPopUpVisible {
+                        viewModel.isSecondPopUpVisible = false
+                    }else {
+                        viewModel.isPopUpVisible = false
+                    }
                 }label: {
                     Rectangle()
                         .fill(Color.black.opacity(0.5))
@@ -49,13 +61,20 @@ struct ContentView: View {
                 }
             }
             
-            if viewModel.isPopUpVisible {
+            if viewModel.isPopUpVisible { //scene
                 SpriteView(scene: popUp, options: [.allowsTransparency])
-                    .frame(width: scene.size.width/3, height: scene.size.height/3)
+                    .frame(width: scene.size.width/2.5, height: scene.size.height/2.5)
                     .ignoresSafeArea()
             }
             
-            
+            if viewModel.isSecondPopUpVisible { //image
+                Image(viewModel.imageDetailName)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: scene.size.width/2.5, height: scene.size.height/2.5)
+                
+                    .ignoresSafeArea()
+            }
         }
     }
 }

@@ -67,8 +67,9 @@ class LockScene: SKScene{
             if let touchedNode = atPoint(location) as? SKSpriteNode, touchedNode == confirmLock {
                 if(lockNumbers[0].texture?.description.components(separatedBy: "'")[1] == "number9" && lockNumbers[1].texture?.description.components(separatedBy: "'")[1] == "number9" && lockNumbers[2].texture?.description.components(separatedBy: "'")[1] == "number9" && lockNumbers[3].texture?.description.components(separatedBy: "'")[1] == "number9" ){
                     print("success")
-                    
+                    viewModel.lockUnlocked = true
                     viewModel.isPopUpVisible = false
+                    viewModel.lockSprite?.isHidden = true
                 }else{
                     print("gagal")
                 }
