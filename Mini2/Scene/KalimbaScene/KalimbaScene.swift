@@ -44,13 +44,13 @@ class KalimbaScene: SKScene {
     func validationKalimbaKeys(userInputKalimba:String, index:Int) -> Bool{
         print("correct keys" + correctKalimbaKeys[index])
         
-        if index == 4 {
-            //kalau benar
-            viewModel.isPopUpVisible = false
-//            let playScene = SKScene(fileNamed: "PlaytestScreen")
-//            playScene?.scaleMode = .aspectFit
-//            self.view?.presentScene(playScene)
-        }
+//        if index == 4 {
+//            //kalau benar
+//            viewModel.isPopUpVisible = false
+////            let playScene = SKScene(fileNamed: "PlaytestScreen")
+////            playScene?.scaleMode = .aspectFit
+////            self.view?.presentScene(playScene)
+//        }
         
         if userInputKalimba.elementsEqual(correctKalimbaKeys[index]){
             return true
@@ -103,7 +103,8 @@ class KalimbaScene: SKScene {
                         if userInputKalimbaKeys.count == correctKalimbaKeys.count{
                             print("win")
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                                self.successScreen()
+//                                self.successScreen()
+                                self.viewModel.isPopUpVisible = false
                             }
                             
                         }

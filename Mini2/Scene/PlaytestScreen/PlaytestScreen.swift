@@ -178,14 +178,9 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
             
             createInnTot(duration: 3, label: "Togi = Tolol Gila")
             
-            if let touchedNode = atPoint(location) as? SKSpriteNode, touchedNode == kalimbaSceneButton {
-                presentPopUpScene(popUpSceneName: "KalimbaScene")
-                
-            }
+            guard let touchedNode = atPoint(location) as? SKSpriteNode else{ return}
             
-            if let touchedNode = atPoint(location) as? SKSpriteNode, touchedNode == lockSceneButton {
-                presentPopUpScene(popUpSceneName: "LockScene")
-            }
+            processTouch(touchedNode: touchedNode)
         }
     }
     

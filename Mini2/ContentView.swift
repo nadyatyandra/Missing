@@ -17,7 +17,6 @@ class GameData : ObservableObject {
 }
 
 struct ContentView: View {
-//    @EnvironmentObject var gameData: GameData
     @ObservedObject var viewModel = GameData.shared
     @State var isPopupOn = GameData.shared
     var scene: SKScene {
