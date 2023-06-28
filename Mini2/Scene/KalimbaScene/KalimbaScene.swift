@@ -22,7 +22,7 @@ class KalimbaKeySpriteNode: SKSpriteNode {
 
 class KalimbaScene: SKScene {
     var kalimbaKeys: [SKSpriteNode] = []
-    var correctKalimbaKeys =  ["k1", "k2", "k3", "k4", "k5"]
+    var correctKalimbaKeys =  ["k1", "k2", "k3"]
     var userInputKalimbaKeys: [String] = []
     var index = 0
     
@@ -32,17 +32,18 @@ class KalimbaScene: SKScene {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
+    func successScreen(){
+        let playScene = SKScene(fileNamed: "PlaytestScreen")
+        playScene?.scaleMode = .aspectFit
+        self.view?.presentScene(playScene)
+    }
     
     func validationKalimbaKeys(userInputKalimba:String, index:Int) -> Bool{
-        print("correct keys" + correctKalimbaKeys[index])
-        
-        if index == 4 {
-            let playScene = SKScene(fileNamed: "PlaytestScreen")
-            playScene?.scaleMode = .aspectFit
-            self.view?.presentScene(playScene)
-            
-        }
-        
+//        print("correct keys" + correctKalimbaKeys[index])
+//        if index == correctKalimbaKeys.count{
+//            print("you won")
+////                        successScreen()
+//        }
         if userInputKalimba.elementsEqual(correctKalimbaKeys[index]){
             return true
         } else {
@@ -70,24 +71,37 @@ class KalimbaScene: SKScene {
             let location = touch.location(in: self)
             for i in 0..<7 {
                 if let touchedNode = atPoint(location) as? SKSpriteNode, touchedNode == kalimbaKeys[i] {
-                    
                     let id = i+1
+                    
                     print("touch k\(id)")
+                    
+                    print("play sound")
                     soundComponent.playSound(soundName: "k" + String(id))
+                   
+                    let scaleUpAction = SKAction.scale(to: 1.2, duration: 0.1)
+                    let scaleDownAction = SKAction.scale(to: 1.0, duration: 0.1)
+                    let buttonAnimation = SKAction.sequence([scaleUpAction, scaleDownAction])
+                    
+                    touchedNode.run(buttonAnimation)
+                    
                     print(validationKalimbaKeys(userInputKalimba: "k\(id)", index: index))
                     print ("index = \(index)")
-                    
-                    
-                    
                     if validationKalimbaKeys(userInputKalimba: "k\(id)", index: index){
                         userInputKalimbaKeys.append("k\(id)")
-                        index = index+1
+                        if userInputKalimbaKeys.count == correctKalimbaKeys.count{
+                            print("win")
+                            successScreen()
+                        }
+                        index = index + 1
                     } else {
                         index = 0
                         userInputKalimbaKeys.removeAll()
                     }
-                    // Access the associated KalimbaKeyEntity and play the sound
                     
+                    
+                    
+                    // Access the associated KalimbaKeyEntity and play the sound
+                   
                 }
             }
         }

@@ -13,7 +13,7 @@ struct ContentView: View {
     @State var isPopUpVisible : Bool = false
     
     var scene: SKScene {
-        let scene: SKScene = SKScene(fileNamed: "PlaytestScreen")!
+        let scene: SKScene = SKScene(fileNamed: "KalimbaScene")!
         
         scene.size = CGSize(width: 2732, height: 2048)
         scene.scaleMode = .aspectFit
@@ -22,7 +22,7 @@ struct ContentView: View {
     }
     
     var popUp: SKScene {
-        let popup: SKScene = SKScene(fileNamed: "LockScene")!
+        let popup: SKScene = SKScene(fileNamed: "KalimbaScene")!
         popup.size = CGSize(width: 1920, height: 1080)
         popup.scaleMode = .aspectFit
         
