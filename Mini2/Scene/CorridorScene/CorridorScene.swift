@@ -22,6 +22,9 @@ class CorridorScene: SKScene, SKPhysicsContactDelegate {
     var playerPhysics: SKPhysicsBody!
     var playerMovementComponent: MovementComponent!
     
+    //Enemy
+    var enemySprite: SKSpriteNode!
+    
     //Camera
     var cameraNode: SKCameraNode!
     
@@ -62,6 +65,7 @@ class CorridorScene: SKScene, SKPhysicsContactDelegate {
         floor = self.childNode(withName: "Floor") as? SKSpriteNode
         innTot = cameraNode.childNode(withName: "InnTot")
         innTotLabel = innTot.childNode(withName: "InnTotLabel") as? SKLabelNode
+        enemySprite = self.childNode(withName: "Enemy") as? SKSpriteNode
         
         //Assign movement component to playerEntity
         playerEntity = createEntity(node: playerSprite, wantMovementComponent: true)
@@ -128,6 +132,7 @@ class CorridorScene: SKScene, SKPhysicsContactDelegate {
         //            }
         //        }
         playerMovementComponent.move(to: joystickVelocity)
+        enemySprite.position.x += 5
     }
     
     func presentPopUpScene(popUpSceneName: String){
@@ -191,8 +196,8 @@ class CorridorScene: SKScene, SKPhysicsContactDelegate {
     
     func Physics(_ contact:SKPhysicsContact){
         
-        let nodeA = contact.bodyA.node
-        let nodeB = contact.bodyB.node
+//        let nodeA = contact.bodyA.node
+//        let nodeB = contact.bodyB.node
         
         //        if (nodeA == playerSprite && nodeB == enemySprite) || (nodeA == enemySprite && nodeB == playerSprite) {
         //            if nodeA == playerSprite {

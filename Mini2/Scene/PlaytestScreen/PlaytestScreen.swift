@@ -176,11 +176,10 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
         for touch in touches {
             let location = touch.location(in: self)
             
-            createInnTot(duration: 3, label: "Togi = Tolol Gila")
-            
             guard let touchedNode = atPoint(location) as? SKSpriteNode else{ return}
             
             processTouch(touchedNode: touchedNode)
+//            print(touchedNode.name)
         }
     }
     
@@ -233,7 +232,6 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
         //                nodeB?.removeFromParent()
         //            }
         //        }
-        
         if (nodeA == playerSprite && nodeB == kalimbaCollision) || (nodeA == kalimbaCollision && nodeB == playerSprite) {
             
             if nodeA == kalimbaCollision {
@@ -283,7 +281,8 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
             "BookshelfRight":"There are old bookshelves",
             "Clock":"There is a clock",
             "Window":"The window is locked shut",
-            "Door":"The door is stuck"
+            "Door":"The door is stuck",
+            "Cupboard":"The cupboard is locked up"
         ]
         
         if touchedNode == kalimbaSprite && kalimbaIsDropped{

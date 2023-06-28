@@ -191,8 +191,8 @@ class ModernLibraryScene: SKScene, SKPhysicsContactDelegate {
     
     func Physics(_ contact:SKPhysicsContact){
         
-        let nodeA = contact.bodyA.node
-        let nodeB = contact.bodyB.node
+//        let nodeA = contact.bodyA.node
+//        let nodeB = contact.bodyB.node
         
         //        if (nodeA == playerSprite && nodeB == enemySprite) || (nodeA == enemySprite && nodeB == playerSprite) {
         //            if nodeA == playerSprite {

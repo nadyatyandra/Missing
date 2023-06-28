@@ -13,7 +13,6 @@ class GameData : ObservableObject {
     @Published var isPopUpVisible = false
     @Published var popUpName = ""
     static let shared = GameData()
-    
 }
 
 struct ContentView: View {
