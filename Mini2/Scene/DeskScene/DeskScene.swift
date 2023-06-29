@@ -27,6 +27,7 @@ class DeskScene: SKScene{
             if let touchedNode = atPoint(location) as? SKSpriteNode, touchedNode == employeeFileBook {
                 viewModel.imageDetailName = "OL Employee File Book Base"
                 viewModel.isSecondPopUpVisible = true
+                viewModel.isThirdPopUpVisible = true
             }
             
             if let touchedNode = atPoint(location) as? SKSpriteNode, touchedNode == bgDesk {
@@ -35,9 +36,7 @@ class DeskScene: SKScene{
                 } else{
                     viewModel.isPopUpVisible = false
                 }
-                
             }
         }
     }
-    
 }

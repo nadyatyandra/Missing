@@ -125,12 +125,12 @@ struct VerticalPeelEffect<Content: View>: View {
     }
 }
 
-struct VerticalPeelEffect_Previews: PreviewProvider {
-    static var previews: some View {
-        VerticalPeelEffect {
-            Image("OL Employee1")
-        } onComplete: {
-            
-        }
-    }
-}
+//struct VerticalPeelEffect_Previews: PreviewProvider {
+//    static var previews: some View {
+//        VerticalPeelEffect {
+//            Image("OL Employee1")
+//        } onComplete: {
+//            
+//        }
+//    }
+//}

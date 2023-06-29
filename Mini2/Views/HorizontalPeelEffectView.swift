@@ -58,28 +58,10 @@ struct HorizontalPeelEffect<Content: View>: View {
             let minOpacity = dragProgress / 0.05
             let opacity = min(1, minOpacity)
             
-            content
+            Image("OL Employee2") //placeholder polosan
+                .resizable()
+                .frame(width: 550.0, height: 761.0) //need to adjust
                 .shadow(color: .black.opacity(dragProgress != 0 ? 0.1 : 0), radius: 5, x: 15, y: 0)
-                .overlay {
-                    Rectangle()
-                        .fill(.white.opacity(0.25))
-                        .mask(content)
-                }
-                .overlay(alignment: .trailing) {
-                    Rectangle()
-                        .fill(
-                            .linearGradient(colors: [
-                                .clear,
-                                .white,
-                                .clear,
-                                .clear
-                            ], startPoint: .leading, endPoint: .trailing)
-                        )
-                        .frame(width: 60)
-                        .offset(x: 40)
-                        .offset(x: -30 + (30 * opacity))
-                        .offset(x: size.width * -dragProgress)
-                }
                 .scaleEffect(x: -1)
                 .offset(x: size.width - (size.width * dragProgress))
                 .offset(x: size.width * -dragProgress)
@@ -122,15 +104,5 @@ struct HorizontalPeelEffect<Content: View>: View {
                     }
                 })
         )
-    }
-}
-
-struct HorizontalPeelEffect_Previews: PreviewProvider {
-    static var previews: some View {
-        HorizontalPeelEffect {
-            Image("OL Employee1")
-        } onComplete: {
-            
-        }
     }
 }
