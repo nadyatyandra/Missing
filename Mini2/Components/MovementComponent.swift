@@ -15,13 +15,19 @@ class MovementComponent: GKComponent{
     //for anim
     var spriteNode: SKSpriteNode?
     var spriteScale: CGFloat?
+    var spriteSizeLeft: CGSize?
+    var spriteSizeRight: CGSize?
     
-    let maxSpriteSpeed: CGFloat = 10
+    var maxSpriteSpeed: CGFloat = 10
     let spriteSpeed: CGFloat = 10
     
     var walkFrames: [SKTexture] = []
     var walkAnimation: SKAction?
+    var runFrames: [SKTexture] = []
+    var runAnimation: SKAction?
     var idleTexture: SKTexture
+    
+    var isRunning: Bool = false
     
     init(node: SKNode) {
         self.node = node
@@ -32,6 +38,11 @@ class MovementComponent: GKComponent{
             self.spriteScale = spriteNode!.xScale
         }
         self.idleTexture = (self.spriteNode?.texture)!
+        
+        // ??????????????
+        self.spriteSizeRight = self.spriteNode?.texture?.size()
+        self.spriteSizeLeft = self.spriteNode?.size
+        
         super.init()
     }
     
@@ -53,13 +64,13 @@ class MovementComponent: GKComponent{
         
     }
     
-    public func loadWalkAnim(frames: Int, framesInterval: TimeInterval){
+    func loadWalkAnim(frames: Int, framesInterval: TimeInterval){
         let fileName = "\(node.name ?? "Player")Walk"
         let animationAtlas = SKTextureAtlas(named: fileName)
         
         for i in 1...animationAtlas.textureNames.count {
-//            let texture = SKTexture(imageNamed: "\(node.name ?? "Player")Walk\(i)")
-//            walkFrames.append(texture)
+            //            let texture = SKTexture(imageNamed: "\(node.name ?? "Player")Walk\(i)")
+            //            walkFrames.append(texture)
             walkFrames.append(animationAtlas.textureNamed("\(fileName)\(i)"))
         }
         
@@ -67,13 +78,45 @@ class MovementComponent: GKComponent{
         self.walkAnimation = SKAction.repeatForever(walkAnimation!)
     }
     
+    func loadRunAnim(frames: Int, framesInterval: TimeInterval){
+        let fileName = "\(node.name ?? "Player")Run"
+        let animationAtlas = SKTextureAtlas(named: fileName)
+        
+        for i in 1...animationAtlas.textureNames.count {
+            runFrames.append(animationAtlas.textureNamed("\(fileName)\(i)"))
+        }
+        
+        //        runAnimation = SKAction.animate(with: runFrames, timePerFrame: framesInterval)
+        runAnimation = SKAction.animate(with: runFrames, timePerFrame: framesInterval, resize: true, restore: true)
+        self.runAnimation = SKAction.repeatForever(runAnimation!)
+    }
+    
     
     func startMoving() {
-        spriteNode?.run(walkAnimation!, withKey: "walking")
+        if isRunning {
+            spriteNode?.run(runAnimation!, withKey: "moving")
+        } else {
+            spriteNode?.run(walkAnimation!, withKey: "moving")
+        }
     }
     
     func stopMoving() {
-        spriteNode?.removeAction(forKey: "walking")
+        spriteNode?.removeAction(forKey: "moving")
         spriteNode?.texture = idleTexture
+        
+        
+        
+        if isRunning {
+            
+            if (spriteNode?.xScale)! > 0 {
+                spriteNode?.size = CGSize(width: spriteSizeLeft!.width, height: spriteSizeLeft!.height)
+            } else if (spriteNode?.xScale)! <= 0 {
+                spriteNode?.size = CGSize(width: spriteSizeRight!.width, height: spriteSizeRight!.height)
+            }
+        
+//            spriteNode?.size = CGSize(width: spriteSizeRight!.width, height: spriteSizeRight!.height)
+//            spriteNode?.size = CGSize(width: spriteSizeLeft!.width, height: spriteSizeLeft!.height)
+        }
+        
     }
 }
