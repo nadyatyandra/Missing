@@ -42,16 +42,6 @@ class KalimbaScene: SKScene {
     }
     
     func validationKalimbaKeys(userInputKalimba:String, index:Int) -> Bool{
-        print("correct keys" + correctKalimbaKeys[index])
-        
-//        if index == 4 {
-//            //kalau benar
-//            viewModel.isPopUpVisible = false
-////            let playScene = SKScene(fileNamed: "PlaytestScreen")
-////            playScene?.scaleMode = .aspectFit
-////            self.view?.presentScene(playScene)
-//        }
-        
         if userInputKalimba.elementsEqual(correctKalimbaKeys[index]){
             return true
         } else {
@@ -73,7 +63,6 @@ class KalimbaScene: SKScene {
             let kalimbaKey = childNode(withName: "k\(i + 1)") as? SKSpriteNode
             kalimbaKeys.append(kalimbaKey!)
         }
-        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -83,10 +72,6 @@ class KalimbaScene: SKScene {
             for i in 0..<7 {
                 if let touchedNode = atPoint(location) as? SKSpriteNode, touchedNode == kalimbaKeys[i] {
                     let id = i+1
-                    
-                    print("touch k\(id)")
-                    
-                    print("play sound")
                     soundComponent.playSound(soundName: "k" + String(id))
                    
                     let scaleUpAction = SKAction.scale(to: 1.2, duration: 0.1)
@@ -95,17 +80,14 @@ class KalimbaScene: SKScene {
                     
                     touchedNode.run(buttonAnimation)
                     
-                    print(validationKalimbaKeys(userInputKalimba: "k\(id)", index: index))
-                    print("index = \(index)")
-                    
                     if validationKalimbaKeys(userInputKalimba: "k\(id)", index: index){
                         userInputKalimbaKeys.append("k\(id)")
                         if userInputKalimbaKeys.count == correctKalimbaKeys.count{
-                            print("win")
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
 //                                self.successScreen()
                                 self.viewModel.isPopUpVisible = false
                             }
+                            viewModel.windowSprite?.texture = SKTexture(imageNamed: "Broken window")
                             
                         }
                         index = index + 1

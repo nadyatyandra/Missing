@@ -10,29 +10,36 @@ import SwiftUI
 import SpriteKit
 
 class GameData : ObservableObject {
-    @Published var isPopUpVisible = false
+    @Published var isPopUpVisible = false //scene
+    @Published var isSecondPopUpVisible = false //image
+    
     @Published var popUpName = ""
+    
+    @Published var imageDetailName = ""
+    
+    @Published var lockSprite: SKSpriteNode?
+    @Published var lockUnlocked = false
+    
+    @Published var windowSprite: SKSpriteNode?
+    
     static let shared = GameData()
 }
+
 
 struct ContentView: View {
     @ObservedObject var viewModel = GameData.shared
     @State var isPopupOn = GameData.shared
     var scene: SKScene {
-//        let scene: SKScene = SKScene(fileNamed: "PlaytestScreen")!
-//        let scene: SKScene = SKScene(fileNamed: "ModernLibraryScene")!
-        let scene: SKScene = SKScene(fileNamed: "CorridorScene")!
+        let scene: SKScene = SKScene(fileNamed: "PlaytestScreen")!
         scene.size = CGSize(width: 2732, height: 2048)
-        scene.scaleMode = .aspectFit
+        scene.scaleMode = .aspectFill
         return scene
     }
     
     var popUp: SKScene {
         let popup: SKScene = SKScene(fileNamed: viewModel.popUpName)!
-        popup.size = CGSize(width: 2732, height: 2048)
         popup.backgroundColor = .clear
-        popup.scaleMode = .aspectFit
-        
+        popup.scaleMode = .aspectFill
         return popup
     }
     
@@ -41,9 +48,13 @@ struct ContentView: View {
             SpriteView(scene: scene)
                 .ignoresSafeArea()
             
-            if viewModel.isPopUpVisible {
+            if viewModel.isPopUpVisible || viewModel.isSecondPopUpVisible {
                 Button{
-                    viewModel.isPopUpVisible = false
+                    if viewModel.isSecondPopUpVisible {
+                        viewModel.isSecondPopUpVisible = false
+                    }else {
+                        viewModel.isPopUpVisible = false
+                    }
                 }label: {
                     Rectangle()
                         .fill(Color.black.opacity(0.5))
@@ -51,13 +62,19 @@ struct ContentView: View {
                 }
             }
             
-            if viewModel.isPopUpVisible {
+            if viewModel.isPopUpVisible { //scene
                 SpriteView(scene: popUp, options: [.allowsTransparency])
-                    .frame(width: scene.size.width/3, height: scene.size.height/3)
+                    .frame(width: scene.size.width/2.5, height: scene.size.height/2.5)
                     .ignoresSafeArea()
             }
             
-            
+            if viewModel.isSecondPopUpVisible { //image
+                Image(viewModel.imageDetailName)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: scene.size.width/2.5, height: scene.size.height/2.5)
+                    .ignoresSafeArea()
+            }
         }
     }
 }

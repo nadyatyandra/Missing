@@ -9,6 +9,7 @@ import Foundation
 import SpriteKit
 import GameplayKit
 import SwiftUI
+import AVFoundation
 
 class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
     @ObservedObject var viewModel = GameData.shared
@@ -36,8 +37,15 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
     var kalimbaIsDropped: Bool = false
     
     //Lock
-    var lockSprite: SKSpriteNode!
+    //    var lockSprite: SKSpriteNode!
     var lockScene: SKScene!
+    
+    //Shelf
+    var cupboardSprite: SKSpriteNode!
+    var shelfScene: SKScene!
+    
+    //photo
+    var photoSprite: SKSpriteNode!
     
     //Camera
     var cameraNode: SKCameraNode!
@@ -62,6 +70,31 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
     //For animation
     var startMoving: Bool = false
     
+    func playVideo(videoName: String, videoExt: String){
+        // Create an AVPlayerItem
+        let videoURL = Bundle.main.url(forResource: videoName, withExtension: videoExt)!
+        let playerItem = AVPlayerItem(url: videoURL)
+
+        // Create an AVPlayer
+        let player = AVPlayer(playerItem: playerItem)
+
+        // Create an SKVideoNode with the AVPlayer
+        let videoNode = SKVideoNode(avPlayer: player)
+
+        // Set the video node's size and position
+//        videoNode.size = CGSize(width: 2732, height: 2048)
+        videoNode.position = CGPoint(x: 0, y: 0)
+
+        // Add the video node to the scene
+        self.addChild(videoNode)
+
+        // Play the video
+        player.play()
+    }
+  
+    //Background Music
+    var bgmScene: BGMScene!
+    
     override func sceneDidLoad() {
         self.lastUpdateTime = 0
     }
@@ -71,9 +104,17 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
         physicsWorld.contactDelegate = self
         self.isUserInteractionEnabled = true
         
+        //Play Background Music
+        bgmScene = BGMScene(backgroundMusicFileName: "background music of old library")
+        bgmScene.size = self.size // Set the size of the BGMScene to match the parent scene
+        bgmScene.scaleMode = self.scaleMode // Set the scale mode of the BGMScene
+        self.addChild(bgmScene)
+        
         //Assign objects from scene editor
         playerSprite = self.childNode(withName: "Player") as? SKSpriteNode
         cameraNode = self.childNode(withName: "Camera") as? SKCameraNode
+        cupboardSprite = self.childNode(withName: "Cupboard") as? SKSpriteNode
+        photoSprite = self.childNode(withName: "Photo") as? SKSpriteNode
         leftWall = self.childNode(withName: "LeftWall") as? SKSpriteNode
         rightWall = self.childNode(withName: "RightWall") as? SKSpriteNode
         floor = self.childNode(withName: "Floor") as? SKSpriteNode
@@ -81,10 +122,10 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
         innTot = cameraNode.childNode(withName: "InnTot")
         innTotLabel = innTot.childNode(withName: "InnTotLabel") as? SKLabelNode
         kalimbaSprite = self.childNode(withName: "Kalimba") as? SKSpriteNode
-        lockSprite = self.childNode(withName: "Lock") as? SKSpriteNode
+        viewModel.lockSprite = self.childNode(withName: "Lock") as? SKSpriteNode
+        viewModel.windowSprite = self.childNode(withName: "Window") as? SKSpriteNode
         kalimbaCollision = kalimbaSprite.childNode(withName: "KalimbaCollision")
         kalimbaLight = kalimbaSprite.childNode(withName: "KalimbaLight") as? SKLightNode
-        
         
         //Assign movement component to playerEntity
         playerEntity = createEntity(node: playerSprite, wantMovementComponent: true)
@@ -123,6 +164,12 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
         createInnTot(duration: 5, label: "What the, where am I?")
     }
     
+    override func willMove(from view: SKView) {
+            super.willMove(from: view)
+            
+            // Pause the background music when the scene changes
+            bgmScene.pauseBackgroundMusic()
+        }
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
@@ -153,7 +200,7 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
         playerMovementComponent.move(to: joystickVelocity)
     }
     
-//    @EnvironmentObject var gameData: GameData
+    //    @EnvironmentObject var gameData: GameData
     
     func presentPopUpScene(popUpSceneName: String){
         let popUpScene = SKScene(fileNamed: popUpSceneName)
@@ -161,7 +208,13 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
         
         viewModel.popUpName = popUpSceneName
         viewModel.isPopUpVisible.toggle()
-        self.isPaused = true
+//        self.isPaused = true
+    }
+    
+    func presentImageDetail(imageDetailName: String){
+        viewModel.imageDetailName = imageDetailName
+        viewModel.isSecondPopUpVisible.toggle()
+//        self.isPaused = true
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -169,7 +222,9 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
         if let touch = touches.first {
             initialTouchPosition = touch.location(in: view)
             startMoving = true
+            
             viewModel.isPopUpVisible = false
+            viewModel.isSecondPopUpVisible = false
             self.isPaused = false
         }
         
@@ -179,7 +234,6 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
             guard let touchedNode = atPoint(location) as? SKSpriteNode else{ return}
             
             processTouch(touchedNode: touchedNode)
-//            print(touchedNode.name)
         }
     }
     
@@ -287,9 +341,16 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
         
         if touchedNode == kalimbaSprite && kalimbaIsDropped{
             presentPopUpScene(popUpSceneName: "KalimbaScene")
-        } else  if touchedNode == lockSprite {
+        } else  if touchedNode == viewModel.lockSprite {
             presentPopUpScene(popUpSceneName: "LockScene")
-        } else {
+        }else if touchedNode == cupboardSprite && viewModel.lockUnlocked {
+            presentPopUpScene(popUpSceneName: "ShelfScene")
+        }else if touchedNode == viewModel.windowSprite {
+            print("window unlocked")
+            playVideo(videoName: "videoplayback", videoExt: "mp4")
+        }else if touchedNode == photoSprite {
+            presentImageDetail(imageDetailName: "OL Photo Detail")
+        }else {
             if let nodeName = touchedNode.name, let comboDescription = combos[nodeName] {
                 createInnTot(duration: 3, label: comboDescription)
             }
