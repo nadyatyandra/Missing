@@ -91,8 +91,10 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
         innTotLabel = innTot.childNode(withName: "InnTotLabel") as? SKLabelNode
         kalimbaSprite = self.childNode(withName: "Kalimba") as? SKSpriteNode
         viewModel.lockSprite = self.childNode(withName: "Lock") as? SKSpriteNode
+        viewModel.windowSprite = self.childNode(withName: "Window") as? SKSpriteNode
         kalimbaCollision = kalimbaSprite.childNode(withName: "KalimbaCollision")
         kalimbaLight = kalimbaSprite.childNode(withName: "KalimbaLight") as? SKLightNode
+        
         
         //Assign movement component to playerEntity
         playerEntity = createEntity(node: playerSprite, wantMovementComponent: true)
@@ -306,6 +308,8 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
             presentPopUpScene(popUpSceneName: "LockScene")
         }else if touchedNode == cupboardSprite && viewModel.lockUnlocked {
             presentPopUpScene(popUpSceneName: "ShelfScene")
+        }else if touchedNode == viewModel.windowSprite {
+            print("window unlocked")
         }else if touchedNode == photoSprite {
             presentImageDetail(imageDetailName: "OL Photo Detail")
         }else {
