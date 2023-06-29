@@ -20,27 +20,25 @@ class GameData : ObservableObject {
     @Published var lockSprite: SKSpriteNode?
     @Published var lockUnlocked = false
     
+    @Published var windowSprite: SKSpriteNode?
+    
     static let shared = GameData()
 }
+
 
 struct ContentView: View {
     @ObservedObject var viewModel = GameData.shared
     @State var isPopupOn = GameData.shared
     var scene: SKScene {
-//        let scene: SKScene = SKScene(fileNamed: "PlaytestScreen")!
-//        let scene: SKScene = SKScene(fileNamed: "ModernLibraryScene")!
-        let scene: SKScene = SKScene(fileNamed: "CorridorScene")!
+        let scene: SKScene = SKScene(fileNamed: "PlaytestScreen")!
         scene.size = CGSize(width: 2732, height: 2048)
-        scene.scaleMode = .aspectFit
-        return scene
+        scene.scaleMode = .aspectFill
     }
     
     var popUp: SKScene {
         let popup: SKScene = SKScene(fileNamed: viewModel.popUpName)!
-        popup.size = CGSize(width: 2732, height: 2048)
         popup.backgroundColor = .clear
-        popup.scaleMode = .aspectFit
-        
+        popup.scaleMode = .aspectFill
         return popup
     }
     
@@ -74,7 +72,6 @@ struct ContentView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: scene.size.width/2.5, height: scene.size.height/2.5)
-                
                     .ignoresSafeArea()
             }
         }

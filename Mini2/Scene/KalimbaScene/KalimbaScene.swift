@@ -73,7 +73,6 @@ class KalimbaScene: SKScene {
             let kalimbaKey = childNode(withName: "k\(i + 1)") as? SKSpriteNode
             kalimbaKeys.append(kalimbaKey!)
         }
-        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -106,6 +105,7 @@ class KalimbaScene: SKScene {
 //                                self.successScreen()
                                 self.viewModel.isPopUpVisible = false
                             }
+                            viewModel.windowSprite?.texture = SKTexture(imageNamed: "Broken window")
                             
                         }
                         index = index + 1

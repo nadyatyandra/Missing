@@ -43,6 +43,7 @@
 		B18E56122A4C0FD500C3F9E1 /* k7.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B18E560B2A4C0FD500C3F9E1 /* k7.mp3 */; };
 		B18E56142A4C37C000C3F9E1 /* ShelfScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = B18E56132A4C37C000C3F9E1 /* ShelfScene.sks */; };
 		B18E56172A4C37D900C3F9E1 /* ShelfScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18E56162A4C37D900C3F9E1 /* ShelfScene.swift */; };
+		B18E56262A4C919400C3F9E1 /* GameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18E56252A4C919400C3F9E1 /* GameData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +103,7 @@
 		B18E560B2A4C0FD500C3F9E1 /* k7.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = k7.mp3; sourceTree = "<group>"; };
 		B18E56132A4C37C000C3F9E1 /* ShelfScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ShelfScene.sks; sourceTree = "<group>"; };
 		B18E56162A4C37D900C3F9E1 /* ShelfScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShelfScene.swift; sourceTree = "<group>"; };
+		B18E56252A4C919400C3F9E1 /* GameData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +163,7 @@
 		04CAE9532A32D68000F59461 /* Mini2 */ = {
 			isa = PBXGroup;
 			children = (
+				B18E56242A4C918B00C3F9E1 /* Data */,
 				34B9B2132A45A15A001F4A39 /* Assets */,
 				34B9B2202A45A5CA001F4A39 /* Components */,
 				34B9B2062A458BF3001F4A39 /* Scene */,
@@ -318,6 +321,14 @@
 			path = ShelfScene;
 			sourceTree = "<group>";
 		};
+		B18E56242A4C918B00C3F9E1 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				B18E56252A4C919400C3F9E1 /* GameData.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -466,6 +477,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				53B979B02A433AD8004F71D5 /* MovementComponent.swift in Sources */,
+				B18E56262A4C919400C3F9E1 /* GameData.swift in Sources */,
 				B18E56022A4A8DD700C3F9E1 /* ContentView.swift in Sources */,
 				534C8D052A4BFC440033D8D1 /* CorridorScene.swift in Sources */,
 				53B979BB2A4746AF004F71D5 /* PlaytestScreen.swift in Sources */,
