@@ -46,6 +46,9 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
     //photo
     var photoSprite: SKSpriteNode!
     
+    // Desk
+    var deskSprite: SKSpriteNode!
+    
     //Camera
     var cameraNode: SKCameraNode!
     
@@ -83,6 +86,7 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
         cameraNode = self.childNode(withName: "Camera") as? SKCameraNode
         cupboardSprite = self.childNode(withName: "Cupboard") as? SKSpriteNode
         photoSprite = self.childNode(withName: "Photo") as? SKSpriteNode
+        deskSprite = self.childNode(withName: "Desk") as? SKSpriteNode
         leftWall = self.childNode(withName: "LeftWall") as? SKSpriteNode
         rightWall = self.childNode(withName: "RightWall") as? SKSpriteNode
         floor = self.childNode(withName: "Floor") as? SKSpriteNode
@@ -300,15 +304,18 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
             "Cupboard":"The cupboard is locked up"
         ]
         
-        if touchedNode == kalimbaSprite && kalimbaIsDropped{
+        if touchedNode == kalimbaSprite && kalimbaIsDropped {
             presentPopUpScene(popUpSceneName: "KalimbaScene")
-        } else  if touchedNode == viewModel.lockSprite {
+        } else if touchedNode == viewModel.lockSprite {
             presentPopUpScene(popUpSceneName: "LockScene")
-        }else if touchedNode == cupboardSprite && viewModel.lockUnlocked {
+        } else if touchedNode == cupboardSprite && viewModel.lockUnlocked {
             presentPopUpScene(popUpSceneName: "ShelfScene")
-        }else if touchedNode == photoSprite {
+        } else if touchedNode == photoSprite {
             presentImageDetail(imageDetailName: "OL Photo Detail")
-        }else {
+        } else if touchedNode == deskSprite {
+            presentPopUpScene(popUpSceneName: "DeskScene")
+        }
+        else {
             if let nodeName = touchedNode.name, let comboDescription = combos[nodeName] {
                 createInnTot(duration: 3, label: comboDescription)
             }
