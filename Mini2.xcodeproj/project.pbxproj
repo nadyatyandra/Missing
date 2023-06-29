@@ -51,6 +51,7 @@
 		B18E56142A4C37C000C3F9E1 /* ShelfScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = B18E56132A4C37C000C3F9E1 /* ShelfScene.sks */; };
 		B18E56172A4C37D900C3F9E1 /* ShelfScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18E56162A4C37D900C3F9E1 /* ShelfScene.swift */; };
 		B18E56262A4C919400C3F9E1 /* GameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18E56252A4C919400C3F9E1 /* GameData.swift */; };
+		B18E56312A4DDDFC00C3F9E1 /* videoplayback.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = B18E56302A4DDDFC00C3F9E1 /* videoplayback.mp4 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -118,6 +119,7 @@
 		B18E56132A4C37C000C3F9E1 /* ShelfScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ShelfScene.sks; sourceTree = "<group>"; };
 		B18E56162A4C37D900C3F9E1 /* ShelfScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShelfScene.swift; sourceTree = "<group>"; };
 		B18E56252A4C919400C3F9E1 /* GameData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameData.swift; sourceTree = "<group>"; };
+		B18E56302A4DDDFC00C3F9E1 /* videoplayback.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = videoplayback.mp4; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -261,6 +263,7 @@
 			isa = PBXGroup;
 			children = (
 				04CAE9612A32D68100F59461 /* Assets.xcassets */,
+				B18E56292A4DDC7100C3F9E1 /* Video */,
 				34B9B20D2A45990C001F4A39 /* Sound */,
 			);
 			path = Assets;
@@ -374,6 +377,14 @@
 			path = Data;
 			sourceTree = "<group>";
 		};
+		B18E56292A4DDC7100C3F9E1 /* Video */ = {
+			isa = PBXGroup;
+			children = (
+				B18E56302A4DDDFC00C3F9E1 /* videoplayback.mp4 */,
+			);
+			path = Video;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -483,6 +494,7 @@
 				B18E56112A4C0FD500C3F9E1 /* k5.mp3 in Resources */,
 				B18E560E2A4C0FD500C3F9E1 /* k4.mp3 in Resources */,
 				B18E560F2A4C0FD500C3F9E1 /* k3.mp3 in Resources */,
+				B18E56312A4DDDFC00C3F9E1 /* videoplayback.mp4 in Resources */,
 				B18E560D2A4C0FD500C3F9E1 /* k2.mp3 in Resources */,
 				04CAE9602A32D68000F59461 /* Main.storyboard in Resources */,
 				34B9B27A2A4DD224001F4A39 /* background music of new library.mp3 in Resources */,
