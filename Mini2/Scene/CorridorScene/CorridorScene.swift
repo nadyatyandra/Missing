@@ -50,6 +50,21 @@ class CorridorScene: SKScene, SKPhysicsContactDelegate {
     //For animation
     var startMoving: Bool = false
     
+    //Enemy Chase Collision
+    var chaseCollision: SKNode!
+    var chaseStarted: Bool = false
+    var enemyIsSpawning: Bool = false
+    
+    //Camera constraints
+    var playerConstraint: SKConstraint!
+    var enemyConstraint: SKConstraint!
+    var edgeConstraint: SKConstraint!
+    var cameraMarker: SKNode!
+    
+    //Thresholds
+    var brokenWindow: SKSpriteNode!
+    var doorRight: SKSpriteNode!
+    
     override func sceneDidLoad() {
         self.lastUpdateTime = 0
     }
@@ -68,19 +83,28 @@ class CorridorScene: SKScene, SKPhysicsContactDelegate {
         innTot = cameraNode.childNode(withName: "InnTot")
         innTotLabel = innTot.childNode(withName: "InnTotLabel") as? SKLabelNode
         enemySprite = self.childNode(withName: "Enemy") as? SKSpriteNode
+        brokenWindow = self.childNode(withName: "BrokenWindow") as? SKSpriteNode
+        doorRight = self.childNode(withName: "DoorRight") as? SKSpriteNode
+        cameraMarker = self.childNode(withName: "CameraMarker")
+        chaseCollision = cameraMarker.childNode(withName: "ChaseCollision")
         
         //Assign movement component to playerEntity
         playerEntity = createEntity(node: playerSprite, wantMovementComponent: true)
         entities.append(playerEntity)
         playerMovementComponent = playerEntity.component(ofType: MovementComponent.self)
         
-        //Load animation frames
-        playerMovementComponent.loadWalkAnim(frames: 14, framesInterval: 0.08)
-        
         //Assign movement component to enemy
         enemyEntity = createEntity(node: enemySprite, wantMovementComponent: true)
         entities.append(enemyEntity)
         enemyMovementComponent = enemyEntity.component(ofType: MovementComponent.self)
+        
+        //Load animation frames
+        playerMovementComponent.loadWalkAnim(frames: 14, framesInterval: 0.08)
+        enemyMovementComponent.loadWalkAnim(frames: 8, framesInterval: 0.12)
+        playerMovementComponent.loadRunAnim(frames: 7, framesInterval: 0.07)
+        
+        //enemy
+        enemyMovementComponent.startMoving()
         
         //Add movement component to system
         //        for entity in entities {
@@ -90,25 +114,23 @@ class CorridorScene: SKScene, SKPhysicsContactDelegate {
         
         //Camera Constraints
         let range = SKRange(constantValue: 0)
-        let playerConstraint = SKConstraint.distance(range, to: playerSprite)
+        playerConstraint = SKConstraint.distance(range, to: playerSprite)
+        enemyConstraint = SKConstraint.distance(range, to: cameraMarker)
         
         let xInset = view.bounds.width * cameraNode.xScale
         let yInset = view.bounds.height * cameraNode.yScale
         
         let xRange = SKRange(lowerLimit: leftWall.frame.maxX + xInset, upperLimit: rightWall.frame.minX - xInset)
         let yRange = SKRange(lowerLimit: floor.frame.minY + yInset, upperLimit: 1000)
-        let edgeConstraint = SKConstraint.positionX(xRange, y: yRange)
+        edgeConstraint = SKConstraint.positionX(xRange, y: yRange)
         
         
-        cameraNode.constraints = [playerConstraint,edgeConstraint]
+        cameraNode.constraints = [playerConstraint!,edgeConstraint!]
         
         //Hide InnTot
         innTot.alpha = 0
-        createInnTot(duration: 5, label: "I've escaped")
+        createInnTot(duration: 2, label: "I've escaped")
         
-        //enemy
-        enemyMovementComponent.loadWalkAnim(frames: 8, framesInterval: 0.12)
-        enemyMovementComponent.startMoving()
     }
     
     
@@ -138,8 +160,11 @@ class CorridorScene: SKScene, SKPhysicsContactDelegate {
         //                component.move(to: 50)
         //            }
         //        }
-        playerMovementComponent.move(to: joystickVelocity)
-        enemySprite.position.x += 5
+        
+        if !enemyIsSpawning {
+            playerMovementComponent.move(to: joystickVelocity)
+        }
+        
     }
     
     func presentPopUpScene(popUpSceneName: String){
@@ -203,16 +228,17 @@ class CorridorScene: SKScene, SKPhysicsContactDelegate {
     
     func Physics(_ contact:SKPhysicsContact){
         
-//        let nodeA = contact.bodyA.node
-//        let nodeB = contact.bodyB.node
+        let nodeA = contact.bodyA.node
+        let nodeB = contact.bodyB.node
         
-        //        if (nodeA == playerSprite && nodeB == enemySprite) || (nodeA == enemySprite && nodeB == playerSprite) {
-        //            if nodeA == playerSprite {
-        //                nodeA?.removeFromParent()
-        //            } else {
-        //                nodeB?.removeFromParent()
-        //            }
-        //        }
+        if (nodeA == playerSprite && nodeB == chaseCollision) || (nodeA == chaseCollision && nodeB == playerSprite) {
+            if nodeA == chaseCollision {
+                nodeA?.removeFromParent()
+            } else {
+                nodeB?.removeFromParent()
+            }
+            spawnEnemy()
+        }
         
     }
     
@@ -246,18 +272,53 @@ class CorridorScene: SKScene, SKPhysicsContactDelegate {
             "Door":"The door is stuck"
         ]
         
-//        if touchedNode == kalimbaSprite && kalimbaIsDropped{
-//            presentPopUpScene(popUpSceneName: "KalimbaScene")
-//        } else  if touchedNode == lockSprite {
-//            presentPopUpScene(popUpSceneName: "LockScene")
-//        } else {
-//            if let nodeName = touchedNode.name, let comboDescription = combos[nodeName] {
-//                createInnTot(duration: 3, label: comboDescription)
-//            }
-//        }
+        //        if touchedNode == kalimbaSprite && kalimbaIsDropped{
+        //            presentPopUpScene(popUpSceneName: "KalimbaScene")
+        //        } else  if touchedNode == lockSprite {
+        //            presentPopUpScene(popUpSceneName: "LockScene")
+        //        } else {
+        //            if let nodeName = touchedNode.name, let comboDescription = combos[nodeName] {
+        //                createInnTot(duration: 3, label: comboDescription)
+        //            }
+        //        }
         
         if let nodeName = touchedNode.name, let comboDescription = combos[nodeName] {
             createInnTot(duration: 3, label: comboDescription)
         }
+    }
+    
+    func spawnEnemy() {
+        let cameraMoveTime: Double = 2
+        let fadeTime: Double = 3
+        let chaseTime: Double = 20
+        let moveBackTime: Double = fadeTime + 1
+        let cameraMoveBackTime: Double = 1
+        let controlDelay: Double = moveBackTime + cameraMoveBackTime + cameraMoveTime - 0.2
+        
+        let enemyWait = SKAction.wait(forDuration: cameraMoveTime)
+        let fadeIn = SKAction.fadeIn(withDuration: fadeTime)
+        let chase = SKAction.move(to: CGPoint(x: doorRight!.position.x,y: enemySprite.position.y), duration: chaseTime)
+        let spawnEnemy = SKAction.sequence([enemyWait,fadeIn,chase])
+        
+        let moveToWindow = SKAction.move(to: enemySprite.position, duration: cameraMoveTime)
+        let markerWait = SKAction.wait(forDuration: moveBackTime)
+        let moveToPlayer = SKAction.move(to: CGPoint(x: playerSprite!.position.x,y: enemySprite.position.y), duration: cameraMoveBackTime)
+        let moveCamera = SKAction.sequence([moveToWindow,markerWait,moveToPlayer])
+        
+        enemySprite.run(spawnEnemy)
+        cameraMarker.run(moveCamera)
+        cameraNode.constraints = [enemyConstraint!,edgeConstraint!]
+        playerMovementComponent.stopMoving()
+        enemyIsSpawning = true
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + controlDelay) {
+            self.chaseStarted = true
+            self.enemyIsSpawning = false
+            self.cameraNode.constraints = [self.playerConstraint!,self.edgeConstraint!]
+            self.playerMovementComponent.maxSpriteSpeed = 15
+            self.playerMovementComponent.isRunning = true
+        }
+        
+        
     }
 }
