@@ -100,7 +100,7 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
         playerMovementComponent = playerEntity.component(ofType: MovementComponent.self)
         
         //Load animation frames
-        playerMovementComponent.loadWalkAnim(frames: 14)
+        playerMovementComponent.loadWalkAnim(frames: 14, framesInterval: 0.08)
         
         //Assign movement component to enemy
         //        enemyEntity = createEntity(node: enemySprite, wantMovementComponent: true)

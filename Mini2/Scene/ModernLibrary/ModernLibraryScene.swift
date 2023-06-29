@@ -8,9 +8,10 @@
 import Foundation
 import SpriteKit
 import GameplayKit
+import SwiftUI
 
 class ModernLibraryScene: SKScene, SKPhysicsContactDelegate {
-    
+    @ObservedObject var viewModel = GameData.shared
     var entities = [GKEntity]()
     var graphs = [String : GKGraph]()
     
@@ -45,6 +46,10 @@ class ModernLibraryScene: SKScene, SKPhysicsContactDelegate {
     //For animation
     var startMoving: Bool = false
     
+    //Tutorial
+    var tutorialCollision: SKNode!
+    var tutorialTriggered: Bool = false
+    
     override func sceneDidLoad() {
         self.lastUpdateTime = 0
     }
@@ -62,6 +67,7 @@ class ModernLibraryScene: SKScene, SKPhysicsContactDelegate {
         floor = self.childNode(withName: "Floor") as? SKSpriteNode
         innTot = cameraNode.childNode(withName: "InnTot")
         innTotLabel = innTot.childNode(withName: "InnTotLabel") as? SKLabelNode
+        tutorialCollision = self.childNode(withName: "TutorialCollision")
         
         //Assign movement component to playerEntity
         playerEntity = createEntity(node: playerSprite, wantMovementComponent: true)
@@ -69,7 +75,7 @@ class ModernLibraryScene: SKScene, SKPhysicsContactDelegate {
         playerMovementComponent = playerEntity.component(ofType: MovementComponent.self)
         
         //Load animation frames
-        playerMovementComponent.loadWalkAnim(frames: 14)
+        playerMovementComponent.loadWalkAnim(frames: 14, framesInterval: 0.08)
         
         //Assign movement component to enemy
         //        enemyEntity = createEntity(node: enemySprite, wantMovementComponent: true)
@@ -127,13 +133,19 @@ class ModernLibraryScene: SKScene, SKPhysicsContactDelegate {
         //                component.move(to: 50)
         //            }
         //        }
-        playerMovementComponent.move(to: joystickVelocity)
+        if !tutorialTriggered {
+            playerMovementComponent.move(to: joystickVelocity)
+        }
+        
     }
     
     func presentPopUpScene(popUpSceneName: String){
         let popUpScene = SKScene(fileNamed: popUpSceneName)
         popUpScene?.scaleMode = .aspectFit
-        self.view?.presentScene(popUpScene)
+        
+        viewModel.popUpName = popUpSceneName
+        viewModel.isPopUpVisible.toggle()
+        self.isPaused = true
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -141,6 +153,8 @@ class ModernLibraryScene: SKScene, SKPhysicsContactDelegate {
         if let touch = touches.first {
             initialTouchPosition = touch.location(in: view)
             startMoving = true
+            viewModel.isPopUpVisible = false
+            self.isPaused = false
         }
         
         for touch in touches {
@@ -159,10 +173,12 @@ class ModernLibraryScene: SKScene, SKPhysicsContactDelegate {
             let delta = currentPosition.x - initialPosition.x
             
             if delta > 25 || delta < -25 {
-                joystickVelocity = delta
-                if startMoving {
-                    startMoving = false
-                    playerMovementComponent.startMoving()
+                if !tutorialTriggered {
+                    joystickVelocity = delta
+                    if startMoving {
+                        startMoving = false
+                        playerMovementComponent.startMoving()
+                    }
                 }
             }
             
@@ -191,16 +207,21 @@ class ModernLibraryScene: SKScene, SKPhysicsContactDelegate {
     
     func Physics(_ contact:SKPhysicsContact){
         
-//        let nodeA = contact.bodyA.node
-//        let nodeB = contact.bodyB.node
+        let nodeA = contact.bodyA.node
+        let nodeB = contact.bodyB.node
         
-        //        if (nodeA == playerSprite && nodeB == enemySprite) || (nodeA == enemySprite && nodeB == playerSprite) {
-        //            if nodeA == playerSprite {
-        //                nodeA?.removeFromParent()
-        //            } else {
-        //                nodeB?.removeFromParent()
-        //            }
-        //        }
+        if (nodeA == playerSprite && nodeB == tutorialCollision) || (nodeA == tutorialCollision && nodeB == playerSprite) {
+            
+            if nodeA == tutorialCollision {
+                nodeA?.removeFromParent()
+            } else {
+                nodeB?.removeFromParent()
+            }
+            
+            tutorialTriggered = true
+            playerMovementComponent.stopMoving()
+            createInnTot(duration: 3, label: "Hm, where is the librarian?")
+        }
         
     }
     
@@ -243,8 +264,15 @@ class ModernLibraryScene: SKScene, SKPhysicsContactDelegate {
 //                createInnTot(duration: 3, label: comboDescription)
 //            }
 //        }
-        
-        if let nodeName = touchedNode.name, let comboDescription = combos[nodeName] {
+        if tutorialTriggered {
+            if touchedNode.name == "Desk" {
+                presentPopUpScene(popUpSceneName: "KalimbaScene")
+                tutorialTriggered = false
+                innTot.alpha = 0
+            } else {
+                createInnTot(duration: 3, label: "I should check the librarian's desk")
+            }
+        } else if let nodeName = touchedNode.name, let comboDescription = combos[nodeName] {
             createInnTot(duration: 3, label: comboDescription)
         }
     }

@@ -53,7 +53,7 @@ class MovementComponent: GKComponent{
         
     }
     
-    public func loadWalkAnim(frames: Int){
+    public func loadWalkAnim(frames: Int, framesInterval: TimeInterval){
         let fileName = "\(node.name ?? "Player")Walk"
         let animationAtlas = SKTextureAtlas(named: fileName)
         
@@ -63,9 +63,10 @@ class MovementComponent: GKComponent{
             walkFrames.append(animationAtlas.textureNamed("\(fileName)\(i)"))
         }
         
-        walkAnimation = SKAction.animate(with: walkFrames, timePerFrame: 0.08)
+        walkAnimation = SKAction.animate(with: walkFrames, timePerFrame: framesInterval)
         self.walkAnimation = SKAction.repeatForever(walkAnimation!)
     }
+    
     
     func startMoving() {
         spriteNode?.run(walkAnimation!, withKey: "walking")
