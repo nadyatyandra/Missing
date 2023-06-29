@@ -9,6 +9,7 @@ import Foundation
 import SpriteKit
 import GameplayKit
 import SwiftUI
+import AVFoundation
 
 class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
     @ObservedObject var viewModel = GameData.shared
@@ -69,6 +70,28 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
     //For animation
     var startMoving: Bool = false
     
+    func playVideo(videoName: String, videoExt: String){
+        // Create an AVPlayerItem
+        let videoURL = Bundle.main.url(forResource: videoName, withExtension: videoExt)!
+        let playerItem = AVPlayerItem(url: videoURL)
+
+        // Create an AVPlayer
+        let player = AVPlayer(playerItem: playerItem)
+
+        // Create an SKVideoNode with the AVPlayer
+        let videoNode = SKVideoNode(avPlayer: player)
+
+        // Set the video node's size and position
+//        videoNode.size = CGSize(width: 2732, height: 2048)
+        videoNode.position = CGPoint(x: 0, y: 0)
+
+        // Add the video node to the scene
+        self.addChild(videoNode)
+
+        // Play the video
+        player.play()
+    }
+    
     override func sceneDidLoad() {
         self.lastUpdateTime = 0
     }
@@ -94,7 +117,6 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
         viewModel.windowSprite = self.childNode(withName: "Window") as? SKSpriteNode
         kalimbaCollision = kalimbaSprite.childNode(withName: "KalimbaCollision")
         kalimbaLight = kalimbaSprite.childNode(withName: "KalimbaLight") as? SKLightNode
-        
         
         //Assign movement component to playerEntity
         playerEntity = createEntity(node: playerSprite, wantMovementComponent: true)
@@ -310,6 +332,7 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
             presentPopUpScene(popUpSceneName: "ShelfScene")
         }else if touchedNode == viewModel.windowSprite {
             print("window unlocked")
+            playVideo(videoName: "videoplayback", videoExt: "mp4")
         }else if touchedNode == photoSprite {
             presentImageDetail(imageDetailName: "OL Photo Detail")
         }else {
