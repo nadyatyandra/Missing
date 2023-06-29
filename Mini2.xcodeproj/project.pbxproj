@@ -21,6 +21,13 @@
 		34B9B2042A458BA6001F4A39 /* KalimbaScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B9B2032A458BA6001F4A39 /* KalimbaScene.swift */; };
 		34B9B2082A458C48001F4A39 /* KalimbaScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 34B9B2072A458C48001F4A39 /* KalimbaScene.sks */; };
 		34B9B2152A45A310001F4A39 /* SoundComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B9B2142A45A310001F4A39 /* SoundComponent.swift */; };
+		34B9B2752A4DD165001F4A39 /* BGMScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B9B2742A4DD165001F4A39 /* BGMScene.swift */; };
+		34B9B27A2A4DD224001F4A39 /* background music of new library.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 34B9B2772A4DD224001F4A39 /* background music of new library.mp3 */; };
+		34B9B27B2A4DD224001F4A39 /* background music of old library.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 34B9B2782A4DD224001F4A39 /* background music of old library.mp3 */; };
+		34B9B27C2A4DD224001F4A39 /* background music of corridor.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 34B9B2792A4DD224001F4A39 /* background music of corridor.mp3 */; };
+		34B9B2812A4DD3C6001F4A39 /* number lock failed.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 34B9B27E2A4DD3C5001F4A39 /* number lock failed.mp3 */; };
+		34B9B2822A4DD3C6001F4A39 /* number lock success.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 34B9B27F2A4DD3C5001F4A39 /* number lock success.mp3 */; };
+		34B9B2832A4DD3C6001F4A39 /* number lock.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 34B9B2802A4DD3C5001F4A39 /* number lock.mp3 */; };
 		5339FBEE2A49318A00647CF1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04CAE9612A32D68100F59461 /* Assets.xcassets */; };
 		534C8CFF2A4BD4A60033D8D1 /* ModernLibraryScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 534C8CFE2A4BD4A60033D8D1 /* ModernLibraryScene.swift */; };
 		534C8D022A4BD4C50033D8D1 /* ModernLibraryScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 534C8D012A4BD4C50033D8D1 /* ModernLibraryScene.sks */; };
@@ -83,6 +90,13 @@
 		34B9B2032A458BA6001F4A39 /* KalimbaScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KalimbaScene.swift; sourceTree = "<group>"; };
 		34B9B2072A458C48001F4A39 /* KalimbaScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = KalimbaScene.sks; sourceTree = "<group>"; };
 		34B9B2142A45A310001F4A39 /* SoundComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundComponent.swift; sourceTree = "<group>"; };
+		34B9B2742A4DD165001F4A39 /* BGMScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BGMScene.swift; sourceTree = "<group>"; };
+		34B9B2772A4DD224001F4A39 /* background music of new library.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "background music of new library.mp3"; sourceTree = "<group>"; };
+		34B9B2782A4DD224001F4A39 /* background music of old library.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "background music of old library.mp3"; sourceTree = "<group>"; };
+		34B9B2792A4DD224001F4A39 /* background music of corridor.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "background music of corridor.mp3"; sourceTree = "<group>"; };
+		34B9B27E2A4DD3C5001F4A39 /* number lock failed.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "number lock failed.mp3"; sourceTree = "<group>"; };
+		34B9B27F2A4DD3C5001F4A39 /* number lock success.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "number lock success.mp3"; sourceTree = "<group>"; };
+		34B9B2802A4DD3C5001F4A39 /* number lock.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "number lock.mp3"; sourceTree = "<group>"; };
 		534C8CFE2A4BD4A60033D8D1 /* ModernLibraryScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModernLibraryScene.swift; sourceTree = "<group>"; };
 		534C8D012A4BD4C50033D8D1 /* ModernLibraryScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ModernLibraryScene.sks; sourceTree = "<group>"; };
 		534C8D042A4BFC440033D8D1 /* CorridorScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorridorScene.swift; sourceTree = "<group>"; };
@@ -207,6 +221,7 @@
 		34B9B2062A458BF3001F4A39 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				34B9B2732A4DD132001F4A39 /* BGMScene */,
 				B18E56152A4C37C700C3F9E1 /* ShelfScene */,
 				534C8D032A4BFC360033D8D1 /* CorridorScene */,
 				534C8D002A4BD4AC0033D8D1 /* ModernLibrary */,
@@ -223,6 +238,8 @@
 		34B9B20D2A45990C001F4A39 /* Sound */ = {
 			isa = PBXGroup;
 			children = (
+				34B9B27D2A4DD3B8001F4A39 /* LockSound */,
+				34B9B2762A4DD20F001F4A39 /* BGMSound */,
 				34B9B20E2A459916001F4A39 /* KalimbaSound */,
 			);
 			path = Sound;
@@ -268,6 +285,34 @@
 				04CAE9562A32D68000F59461 /* GameScene.sks */,
 			);
 			path = GameScene;
+			sourceTree = "<group>";
+		};
+		34B9B2732A4DD132001F4A39 /* BGMScene */ = {
+			isa = PBXGroup;
+			children = (
+				34B9B2742A4DD165001F4A39 /* BGMScene.swift */,
+			);
+			path = BGMScene;
+			sourceTree = "<group>";
+		};
+		34B9B2762A4DD20F001F4A39 /* BGMSound */ = {
+			isa = PBXGroup;
+			children = (
+				34B9B2792A4DD224001F4A39 /* background music of corridor.mp3 */,
+				34B9B2772A4DD224001F4A39 /* background music of new library.mp3 */,
+				34B9B2782A4DD224001F4A39 /* background music of old library.mp3 */,
+			);
+			path = BGMSound;
+			sourceTree = "<group>";
+		};
+		34B9B27D2A4DD3B8001F4A39 /* LockSound */ = {
+			isa = PBXGroup;
+			children = (
+				34B9B27E2A4DD3C5001F4A39 /* number lock failed.mp3 */,
+				34B9B27F2A4DD3C5001F4A39 /* number lock success.mp3 */,
+				34B9B2802A4DD3C5001F4A39 /* number lock.mp3 */,
+			);
+			path = LockSound;
 			sourceTree = "<group>";
 		};
 		534C8D002A4BD4AC0033D8D1 /* ModernLibrary */ = {
@@ -444,6 +489,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34B9B2822A4DD3C6001F4A39 /* number lock success.mp3 in Resources */,
 				5339FBEE2A49318A00647CF1 /* Assets.xcassets in Resources */,
 				B18E56112A4C0FD500C3F9E1 /* k5.mp3 in Resources */,
 				B18E560E2A4C0FD500C3F9E1 /* k4.mp3 in Resources */,
@@ -451,10 +497,14 @@
 				B18E56312A4DDDFC00C3F9E1 /* videoplayback.mp4 in Resources */,
 				B18E560D2A4C0FD500C3F9E1 /* k2.mp3 in Resources */,
 				04CAE9602A32D68000F59461 /* Main.storyboard in Resources */,
+				34B9B27A2A4DD224001F4A39 /* background music of new library.mp3 in Resources */,
+				34B9B2832A4DD3C6001F4A39 /* number lock.mp3 in Resources */,
 				04CAE9572A32D68000F59461 /* GameScene.sks in Resources */,
 				34B9B2082A458C48001F4A39 /* KalimbaScene.sks in Resources */,
+				34B9B27B2A4DD224001F4A39 /* background music of old library.mp3 in Resources */,
 				B119E1382A47290F001C7CEB /* LockScene.sks in Resources */,
 				53B979B92A4746A3004F71D5 /* PlaytestScreen.sks in Resources */,
+				34B9B2812A4DD3C6001F4A39 /* number lock failed.mp3 in Resources */,
 				534C8D072A4BFC590033D8D1 /* CorridorScene.sks in Resources */,
 				B18E56142A4C37C000C3F9E1 /* ShelfScene.sks in Resources */,
 				B185ED1F2A472C0400CA0241 /* Scene1.sks in Resources */,
@@ -463,6 +513,7 @@
 				B18E56122A4C0FD500C3F9E1 /* k7.mp3 in Resources */,
 				534C8D022A4BD4C50033D8D1 /* ModernLibraryScene.sks in Resources */,
 				04CAE9652A32D68100F59461 /* LaunchScreen.storyboard in Resources */,
+				34B9B27C2A4DD224001F4A39 /* background music of corridor.mp3 in Resources */,
 				B18E560C2A4C0FD500C3F9E1 /* k1.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -501,6 +552,7 @@
 				04CAE9552A32D68000F59461 /* AppDelegate.swift in Sources */,
 				B185ED1D2A472BF900CA0241 /* Scene1.swift in Sources */,
 				534C8CFF2A4BD4A60033D8D1 /* ModernLibraryScene.swift in Sources */,
+				34B9B2752A4DD165001F4A39 /* BGMScene.swift in Sources */,
 				34B9B2042A458BA6001F4A39 /* KalimbaScene.swift in Sources */,
 				04AF7D7D2A484862005D930F /* PeelOffScene.swift in Sources */,
 			);

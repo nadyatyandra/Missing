@@ -50,6 +50,9 @@ class CorridorScene: SKScene, SKPhysicsContactDelegate {
     //For animation
     var startMoving: Bool = false
     
+    //Background Music
+    var bgmScene: BGMScene!
+    
     override func sceneDidLoad() {
         self.lastUpdateTime = 0
     }
@@ -58,6 +61,12 @@ class CorridorScene: SKScene, SKPhysicsContactDelegate {
         self.lastUpdateTime = 0
         physicsWorld.contactDelegate = self
         self.isUserInteractionEnabled = true
+        
+        //Play Background Music
+        bgmScene = BGMScene(backgroundMusicFileName: "background music of old library")
+        bgmScene.size = self.size // Set the size of the BGMScene to match the parent scene
+        bgmScene.scaleMode = self.scaleMode // Set the scale mode of the BGMScene
+        self.addChild(bgmScene)
         
         //Assign objects from scene editor
         playerSprite = self.childNode(withName: "Player") as? SKSpriteNode
@@ -141,6 +150,12 @@ class CorridorScene: SKScene, SKPhysicsContactDelegate {
         playerMovementComponent.move(to: joystickVelocity)
         enemySprite.position.x += 5
     }
+    override func willMove(from view: SKView) {
+            super.willMove(from: view)
+            
+            // Pause the background music when the scene changes
+            bgmScene.pauseBackgroundMusic()
+        }
     
     func presentPopUpScene(popUpSceneName: String){
         let popUpScene = SKScene(fileNamed: popUpSceneName)
