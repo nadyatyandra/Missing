@@ -47,7 +47,7 @@ class Scene1: SKScene, SKPhysicsContactDelegate{
     
     func presentLockScene() {
         // Pause the current scene, if needed
-//        self.view?.isPaused = true
+        self.view?.isPaused = true
 
         // Create and present the modal scene
         lockScene = SKScene(fileNamed: "LockScene")
