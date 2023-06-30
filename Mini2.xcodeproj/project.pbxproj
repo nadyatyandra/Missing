@@ -52,6 +52,7 @@
 		B18E56172A4C37D900C3F9E1 /* ShelfScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18E56162A4C37D900C3F9E1 /* ShelfScene.swift */; };
 		B18E56262A4C919400C3F9E1 /* GameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18E56252A4C919400C3F9E1 /* GameData.swift */; };
 		B18E56312A4DDDFC00C3F9E1 /* videoplayback.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = B18E56302A4DDDFC00C3F9E1 /* videoplayback.mp4 */; };
+		B18E56332A4DE58000C3F9E1 /* TransOld.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = B18E56322A4DE58000C3F9E1 /* TransOld.mp4 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,6 +121,7 @@
 		B18E56162A4C37D900C3F9E1 /* ShelfScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShelfScene.swift; sourceTree = "<group>"; };
 		B18E56252A4C919400C3F9E1 /* GameData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameData.swift; sourceTree = "<group>"; };
 		B18E56302A4DDDFC00C3F9E1 /* videoplayback.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = videoplayback.mp4; sourceTree = "<group>"; };
+		B18E56322A4DE58000C3F9E1 /* TransOld.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = TransOld.mp4; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -336,8 +338,8 @@
 		53B979B72A47466A004F71D5 /* PlaytestScreen */ = {
 			isa = PBXGroup;
 			children = (
-				53B979B82A4746A3004F71D5 /* PlaytestScreen.sks */,
 				53B979BA2A4746AF004F71D5 /* PlaytestScreen.swift */,
+				53B979B82A4746A3004F71D5 /* PlaytestScreen.sks */,
 			);
 			path = PlaytestScreen;
 			sourceTree = "<group>";
@@ -380,6 +382,7 @@
 		B18E56292A4DDC7100C3F9E1 /* Video */ = {
 			isa = PBXGroup;
 			children = (
+				B18E56322A4DE58000C3F9E1 /* TransOld.mp4 */,
 				B18E56302A4DDDFC00C3F9E1 /* videoplayback.mp4 */,
 			);
 			path = Video;
@@ -506,6 +509,7 @@
 				53B979B92A4746A3004F71D5 /* PlaytestScreen.sks in Resources */,
 				34B9B2812A4DD3C6001F4A39 /* number lock failed.mp3 in Resources */,
 				534C8D072A4BFC590033D8D1 /* CorridorScene.sks in Resources */,
+				B18E56332A4DE58000C3F9E1 /* TransOld.mp4 in Resources */,
 				B18E56142A4C37C000C3F9E1 /* ShelfScene.sks in Resources */,
 				B185ED1F2A472C0400CA0241 /* Scene1.sks in Resources */,
 				B18E56102A4C0FD500C3F9E1 /* k6.mp3 in Resources */,
