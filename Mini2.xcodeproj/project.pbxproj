@@ -28,6 +28,7 @@
 		34B9B2812A4DD3C6001F4A39 /* number lock failed.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 34B9B27E2A4DD3C5001F4A39 /* number lock failed.mp3 */; };
 		34B9B2822A4DD3C6001F4A39 /* number lock success.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 34B9B27F2A4DD3C5001F4A39 /* number lock success.mp3 */; };
 		34B9B2832A4DD3C6001F4A39 /* number lock.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 34B9B2802A4DD3C5001F4A39 /* number lock.mp3 */; };
+		34B9B2862A4DDED5001F4A39 /* glass shatter.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 34B9B2852A4DDED5001F4A39 /* glass shatter.mp3 */; };
 		5339FBEE2A49318A00647CF1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04CAE9612A32D68100F59461 /* Assets.xcassets */; };
 		534C8CFF2A4BD4A60033D8D1 /* ModernLibraryScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 534C8CFE2A4BD4A60033D8D1 /* ModernLibraryScene.swift */; };
 		534C8D022A4BD4C50033D8D1 /* ModernLibraryScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 534C8D012A4BD4C50033D8D1 /* ModernLibraryScene.sks */; };
@@ -97,6 +98,7 @@
 		34B9B27E2A4DD3C5001F4A39 /* number lock failed.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "number lock failed.mp3"; sourceTree = "<group>"; };
 		34B9B27F2A4DD3C5001F4A39 /* number lock success.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "number lock success.mp3"; sourceTree = "<group>"; };
 		34B9B2802A4DD3C5001F4A39 /* number lock.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "number lock.mp3"; sourceTree = "<group>"; };
+		34B9B2852A4DDED5001F4A39 /* glass shatter.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "glass shatter.mp3"; sourceTree = "<group>"; };
 		534C8CFE2A4BD4A60033D8D1 /* ModernLibraryScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModernLibraryScene.swift; sourceTree = "<group>"; };
 		534C8D012A4BD4C50033D8D1 /* ModernLibraryScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ModernLibraryScene.sks; sourceTree = "<group>"; };
 		534C8D042A4BFC440033D8D1 /* CorridorScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorridorScene.swift; sourceTree = "<group>"; };
@@ -238,6 +240,7 @@
 		34B9B20D2A45990C001F4A39 /* Sound */ = {
 			isa = PBXGroup;
 			children = (
+				34B9B2842A4DDEC9001F4A39 /* GlassSound */,
 				34B9B27D2A4DD3B8001F4A39 /* LockSound */,
 				34B9B2762A4DD20F001F4A39 /* BGMSound */,
 				34B9B20E2A459916001F4A39 /* KalimbaSound */,
@@ -313,6 +316,14 @@
 				34B9B2802A4DD3C5001F4A39 /* number lock.mp3 */,
 			);
 			path = LockSound;
+			sourceTree = "<group>";
+		};
+		34B9B2842A4DDEC9001F4A39 /* GlassSound */ = {
+			isa = PBXGroup;
+			children = (
+				34B9B2852A4DDED5001F4A39 /* glass shatter.mp3 */,
+			);
+			path = GlassSound;
 			sourceTree = "<group>";
 		};
 		534C8D002A4BD4AC0033D8D1 /* ModernLibrary */ = {
@@ -514,6 +525,7 @@
 				534C8D022A4BD4C50033D8D1 /* ModernLibraryScene.sks in Resources */,
 				04CAE9652A32D68100F59461 /* LaunchScreen.storyboard in Resources */,
 				34B9B27C2A4DD224001F4A39 /* background music of corridor.mp3 in Resources */,
+				34B9B2862A4DDED5001F4A39 /* glass shatter.mp3 in Resources */,
 				B18E560C2A4C0FD500C3F9E1 /* k1.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
