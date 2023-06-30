@@ -30,9 +30,9 @@ class InnTotScene: SKScene, SKPhysicsContactDelegate {
         innTotLabel = innTot.childNode(withName: "InnTotLabel") as? SKLabelNode
         
         //Hide InnTot
-        viewModel.isSecondPopUpVisible.toggle()
-//        innTot.alpha = 0
-        print("aaa")
+//        viewModel.isSecondPopUpVisible.toggle()
+        innTot.alpha = 0
+        createInnTot(duration: viewModel.innTotDuration, label: viewModel.innTotText)
     }
     
     override func willMove(from view: SKView) {
@@ -48,10 +48,6 @@ class InnTotScene: SKScene, SKPhysicsContactDelegate {
             self.lastUpdateTime = currentTime
         }
         
-        // Calculate time since last update
-        let dt = currentTime - self.lastUpdateTime
-        
-        self.lastUpdateTime = currentTime
         
         
     }

@@ -7,6 +7,7 @@
 
 import Foundation
 import GameplayKit
+import AVFAudio
 
 class MovementComponent: GKComponent{
     
@@ -29,6 +30,8 @@ class MovementComponent: GKComponent{
     
     var isRunning: Bool = false
     
+    var audioPlayer: AVAudioPlayer?
+    var soundAction: SKAction?
     init(node: SKNode) {
         self.node = node
         self.spriteNode = self.node as? SKSpriteNode
@@ -39,7 +42,6 @@ class MovementComponent: GKComponent{
         }
         self.idleTexture = (self.spriteNode?.texture)!
         
-        // ??????????????
         self.spriteSizeRight = self.spriteNode?.texture?.size()
         self.spriteSizeLeft = self.spriteNode?.size
         
@@ -60,8 +62,6 @@ class MovementComponent: GKComponent{
         } else if velocity > 0 {
             spriteNode?.xScale = spriteScale!
         }
-        
-        
     }
     
     func loadWalkAnim(frames: Int, framesInterval: TimeInterval){
@@ -71,11 +71,13 @@ class MovementComponent: GKComponent{
         for i in 1...animationAtlas.textureNames.count {
             //            let texture = SKTexture(imageNamed: "\(node.name ?? "Player")Walk\(i)")
             //            walkFrames.append(texture)
+            //            soundComponent.playSound(soundName: "walking")
             walkFrames.append(animationAtlas.textureNamed("\(fileName)\(i)"))
         }
         
         walkAnimation = SKAction.animate(with: walkFrames, timePerFrame: framesInterval)
         self.walkAnimation = SKAction.repeatForever(walkAnimation!)
+        
     }
     
     func loadRunAnim(frames: Int, framesInterval: TimeInterval){
@@ -91,19 +93,47 @@ class MovementComponent: GKComponent{
         self.runAnimation = SKAction.repeatForever(runAnimation!)
     }
     
-    
     func startMoving() {
+        
         if isRunning {
+            
             spriteNode?.run(runAnimation!, withKey: "moving")
+            spriteNode?.run(SKAction.run {
+                self.playSoundEffect(soundName: "running")
+            })
         } else {
             spriteNode?.run(walkAnimation!, withKey: "moving")
+            spriteNode?.run(SKAction.run {
+                self.playSoundEffect(soundName: "walking")
+            })
         }
     }
     
+    func playSoundEffect(soundName: String) {
+        guard let soundURL = Bundle.main.url(forResource: soundName, withExtension: "mp3") else {
+            print("Sound file not found.")
+            return
+        }
+        
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: soundURL)
+            audioPlayer?.numberOfLoops = -1
+            audioPlayer?.play()
+        } catch {
+            print("Failed to play sound: \(error.localizedDescription)")
+        }
+    }
+    func stopSoundEffect() {
+        audioPlayer?.stop()
+        audioPlayer = nil
+    }
+    
     func stopMoving() {
+        spriteNode?.run(SKAction.run {
+            self.stopSoundEffect()
+        })
         spriteNode?.removeAction(forKey: "moving")
         spriteNode?.texture = idleTexture
-        
         
         
         if isRunning {
@@ -113,7 +143,7 @@ class MovementComponent: GKComponent{
             } else if (spriteNode?.xScale)! <= 0 {
                 spriteNode?.size = CGSize(width: spriteSizeRight!.width, height: spriteSizeRight!.height)
             }
-        
+            
         }
     }
 }

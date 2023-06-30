@@ -25,4 +25,5 @@ class SoundComponent: GKComponent {
         
         node.run(soundEffect)
     }
+    
 }
