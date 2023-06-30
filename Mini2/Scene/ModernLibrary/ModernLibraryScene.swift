@@ -30,6 +30,8 @@ class ModernLibraryScene: SKScene, SKPhysicsContactDelegate {
     var leftWall: SKSpriteNode!
     var rightWall: SKSpriteNode!
     var floor: SKSpriteNode!
+    var desk: SKSpriteNode!
+    var painting: SKSpriteNode!
     
     //Inner Thought
     var innTot: SKNode!
@@ -52,6 +54,8 @@ class ModernLibraryScene: SKScene, SKPhysicsContactDelegate {
     
     //Background Music
     var bgmScene: BGMScene!
+    var deskSound: SoundComponent!
+    var paintingSound: SoundComponent!
     
     override func sceneDidLoad() {
         self.lastUpdateTime = 0
@@ -77,7 +81,11 @@ class ModernLibraryScene: SKScene, SKPhysicsContactDelegate {
         innTot = cameraNode.childNode(withName: "InnTot")
         innTotLabel = innTot.childNode(withName: "InnTotLabel") as? SKLabelNode
         tutorialCollision = self.childNode(withName: "TutorialCollision")
+        desk = self.childNode(withName: "Desk") as? SKSpriteNode
+        painting = self.childNode(withName: "Photo") as? SKSpriteNode
         
+        deskSound = SoundComponent(node: desk)
+        paintingSound = SoundComponent(node: painting)
         //Assign movement component to playerEntity
         playerEntity = createEntity(node: playerSprite, wantMovementComponent: true)
         entities.append(playerEntity)
@@ -279,6 +287,7 @@ class ModernLibraryScene: SKScene, SKPhysicsContactDelegate {
         
         if tutorialTriggered {
             if touchedNode.name == "Desk" {
+                deskSound.playSound(soundName: "table interact")
                 presentImageDetail(imageDetailName: "DetailDeskML")
                 
                 viewModel.createInnTot(duration: 3, label: "I guess she's not here, nothing interesting otherwise")
@@ -288,12 +297,13 @@ class ModernLibraryScene: SKScene, SKPhysicsContactDelegate {
                 createInnTot(duration: 3, label: "I should check the librarian's desk")
             }
         } else if touchedNode.name == "Desk" {
+            deskSound.playSound(soundName: "table interact")
             presentImageDetail(imageDetailName: "DetailDeskML")
-            
             viewModel.createInnTot(duration: 3, label: "The librarian's not here")
         } else if touchedNode.name == "BookGlowing" {
             viewModel.playVideo(scene: self, videoName: "TransOld", videoExt: "mp4",  xPos: cameraNode.position.x, yPos: cameraNode.position.y, durationVideo: 3, toScene: "PlaytestScreen")
         }else if touchedNode.name == "Photo" {
+            paintingSound.playSound(soundName: "painting interact")
             presentImageDetail(imageDetailName: "DetailPhotoML")
             viewModel.createInnTot(duration: 3, label: "These faces looks familiar")
         } else if let nodeName = touchedNode.name, let comboDescription = combos[nodeName] {

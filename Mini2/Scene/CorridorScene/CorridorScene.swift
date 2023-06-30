@@ -8,8 +8,10 @@
 import Foundation
 import SpriteKit
 import GameplayKit
+import SwiftUI
 
 class CorridorScene: SKScene, SKPhysicsContactDelegate {
+    @ObservedObject var viewModel = GameData.shared
     
     var entities = [GKEntity]()
     var graphs = [String : GKGraph]()
@@ -182,10 +184,13 @@ class CorridorScene: SKScene, SKPhysicsContactDelegate {
             bgmScene.pauseBackgroundMusic()
         }
     
-    func presentPopUpScene(popUpSceneName: String){
+    func presentJigsawPuzzle(popUpSceneName: String){
         let popUpScene = SKScene(fileNamed: popUpSceneName)
         popUpScene?.scaleMode = .aspectFit
-        self.view?.presentScene(popUpScene)
+        
+        viewModel.popUpName = popUpSceneName
+        viewModel.isPopUpVisible.toggle()
+        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -300,6 +305,11 @@ class CorridorScene: SKScene, SKPhysicsContactDelegate {
         if let nodeName = touchedNode.name, let comboDescription = combos[nodeName] {
             createInnTot(duration: 3, label: comboDescription)
         }
+        
+        if touchedNode.name == "Mading"{
+            presentJigsawPuzzle(popUpSceneName: "JigsawScene")
+        }
+        
     }
     
     func spawnEnemy() {
@@ -326,7 +336,14 @@ class CorridorScene: SKScene, SKPhysicsContactDelegate {
         playerMovementComponent.stopMoving()
         enemyIsSpawning = true
         
+        let audioNode = SKAudioNode(fileNamed: "ghost appear")
+        audioNode.autoplayLooped = false // Set it to not loop the sound
+        audioNode.isPositional = false // Set it to non-positional sound
+        
+        addChild(audioNode) // Add the audio node to your scene
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + controlDelay) {
+            audioNode.run(SKAction.play())
             self.chaseStarted = true
             self.enemyIsSpawning = false
             self.cameraNode.constraints = [self.playerConstraint!,self.edgeConstraint!]
