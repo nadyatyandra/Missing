@@ -9,7 +9,6 @@ import Foundation
 import SpriteKit
 import GameplayKit
 import SwiftUI
-import AVFoundation
 
 class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
     @ObservedObject var viewModel = GameData.shared
@@ -69,28 +68,6 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
     
     //For animation
     var startMoving: Bool = false
-    
-    func playVideo(videoName: String, videoExt: String){
-        // Create an AVPlayerItem
-        let videoURL = Bundle.main.url(forResource: videoName, withExtension: videoExt)!
-        let playerItem = AVPlayerItem(url: videoURL)
-
-        // Create an AVPlayer
-        let player = AVPlayer(playerItem: playerItem)
-
-        // Create an SKVideoNode with the AVPlayer
-        let videoNode = SKVideoNode(avPlayer: player)
-
-        // Set the video node's size and position
-//        videoNode.size = CGSize(width: 2732, height: 2048)
-        videoNode.position = CGPoint(x: 0, y: 0)
-
-        // Add the video node to the scene
-        self.addChild(videoNode)
-
-        // Play the video
-        player.play()
-    }
   
     //Background Music
     var bgmScene: BGMScene!
@@ -225,13 +202,12 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
             
             viewModel.isPopUpVisible = false
             viewModel.isSecondPopUpVisible = false
-            self.isPaused = false
         }
         
         for touch in touches {
             let location = touch.location(in: self)
             
-            guard let touchedNode = atPoint(location) as? SKSpriteNode else{ return}
+            guard let touchedNode = atPoint(location) as? SKNode else{ return }
             
             processTouch(touchedNode: touchedNode)
         }
@@ -326,7 +302,7 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
         innTot.run(sequence)
     }
     
-    func processTouch(touchedNode: SKSpriteNode) {
+    func processTouch(touchedNode: SKNode) {
         let combos: [String: String] = [
             "Boxes":"There are boxes",
             "Books":"There are dropped books",
@@ -345,9 +321,9 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
             presentPopUpScene(popUpSceneName: "LockScene")
         }else if touchedNode == cupboardSprite && viewModel.lockUnlocked {
             presentPopUpScene(popUpSceneName: "ShelfScene")
-        }else if touchedNode == viewModel.windowSprite {
-            print("window unlocked")
-            playVideo(videoName: "videoplayback", videoExt: "mp4")
+        }else if touchedNode == viewModel.windowSprite && viewModel.windowSprite?.texture?.description.components(separatedBy: "'")[1] == "Broken window" {
+            viewModel.transitionScene(scene: self, toScene: "CorridorScene")
+//            viewModel.playVideo(scene: self, videoName: "TransOld", videoExt: "mp4",  xPos: cameraNode.position.x, durationVideo: 3, toScene: "CorridorScene")
         }else if touchedNode == photoSprite {
             presentImageDetail(imageDetailName: "OL Photo Detail")
         }else {
