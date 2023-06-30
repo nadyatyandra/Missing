@@ -18,6 +18,7 @@
 		04CAE96F2A32D68100F59461 /* Mini2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CAE96E2A32D68100F59461 /* Mini2Tests.swift */; };
 		04CAE9792A32D68100F59461 /* Mini2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CAE9782A32D68100F59461 /* Mini2UITests.swift */; };
 		04CAE97B2A32D68100F59461 /* Mini2UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CAE97A2A32D68100F59461 /* Mini2UITestsLaunchTests.swift */; };
+		34A1CB492A4EAEFF0056FEA5 /* painting interact.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 34A1CB482A4EAEFF0056FEA5 /* painting interact.mp3 */; };
 		34B9B2042A458BA6001F4A39 /* KalimbaScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B9B2032A458BA6001F4A39 /* KalimbaScene.swift */; };
 		34B9B2082A458C48001F4A39 /* KalimbaScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 34B9B2072A458C48001F4A39 /* KalimbaScene.sks */; };
 		34B9B2152A45A310001F4A39 /* SoundComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B9B2142A45A310001F4A39 /* SoundComponent.swift */; };
@@ -28,6 +29,12 @@
 		34B9B2812A4DD3C6001F4A39 /* number lock failed.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 34B9B27E2A4DD3C5001F4A39 /* number lock failed.mp3 */; };
 		34B9B2822A4DD3C6001F4A39 /* number lock success.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 34B9B27F2A4DD3C5001F4A39 /* number lock success.mp3 */; };
 		34B9B2832A4DD3C6001F4A39 /* number lock.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 34B9B2802A4DD3C5001F4A39 /* number lock.mp3 */; };
+		34B9B29A2A4EA7C3001F4A39 /* lock interact.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 34B9B2922A4EA7C3001F4A39 /* lock interact.mp3 */; };
+		34B9B29B2A4EA7C3001F4A39 /* glass shatter.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 34B9B2942A4EA7C3001F4A39 /* glass shatter.mp3 */; };
+		34B9B29C2A4EA7C3001F4A39 /* paper interact.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 34B9B2952A4EA7C3001F4A39 /* paper interact.mp3 */; };
+		34B9B29D2A4EA7C3001F4A39 /* kalimba fall.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 34B9B2962A4EA7C3001F4A39 /* kalimba fall.mp3 */; };
+		34B9B29E2A4EA7C3001F4A39 /* table interact.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 34B9B2982A4EA7C3001F4A39 /* table interact.mp3 */; };
+		34B9B29F2A4EA7C3001F4A39 /* shelf interact.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 34B9B2992A4EA7C3001F4A39 /* shelf interact.mp3 */; };
 		5339FBEE2A49318A00647CF1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04CAE9612A32D68100F59461 /* Assets.xcassets */; };
 		533B760D2A4E775D009015F9 /* InnTotScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533B760C2A4E775D009015F9 /* InnTotScene.swift */; };
 		533B760F2A4E777F009015F9 /* InnTotScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 533B760E2A4E777F009015F9 /* InnTotScene.sks */; };
@@ -90,6 +97,7 @@
 		04CAE9742A32D68100F59461 /* Mini2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Mini2UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		04CAE9782A32D68100F59461 /* Mini2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mini2UITests.swift; sourceTree = "<group>"; };
 		04CAE97A2A32D68100F59461 /* Mini2UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mini2UITestsLaunchTests.swift; sourceTree = "<group>"; };
+		34A1CB482A4EAEFF0056FEA5 /* painting interact.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "painting interact.mp3"; sourceTree = "<group>"; };
 		34B9B2032A458BA6001F4A39 /* KalimbaScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KalimbaScene.swift; sourceTree = "<group>"; };
 		34B9B2072A458C48001F4A39 /* KalimbaScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = KalimbaScene.sks; sourceTree = "<group>"; };
 		34B9B2142A45A310001F4A39 /* SoundComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundComponent.swift; sourceTree = "<group>"; };
@@ -100,6 +108,12 @@
 		34B9B27E2A4DD3C5001F4A39 /* number lock failed.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "number lock failed.mp3"; sourceTree = "<group>"; };
 		34B9B27F2A4DD3C5001F4A39 /* number lock success.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "number lock success.mp3"; sourceTree = "<group>"; };
 		34B9B2802A4DD3C5001F4A39 /* number lock.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "number lock.mp3"; sourceTree = "<group>"; };
+		34B9B2922A4EA7C3001F4A39 /* lock interact.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "lock interact.mp3"; sourceTree = "<group>"; };
+		34B9B2942A4EA7C3001F4A39 /* glass shatter.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "glass shatter.mp3"; sourceTree = "<group>"; };
+		34B9B2952A4EA7C3001F4A39 /* paper interact.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "paper interact.mp3"; sourceTree = "<group>"; };
+		34B9B2962A4EA7C3001F4A39 /* kalimba fall.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "kalimba fall.mp3"; sourceTree = "<group>"; };
+		34B9B2982A4EA7C3001F4A39 /* table interact.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "table interact.mp3"; sourceTree = "<group>"; };
+		34B9B2992A4EA7C3001F4A39 /* shelf interact.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "shelf interact.mp3"; sourceTree = "<group>"; };
 		533B760C2A4E775D009015F9 /* InnTotScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InnTotScene.swift; sourceTree = "<group>"; };
 		533B760E2A4E777F009015F9 /* InnTotScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = InnTotScene.sks; sourceTree = "<group>"; };
 		534C8CFE2A4BD4A60033D8D1 /* ModernLibraryScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModernLibraryScene.swift; sourceTree = "<group>"; };
@@ -215,6 +229,18 @@
 			path = Mini2UITests;
 			sourceTree = "<group>";
 		};
+		34A1CB4A2A4EAF080056FEA5 /* InteractSound */ = {
+			isa = PBXGroup;
+			children = (
+				34B9B2922A4EA7C3001F4A39 /* lock interact.mp3 */,
+				34B9B2952A4EA7C3001F4A39 /* paper interact.mp3 */,
+				34A1CB482A4EAEFF0056FEA5 /* painting interact.mp3 */,
+				34B9B2982A4EA7C3001F4A39 /* table interact.mp3 */,
+				34B9B2992A4EA7C3001F4A39 /* shelf interact.mp3 */,
+			);
+			path = InteractSound;
+			sourceTree = "<group>";
+		};
 		34B9B2052A458BBB001F4A39 /* KalimbaScene */ = {
 			isa = PBXGroup;
 			children = (
@@ -245,6 +271,9 @@
 		34B9B20D2A45990C001F4A39 /* Sound */ = {
 			isa = PBXGroup;
 			children = (
+				34A1CB4A2A4EAF080056FEA5 /* InteractSound */,
+				34B9B2932A4EA7C3001F4A39 /* GlassSound */,
+				34B9B2972A4EA7C3001F4A39 /* TableSound */,
 				34B9B27D2A4DD3B8001F4A39 /* LockSound */,
 				34B9B2762A4DD20F001F4A39 /* BGMSound */,
 				34B9B20E2A459916001F4A39 /* KalimbaSound */,
@@ -255,6 +284,7 @@
 		34B9B20E2A459916001F4A39 /* KalimbaSound */ = {
 			isa = PBXGroup;
 			children = (
+				34B9B2962A4EA7C3001F4A39 /* kalimba fall.mp3 */,
 				B18E56052A4C0FD500C3F9E1 /* k1.mp3 */,
 				B18E56062A4C0FD500C3F9E1 /* k2.mp3 */,
 				B18E56082A4C0FD500C3F9E1 /* k3.mp3 */,
@@ -320,6 +350,21 @@
 				34B9B2802A4DD3C5001F4A39 /* number lock.mp3 */,
 			);
 			path = LockSound;
+			sourceTree = "<group>";
+		};
+		34B9B2932A4EA7C3001F4A39 /* GlassSound */ = {
+			isa = PBXGroup;
+			children = (
+				34B9B2942A4EA7C3001F4A39 /* glass shatter.mp3 */,
+			);
+			path = GlassSound;
+			sourceTree = "<group>";
+		};
+		34B9B2972A4EA7C3001F4A39 /* TableSound */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TableSound;
 			sourceTree = "<group>";
 		};
 		533B760B2A4E7731009015F9 /* InnTotScene */ = {
@@ -512,6 +557,7 @@
 				B18E560E2A4C0FD500C3F9E1 /* k4.mp3 in Resources */,
 				B18E560F2A4C0FD500C3F9E1 /* k3.mp3 in Resources */,
 				B18E56312A4DDDFC00C3F9E1 /* videoplayback.mp4 in Resources */,
+				34B9B29B2A4EA7C3001F4A39 /* glass shatter.mp3 in Resources */,
 				B18E560D2A4C0FD500C3F9E1 /* k2.mp3 in Resources */,
 				04CAE9602A32D68000F59461 /* Main.storyboard in Resources */,
 				34B9B27A2A4DD224001F4A39 /* background music of new library.mp3 in Resources */,
@@ -519,20 +565,26 @@
 				B18E56352A4E8F9A00C3F9E1 /* TransOld.mp4 in Resources */,
 				04CAE9572A32D68000F59461 /* GameScene.sks in Resources */,
 				34B9B2082A458C48001F4A39 /* KalimbaScene.sks in Resources */,
+				34B9B29F2A4EA7C3001F4A39 /* shelf interact.mp3 in Resources */,
 				34B9B27B2A4DD224001F4A39 /* background music of old library.mp3 in Resources */,
 				B119E1382A47290F001C7CEB /* LockScene.sks in Resources */,
+				34A1CB492A4EAEFF0056FEA5 /* painting interact.mp3 in Resources */,
 				53B979B92A4746A3004F71D5 /* PlaytestScreen.sks in Resources */,
+				34B9B29C2A4EA7C3001F4A39 /* paper interact.mp3 in Resources */,
 				34B9B2812A4DD3C6001F4A39 /* number lock failed.mp3 in Resources */,
 				534C8D072A4BFC590033D8D1 /* CorridorScene.sks in Resources */,
 				B18E56142A4C37C000C3F9E1 /* ShelfScene.sks in Resources */,
+				34B9B29A2A4EA7C3001F4A39 /* lock interact.mp3 in Resources */,
 				533B760F2A4E777F009015F9 /* InnTotScene.sks in Resources */,
 				B185ED1F2A472C0400CA0241 /* Scene1.sks in Resources */,
 				B18E56102A4C0FD500C3F9E1 /* k6.mp3 in Resources */,
+				34B9B29E2A4EA7C3001F4A39 /* table interact.mp3 in Resources */,
 				04AF7D7F2A48486F005D930F /* PeelOffScene.sks in Resources */,
 				B18E56122A4C0FD500C3F9E1 /* k7.mp3 in Resources */,
 				534C8D022A4BD4C50033D8D1 /* ModernLibraryScene.sks in Resources */,
 				04CAE9652A32D68100F59461 /* LaunchScreen.storyboard in Resources */,
 				34B9B27C2A4DD224001F4A39 /* background music of corridor.mp3 in Resources */,
+				34B9B29D2A4EA7C3001F4A39 /* kalimba fall.mp3 in Resources */,
 				B18E560C2A4C0FD500C3F9E1 /* k1.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
