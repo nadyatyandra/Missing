@@ -222,8 +222,8 @@
             filePath = "Mini2/Scene/PlaytestScreen/PlaytestScreen.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "174"
-            endingLineNumber = "174"
+            startingLineNumber = "151"
+            endingLineNumber = "151"
             landmarkName = "update(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -526,9 +526,25 @@
             filePath = "Mini2/Scene/PlaytestScreen/PlaytestScreen.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "121"
-            endingLineNumber = "121"
+            startingLineNumber = "98"
+            endingLineNumber = "98"
             landmarkName = "didMove(to:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BDADFA01-3120-46B5-831B-2BB9F9AC3198"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Mini2/Scene/PlaytestScreen/PlaytestScreen.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "326"
+            endingLineNumber = "326"
+            landmarkName = "processTouch(touchedNode:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
