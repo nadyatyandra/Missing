@@ -69,6 +69,28 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
     
     //For animation
     var startMoving: Bool = false
+    
+    func playVideo(videoName: String, videoExt: String){
+        // Create an AVPlayerItem
+        let videoURL = Bundle.main.url(forResource: videoName, withExtension: videoExt)!
+        let playerItem = AVPlayerItem(url: videoURL)
+
+        // Create an AVPlayer
+        let player = AVPlayer(playerItem: playerItem)
+
+        // Create an SKVideoNode with the AVPlayer
+        let videoNode = SKVideoNode(avPlayer: player)
+
+        // Set the video node's size and position
+//        videoNode.size = CGSize(width: 2732, height: 2048)
+        videoNode.position = CGPoint(x: 0, y: 0)
+
+        // Add the video node to the scene
+        self.addChild(videoNode)
+
+        // Play the video
+        player.play()
+    }
   
     //Background Music
     var bgmScene: BGMScene!
@@ -215,7 +237,7 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
         for touch in touches {
             let location = touch.location(in: self)
             
-            guard let touchedNode = atPoint(location) as? SKNode else{ return }
+            guard let touchedNode = atPoint(location) as? SKSpriteNode else{ return}
             
             processTouch(touchedNode: touchedNode)
         }
@@ -317,7 +339,7 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
         innTot.run(sequence)
     }
     
-    func processTouch(touchedNode: SKNode) {
+    func processTouch(touchedNode: SKSpriteNode) {
         let combos: [String: String] = [
             "Boxes":"There are boxes",
             "Books":"There are dropped books",
