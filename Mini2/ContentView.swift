@@ -85,7 +85,7 @@ struct ContentView: View {
     @ObservedObject var viewModel = GameData.shared
     @State var isPopupOn = GameData.shared
     var scene: SKScene {
-        let scene: SKScene = SKScene(fileNamed: "CorridorScene")!
+        let scene: SKScene = SKScene(fileNamed: "ModernLibraryScene")!
 //        let scene = JigsawScene.scene(named: "person.json")
         //        let scene = JigsawScene.scene(named: "person.json")
         scene.size = CGSize(width: 2732, height: 2048)
