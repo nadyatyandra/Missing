@@ -78,7 +78,7 @@ class CorridorScene: SKScene, SKPhysicsContactDelegate {
         self.isUserInteractionEnabled = true
         
         //Play Background Music
-        bgmScene = BGMScene(backgroundMusicFileName: "background music of old library")
+        bgmScene = BGMScene(backgroundMusicFileName: "background music of corridor")
         bgmScene.size = self.size // Set the size of the BGMScene to match the parent scene
         bgmScene.scaleMode = self.scaleMode // Set the scale mode of the BGMScene
         self.addChild(bgmScene)

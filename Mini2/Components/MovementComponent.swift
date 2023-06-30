@@ -114,9 +114,6 @@ class MovementComponent: GKComponent{
                 spriteNode?.size = CGSize(width: spriteSizeRight!.width, height: spriteSizeRight!.height)
             }
         
-//            spriteNode?.size = CGSize(width: spriteSizeRight!.width, height: spriteSizeRight!.height)
-//            spriteNode?.size = CGSize(width: spriteSizeLeft!.width, height: spriteSizeLeft!.height)
         }
-        
     }
 }

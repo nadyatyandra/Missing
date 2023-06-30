@@ -30,7 +30,7 @@ struct ContentView: View {
     @ObservedObject var viewModel = GameData.shared
     @State var isPopupOn = GameData.shared
     var scene: SKScene {
-        let scene: SKScene = SKScene(fileNamed: "PlaytestScreen")!
+        let scene: SKScene = SKScene(fileNamed: "ModernLibraryScene")!
         scene.size = CGSize(width: 2732, height: 2048)
         scene.scaleMode = .aspectFill
         return scene
