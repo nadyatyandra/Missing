@@ -84,6 +84,7 @@ class KalimbaScene: SKScene {
                         userInputKalimbaKeys.append("k\(id)")
                         if userInputKalimbaKeys.count == correctKalimbaKeys.count{
                             soundComponent.playSound(soundName: "glass shatter")
+                            soundComponent.playSound(soundName: "ghost scream")
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
 //                                self.successScreen()
                                 self.viewModel.isPopUpVisible = false
