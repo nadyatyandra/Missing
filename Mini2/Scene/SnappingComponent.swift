@@ -10,5 +10,5 @@ import SpriteKit
 
 class SnappingComponent : GKComponent {
     
-    let positionTolerance : CGFloat = 100
+    let positionTolerance : CGFloat = 500
 }
