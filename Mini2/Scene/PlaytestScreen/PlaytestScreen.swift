@@ -335,7 +335,7 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
             photoSound.playSound(soundName: "painting interact")
             presentImageDetail(imageDetailName: "OL Photo Detail")
         } else if touchedNode == deskSprite {
-            presentPopUpScene(popUpSceneName: "DeskScene")
+            presentPopUpScene(popUpSceneName: "DeskDetailScene")
         } else {
             if let nodeName = touchedNode.name, let comboDescription = combos[nodeName] {
                 createInnTot(duration: 3, label: comboDescription)
