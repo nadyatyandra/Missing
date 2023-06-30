@@ -18,7 +18,10 @@
 		04CAE96F2A32D68100F59461 /* Mini2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CAE96E2A32D68100F59461 /* Mini2Tests.swift */; };
 		04CAE9792A32D68100F59461 /* Mini2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CAE9782A32D68100F59461 /* Mini2UITests.swift */; };
 		04CAE97B2A32D68100F59461 /* Mini2UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CAE97A2A32D68100F59461 /* Mini2UITestsLaunchTests.swift */; };
-		34A1CB492A4EAEFF0056FEA5 /* painting interact.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 34A1CB482A4EAEFF0056FEA5 /* painting interact.mp3 */; };
+		3479E2562A4EBA0300F24D90 /* running.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3479E2542A4EBA0300F24D90 /* running.mp3 */; };
+		3479E2582A4ECB7600F24D90 /* MovementComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B979AF2A433AD8004F71D5 /* MovementComponent.swift */; };
+		3479E25A2A4ED05500F24D90 /* walking.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3479E2592A4ED05500F24D90 /* walking.mp3 */; };
+		3479E25C2A4ED2BC00F24D90 /* painting interact.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3479E25B2A4ED2BC00F24D90 /* painting interact.mp3 */; };
 		34B9B2042A458BA6001F4A39 /* KalimbaScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B9B2032A458BA6001F4A39 /* KalimbaScene.swift */; };
 		34B9B2082A458C48001F4A39 /* KalimbaScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 34B9B2072A458C48001F4A39 /* KalimbaScene.sks */; };
 		34B9B2152A45A310001F4A39 /* SoundComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B9B2142A45A310001F4A39 /* SoundComponent.swift */; };
@@ -112,7 +115,9 @@
 		04CAE9742A32D68100F59461 /* Mini2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Mini2UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		04CAE9782A32D68100F59461 /* Mini2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mini2UITests.swift; sourceTree = "<group>"; };
 		04CAE97A2A32D68100F59461 /* Mini2UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mini2UITestsLaunchTests.swift; sourceTree = "<group>"; };
-		34A1CB482A4EAEFF0056FEA5 /* painting interact.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "painting interact.mp3"; sourceTree = "<group>"; };
+		3479E2542A4EBA0300F24D90 /* running.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = running.mp3; sourceTree = "<group>"; };
+		3479E2592A4ED05500F24D90 /* walking.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = walking.mp3; sourceTree = "<group>"; };
+		3479E25B2A4ED2BC00F24D90 /* painting interact.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "painting interact.mp3"; sourceTree = "<group>"; };
 		34B9B2032A458BA6001F4A39 /* KalimbaScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KalimbaScene.swift; sourceTree = "<group>"; };
 		34B9B2072A458C48001F4A39 /* KalimbaScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = KalimbaScene.sks; sourceTree = "<group>"; };
 		34B9B2142A45A310001F4A39 /* SoundComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundComponent.swift; sourceTree = "<group>"; };
@@ -259,12 +264,21 @@
 			path = Mini2UITests;
 			sourceTree = "<group>";
 		};
+		3479E2532A4EB9F300F24D90 /* MovementSound */ = {
+			isa = PBXGroup;
+			children = (
+				3479E2542A4EBA0300F24D90 /* running.mp3 */,
+				3479E2592A4ED05500F24D90 /* walking.mp3 */,
+			);
+			path = MovementSound;
+			sourceTree = "<group>";
+		};
 		34A1CB4A2A4EAF080056FEA5 /* InteractSound */ = {
 			isa = PBXGroup;
 			children = (
 				34B9B2922A4EA7C3001F4A39 /* lock interact.mp3 */,
+				3479E25B2A4ED2BC00F24D90 /* painting interact.mp3 */,
 				34B9B2952A4EA7C3001F4A39 /* paper interact.mp3 */,
-				34A1CB482A4EAEFF0056FEA5 /* painting interact.mp3 */,
 				34B9B2982A4EA7C3001F4A39 /* table interact.mp3 */,
 				34B9B2992A4EA7C3001F4A39 /* shelf interact.mp3 */,
 			);
@@ -302,6 +316,7 @@
 		34B9B20D2A45990C001F4A39 /* Sound */ = {
 			isa = PBXGroup;
 			children = (
+				3479E2532A4EB9F300F24D90 /* MovementSound */,
 				34A1CB4A2A4EAF080056FEA5 /* InteractSound */,
 				34B9B2932A4EA7C3001F4A39 /* GlassSound */,
 				34B9B2972A4EA7C3001F4A39 /* TableSound */,
@@ -611,6 +626,7 @@
 				B18E560E2A4C0FD500C3F9E1 /* k4.mp3 in Resources */,
 				B18E560F2A4C0FD500C3F9E1 /* k3.mp3 in Resources */,
 				B18E56312A4DDDFC00C3F9E1 /* videoplayback.mp4 in Resources */,
+				3479E2562A4EBA0300F24D90 /* running.mp3 in Resources */,
 				34B9B29B2A4EA7C3001F4A39 /* glass shatter.mp3 in Resources */,
 				B18E560D2A4C0FD500C3F9E1 /* k2.mp3 in Resources */,
 				04CAE9602A32D68000F59461 /* Main.storyboard in Resources */,
@@ -622,13 +638,14 @@
 				34B9B29F2A4EA7C3001F4A39 /* shelf interact.mp3 in Resources */,
 				34B9B27B2A4DD224001F4A39 /* background music of old library.mp3 in Resources */,
 				B119E1382A47290F001C7CEB /* LockScene.sks in Resources */,
-				34A1CB492A4EAEFF0056FEA5 /* painting interact.mp3 in Resources */,
 				53B979B92A4746A3004F71D5 /* PlaytestScreen.sks in Resources */,
 				34B9B29C2A4EA7C3001F4A39 /* paper interact.mp3 in Resources */,
 				34B9B2812A4DD3C6001F4A39 /* number lock failed.mp3 in Resources */,
 				534C8D072A4BFC590033D8D1 /* CorridorScene.sks in Resources */,
+				3479E25C2A4ED2BC00F24D90 /* painting interact.mp3 in Resources */,
 				B18E56142A4C37C000C3F9E1 /* ShelfScene.sks in Resources */,
 				34B9B29A2A4EA7C3001F4A39 /* lock interact.mp3 in Resources */,
+				3479E25A2A4ED05500F24D90 /* walking.mp3 in Resources */,
 				533B760F2A4E777F009015F9 /* InnTotScene.sks in Resources */,
 				B185ED1F2A472C0400CA0241 /* Scene1.sks in Resources */,
 				B18E56102A4C0FD500C3F9E1 /* k6.mp3 in Resources */,
@@ -711,6 +728,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04CAE97B2A32D68100F59461 /* Mini2UITestsLaunchTests.swift in Sources */,
+				3479E2582A4ECB7600F24D90 /* MovementComponent.swift in Sources */,
 				04CAE9792A32D68100F59461 /* Mini2UITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
