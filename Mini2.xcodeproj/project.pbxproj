@@ -30,6 +30,8 @@
 		34B9B2832A4DD3C6001F4A39 /* number lock.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 34B9B2802A4DD3C5001F4A39 /* number lock.mp3 */; };
 		34B9B2862A4DDED5001F4A39 /* glass shatter.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 34B9B2852A4DDED5001F4A39 /* glass shatter.mp3 */; };
 		5339FBEE2A49318A00647CF1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04CAE9612A32D68100F59461 /* Assets.xcassets */; };
+		533B760D2A4E775D009015F9 /* InnTotScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533B760C2A4E775D009015F9 /* InnTotScene.swift */; };
+		533B760F2A4E777F009015F9 /* InnTotScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 533B760E2A4E777F009015F9 /* InnTotScene.sks */; };
 		534C8CFF2A4BD4A60033D8D1 /* ModernLibraryScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 534C8CFE2A4BD4A60033D8D1 /* ModernLibraryScene.swift */; };
 		534C8D022A4BD4C50033D8D1 /* ModernLibraryScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 534C8D012A4BD4C50033D8D1 /* ModernLibraryScene.sks */; };
 		534C8D052A4BFC440033D8D1 /* CorridorScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 534C8D042A4BFC440033D8D1 /* CorridorScene.swift */; };
@@ -99,6 +101,8 @@
 		34B9B27E2A4DD3C5001F4A39 /* number lock failed.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "number lock failed.mp3"; sourceTree = "<group>"; };
 		34B9B27F2A4DD3C5001F4A39 /* number lock success.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "number lock success.mp3"; sourceTree = "<group>"; };
 		34B9B2802A4DD3C5001F4A39 /* number lock.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "number lock.mp3"; sourceTree = "<group>"; };
+		533B760C2A4E775D009015F9 /* InnTotScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InnTotScene.swift; sourceTree = "<group>"; };
+		533B760E2A4E777F009015F9 /* InnTotScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = InnTotScene.sks; sourceTree = "<group>"; };
 		34B9B2852A4DDED5001F4A39 /* glass shatter.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "glass shatter.mp3"; sourceTree = "<group>"; };
 		534C8CFE2A4BD4A60033D8D1 /* ModernLibraryScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModernLibraryScene.swift; sourceTree = "<group>"; };
 		534C8D012A4BD4C50033D8D1 /* ModernLibraryScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ModernLibraryScene.sks; sourceTree = "<group>"; };
@@ -225,6 +229,7 @@
 		34B9B2062A458BF3001F4A39 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				533B760B2A4E7731009015F9 /* InnTotScene */,
 				34B9B2732A4DD132001F4A39 /* BGMScene */,
 				B18E56152A4C37C700C3F9E1 /* ShelfScene */,
 				534C8D032A4BFC360033D8D1 /* CorridorScene */,
@@ -320,6 +325,13 @@
 			path = LockSound;
 			sourceTree = "<group>";
 		};
+		533B760B2A4E7731009015F9 /* InnTotScene */ = {
+			isa = PBXGroup;
+			children = (
+				533B760C2A4E775D009015F9 /* InnTotScene.swift */,
+				533B760E2A4E777F009015F9 /* InnTotScene.sks */,
+			);
+			path = InnTotScene;
 		34B9B2842A4DDEC9001F4A39 /* GlassSound */ = {
 			isa = PBXGroup;
 			children = (
@@ -522,6 +534,7 @@
 				534C8D072A4BFC590033D8D1 /* CorridorScene.sks in Resources */,
 				B18E56332A4DE58000C3F9E1 /* TransOld.mp4 in Resources */,
 				B18E56142A4C37C000C3F9E1 /* ShelfScene.sks in Resources */,
+				533B760F2A4E777F009015F9 /* InnTotScene.sks in Resources */,
 				B185ED1F2A472C0400CA0241 /* Scene1.sks in Resources */,
 				B18E56102A4C0FD500C3F9E1 /* k6.mp3 in Resources */,
 				04AF7D7F2A48486F005D930F /* PeelOffScene.sks in Resources */,
@@ -570,6 +583,7 @@
 				534C8CFF2A4BD4A60033D8D1 /* ModernLibraryScene.swift in Sources */,
 				34B9B2752A4DD165001F4A39 /* BGMScene.swift in Sources */,
 				34B9B2042A458BA6001F4A39 /* KalimbaScene.swift in Sources */,
+				533B760D2A4E775D009015F9 /* InnTotScene.swift in Sources */,
 				04AF7D7D2A484862005D930F /* PeelOffScene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
