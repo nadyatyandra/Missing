@@ -136,7 +136,6 @@ class MovementComponent: GKComponent{
         spriteNode?.texture = idleTexture
         
         
-        
         if isRunning {
             
             if (spriteNode?.xScale)! > 0 {

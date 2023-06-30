@@ -69,6 +69,7 @@ struct ContentView: View {
     @State var isPopupOn = GameData.shared
     var scene: SKScene {
         let scene: SKScene = SKScene(fileNamed: "CorridorScene")!
+//        let scene = JigsawScene.scene(named: "person.json")
         //        let scene = JigsawScene.scene(named: "person.json")
         scene.size = CGSize(width: 2732, height: 2048)
         scene.scaleMode = .aspectFill
