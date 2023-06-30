@@ -31,7 +31,7 @@ class GameData : ObservableObject {
         transitionScene!.scaleMode = scene.scaleMode
 
         
-        let fadeInAction = SKAction.fadeIn(withDuration: 0.5)
+        let fadeInAction = SKAction.fadeIn(withDuration: 1.5)
         scene.run(fadeInAction)
                      
         let transition = SKTransition.fade(withDuration: 1.5)
