@@ -175,7 +175,7 @@ class ModernLibraryScene: SKScene, SKPhysicsContactDelegate {
         for touch in touches {
             let location = touch.location(in: self)
             
-            guard let touchedNode = atPoint(location) as? SKSpriteNode else { return  }
+            guard let touchedNode = atPoint(location) as? SKNode else { return  }
             
             processTouch(touchedNode: touchedNode)
         }
@@ -258,16 +258,9 @@ class ModernLibraryScene: SKScene, SKPhysicsContactDelegate {
         innTot.run(sequence)
     }
     
-    func processTouch(touchedNode: SKSpriteNode) {
+    func processTouch(touchedNode: SKNode) {
         let combos: [String: String] = [
-            "Boxes":"There are boxes",
-            "Books":"There are dropped books",
-            "BookshelfLeft":"There are old bookshelves",
-            "BookshelfMid":"There are old bookshelves",
-            "BookshelfRight":"There are old bookshelves",
-            "Clock":"There is a clock",
-            "Window":"The window is locked shut",
-            "Door":"The door is stuck"
+            "Book":"Book"
         ]
         
 //        if touchedNode == kalimbaSprite && kalimbaIsDropped{
