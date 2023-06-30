@@ -289,17 +289,11 @@ class ModernLibraryScene: SKScene, SKPhysicsContactDelegate {
             }
         } else if touchedNode.name == "Desk" {
             presentImageDetail(imageDetailName: "DetailDeskML")
-<<<<<<< Updated upstream
-            tutorialTriggered = false
-        } else if touchedNode.name == "Photo" {
-=======
             
             viewModel.createInnTot(duration: 3, label: "The librarian's not here")
         } else if touchedNode.name == "BookGlowing" {
             viewModel.playVideo(scene: self, videoName: "TransOld", videoExt: "mp4",  xPos: cameraNode.position.x, yPos: cameraNode.position.y, durationVideo: 3, toScene: "PlaytestScreen")
         }else if touchedNode.name == "Photo" {
-            paintingSound.playSound(soundName: "painting interact")
->>>>>>> Stashed changes
             presentImageDetail(imageDetailName: "DetailPhotoML")
             viewModel.createInnTot(duration: 3, label: "These faces looks familiar")
         } else if let nodeName = touchedNode.name, let comboDescription = combos[nodeName] {

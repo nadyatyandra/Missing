@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 import SpriteKit
+import AVFoundation
 
 class GameData : ObservableObject {
     @Published var isPopUpVisible = false //scene
@@ -27,8 +28,6 @@ class GameData : ObservableObject {
     @Published var innTotDuration: Double = 1
     
     static let shared = GameData()
-<<<<<<< Updated upstream
-=======
     
     func transitionScene(scene: SKScene, toScene: String) {
         let transitionScene = SKScene(fileNamed: toScene)
@@ -80,7 +79,6 @@ class GameData : ObservableObject {
             isInnTotVisible = true
         }
     }
->>>>>>> Stashed changes
 }
 
 
