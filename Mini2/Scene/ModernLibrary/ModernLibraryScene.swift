@@ -26,9 +26,6 @@ class ModernLibraryScene: SKScene, SKPhysicsContactDelegate {
     //Camera
     var cameraNode: SKCameraNode!
     
-    //book
-    var bookSprite: SKSpriteNode!
-    
     //Environment
     var leftWall: SKSpriteNode!
     var rightWall: SKSpriteNode!
@@ -77,7 +74,6 @@ class ModernLibraryScene: SKScene, SKPhysicsContactDelegate {
         leftWall = self.childNode(withName: "LeftWall") as? SKSpriteNode
         rightWall = self.childNode(withName: "RightWall") as? SKSpriteNode
         floor = self.childNode(withName: "Floor") as? SKSpriteNode
-        bookSprite = self.childNode(withName: "BookGlowing") as? SKSpriteNode
         innTot = cameraNode.childNode(withName: "InnTot")
         innTotLabel = innTot.childNode(withName: "InnTotLabel") as? SKLabelNode
         tutorialCollision = self.childNode(withName: "TutorialCollision")
@@ -272,14 +268,9 @@ class ModernLibraryScene: SKScene, SKPhysicsContactDelegate {
     
     func processTouch(touchedNode: SKNode) {
         let combos: [String: String] = [
-            "BookGlowing":"Book"
+            "Book":"Book"
         ]
         
-        if touchedNode == bookSprite {
-            print("a")
-            viewModel.playVideo(scene: self, videoName: "TransOld", videoExt: "mp4",  xPos: cameraNode.position.x, durationVideo: 3, toScene: "PlaytestScreen")
-        }
-
         if tutorialTriggered {
             if touchedNode.name == "Desk" {
                 presentImageDetail(imageDetailName: "DetailDeskML")
