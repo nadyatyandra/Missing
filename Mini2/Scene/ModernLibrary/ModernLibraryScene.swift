@@ -66,7 +66,7 @@ class ModernLibraryScene: SKScene, SKPhysicsContactDelegate {
         self.isUserInteractionEnabled = true
         
         //Play Background Music
-        bgmScene = BGMScene(backgroundMusicFileName: "background music of old library")
+        bgmScene = BGMScene(backgroundMusicFileName: "background music of new library")
         bgmScene.size = self.size // Set the size of the BGMScene to match the parent scene
         bgmScene.scaleMode = self.scaleMode // Set the scale mode of the BGMScene
         self.addChild(bgmScene)
@@ -115,8 +115,9 @@ class ModernLibraryScene: SKScene, SKPhysicsContactDelegate {
         cameraNode.constraints = [playerConstraint,edgeConstraint]
         
         //Hide InnTot
+//        viewModel.isInnTotVisible.toggle()
         innTot.alpha = 0
-        createInnTot(duration: 5, label: "TolGil")
+//        createInnTot(duration: 3, label: "Its already 5 and I'm not picked up yet")
     }
     
     override func willMove(from view: SKView) {
@@ -167,6 +168,13 @@ class ModernLibraryScene: SKScene, SKPhysicsContactDelegate {
 //        self.isPaused = true
     }
     
+    func presentImageDetail(imageDetailName: String){
+        viewModel.imageDetailName = imageDetailName
+        viewModel.isSecondPopUpVisible.toggle()
+//        self.isPaused = true
+    }
+    
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         // Get the initial touch position
         if let touch = touches.first {
@@ -179,7 +187,7 @@ class ModernLibraryScene: SKScene, SKPhysicsContactDelegate {
         for touch in touches {
             let location = touch.location(in: self)
             
-            guard let touchedNode = atPoint(location) as? SKNode else { return  }
+            guard let touchedNode = atPoint(location) as? SKSpriteNode else{ return}
             
             processTouch(touchedNode: touchedNode)
         }
@@ -267,31 +275,28 @@ class ModernLibraryScene: SKScene, SKPhysicsContactDelegate {
             "BookGlowing":"Book"
         ]
         
-//        if touchedNode == kalimbaSprite && kalimbaIsDropped{
-//            presentPopUpScene(popUpSceneName: "KalimbaScene")
-//        } else  if touchedNode == lockSprite {
-//            presentPopUpScene(popUpSceneName: "LockScene")
-//        } else {
-//            if let nodeName = touchedNode.name, let comboDescription = combos[nodeName] {
-//                createInnTot(duration: 3, label: comboDescription)
-//            }
-//        }
-        
         if touchedNode == bookSprite {
             print("a")
             viewModel.playVideo(scene: self, videoName: "TransOld", videoExt: "mp4",  xPos: cameraNode.position.x, durationVideo: 3, toScene: "PlaytestScreen")
         }
-        
+
         if tutorialTriggered {
             if touchedNode.name == "Desk" {
-                presentPopUpScene(popUpSceneName: "KalimbaScene")
+                presentImageDetail(imageDetailName: "DetailDeskML")
                 tutorialTriggered = false
-                innTot.alpha = 0
             } else {
                 createInnTot(duration: 3, label: "I should check the librarian's desk")
             }
+        } else if touchedNode.name == "Desk" {
+            presentImageDetail(imageDetailName: "DetailDeskML")
+            tutorialTriggered = false
+        } else if touchedNode.name == "Photo" {
+            presentImageDetail(imageDetailName: "DetailPhotoML")
         } else if let nodeName = touchedNode.name, let comboDescription = combos[nodeName] {
             createInnTot(duration: 3, label: comboDescription)
+        } else {
+            
+//            viewModel.isInnTotVisible.toggle()
         }
     }
 }
