@@ -84,6 +84,7 @@ class GameData : ObservableObject {
 struct ContentView: View {
     @ObservedObject var viewModel = GameData.shared
     @State var isPopupOn = GameData.shared
+    
     var scene: SKScene {
         let scene: SKScene = SKScene(fileNamed: "ModernLibraryScene")!
 //        let scene = JigsawScene.scene(named: "person.json")
@@ -117,15 +118,18 @@ struct ContentView: View {
             SpriteView(scene: scene)
                 .ignoresSafeArea()
             
-            if viewModel.isPopUpVisible || viewModel.isSecondPopUpVisible {
-                Button{
-                    if viewModel.isSecondPopUpVisible {
+            if viewModel.isPopUpVisible || viewModel.isSecondPopUpVisible || viewModel.isThirdPopUpVisible {
+                Button {
+                    if viewModel.isThirdPopUpVisible {
+                        viewModel.isThirdPopUpVisible = false
                         viewModel.isSecondPopUpVisible = false
-                    }else {
+                    } else if viewModel.isSecondPopUpVisible {
+                        viewModel.isSecondPopUpVisible = false
+                    } else {
                         viewModel.isPopUpVisible = false
                     }
                     viewModel.isInnTotVisible = false
-                }label: {
+                } label: {
                     Rectangle()
                         .fill(Color.black.opacity(0.5))
                         .ignoresSafeArea()
@@ -144,6 +148,10 @@ struct ContentView: View {
                     .scaledToFit()
                     .frame(width: scene.size.width/2.5, height: scene.size.height/2.5)
                     .ignoresSafeArea()
+            }
+            
+            if viewModel.isThirdPopUpVisible { //employee file animation
+                PeelEffectLoopingView(numberOfPages: 4, bookType: "OL Employee")
             }
             
             if viewModel.isInnTotVisible {
