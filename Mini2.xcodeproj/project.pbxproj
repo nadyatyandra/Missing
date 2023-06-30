@@ -61,6 +61,21 @@
 		B18E56172A4C37D900C3F9E1 /* ShelfScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18E56162A4C37D900C3F9E1 /* ShelfScene.swift */; };
 		B18E56262A4C919400C3F9E1 /* GameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18E56252A4C919400C3F9E1 /* GameData.swift */; };
 		B18E56312A4DDDFC00C3F9E1 /* videoplayback.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = B18E56302A4DDDFC00C3F9E1 /* videoplayback.mp4 */; };
+		B71AA0642A4E7A7B00C2B4E4 /* JigsawScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71AA0632A4E7A7B00C2B4E4 /* JigsawScene.swift */; };
+		B71AA0662A4E7ABC00C2B4E4 /* Puzzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71AA0652A4E7ABC00C2B4E4 /* Puzzle.swift */; };
+		B71AA0682A4E7AE400C2B4E4 /* Piece.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71AA0672A4E7AE400C2B4E4 /* Piece.swift */; };
+		B71AA06A2A4E7B0000C2B4E4 /* SpriteComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71AA0692A4E7B0000C2B4E4 /* SpriteComponent.swift */; };
+		B71AA06C2A4E7B1D00C2B4E4 /* PositionComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71AA06B2A4E7B1D00C2B4E4 /* PositionComponent.swift */; };
+		B71AA06E2A4E7B3900C2B4E4 /* InteractionComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71AA06D2A4E7B3900C2B4E4 /* InteractionComponent.swift */; };
+		B71AA0702A4E7B5000C2B4E4 /* SnappingComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71AA06F2A4E7B5000C2B4E4 /* SnappingComponent.swift */; };
+		B71AA0722A4E7B6700C2B4E4 /* ScaleComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71AA0712A4E7B6700C2B4E4 /* ScaleComponent.swift */; };
+		B71AA0742A4E7B7D00C2B4E4 /* InteractionComponent+Interact.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71AA0732A4E7B7D00C2B4E4 /* InteractionComponent+Interact.swift */; };
+		B71AA0762A4E7B9800C2B4E4 /* SnappingComponent+Snap.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71AA0752A4E7B9800C2B4E4 /* SnappingComponent+Snap.swift */; };
+		B71AA0782A4E7BB800C2B4E4 /* SpriteComponent+Render.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71AA0772A4E7BB800C2B4E4 /* SpriteComponent+Render.swift */; };
+		B71AA07A2A4E7BC700C2B4E4 /* CGPoint+math.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71AA0792A4E7BC700C2B4E4 /* CGPoint+math.swift */; };
+		B71AA07C2A4E7C6000C2B4E4 /* person.json in Resources */ = {isa = PBXBuildFile; fileRef = B71AA07B2A4E7C6000C2B4E4 /* person.json */; };
+		B71AA07E2A4E7CC400C2B4E4 /* JigsawScene+touch.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71AA07D2A4E7CC400C2B4E4 /* JigsawScene+touch.swift */; };
+		B71AA0802A4E7D0A00C2B4E4 /* JigsawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71AA07F2A4E7D0A00C2B4E4 /* JigsawViewController.swift */; };
 		B18E56352A4E8F9A00C3F9E1 /* TransOld.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = B18E56342A4E8F9A00C3F9E1 /* TransOld.mp4 */; };
 /* End PBXBuildFile section */
 
@@ -139,6 +154,21 @@
 		B18E56162A4C37D900C3F9E1 /* ShelfScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShelfScene.swift; sourceTree = "<group>"; };
 		B18E56252A4C919400C3F9E1 /* GameData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameData.swift; sourceTree = "<group>"; };
 		B18E56302A4DDDFC00C3F9E1 /* videoplayback.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = videoplayback.mp4; sourceTree = "<group>"; };
+		B71AA0632A4E7A7B00C2B4E4 /* JigsawScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JigsawScene.swift; sourceTree = "<group>"; };
+		B71AA0652A4E7ABC00C2B4E4 /* Puzzle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Puzzle.swift; sourceTree = "<group>"; };
+		B71AA0672A4E7AE400C2B4E4 /* Piece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Piece.swift; sourceTree = "<group>"; };
+		B71AA0692A4E7B0000C2B4E4 /* SpriteComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteComponent.swift; sourceTree = "<group>"; };
+		B71AA06B2A4E7B1D00C2B4E4 /* PositionComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionComponent.swift; sourceTree = "<group>"; };
+		B71AA06D2A4E7B3900C2B4E4 /* InteractionComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractionComponent.swift; sourceTree = "<group>"; };
+		B71AA06F2A4E7B5000C2B4E4 /* SnappingComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnappingComponent.swift; sourceTree = "<group>"; };
+		B71AA0712A4E7B6700C2B4E4 /* ScaleComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleComponent.swift; sourceTree = "<group>"; };
+		B71AA0732A4E7B7D00C2B4E4 /* InteractionComponent+Interact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "InteractionComponent+Interact.swift"; sourceTree = "<group>"; };
+		B71AA0752A4E7B9800C2B4E4 /* SnappingComponent+Snap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SnappingComponent+Snap.swift"; sourceTree = "<group>"; };
+		B71AA0772A4E7BB800C2B4E4 /* SpriteComponent+Render.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SpriteComponent+Render.swift"; sourceTree = "<group>"; };
+		B71AA0792A4E7BC700C2B4E4 /* CGPoint+math.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+math.swift"; sourceTree = "<group>"; };
+		B71AA07B2A4E7C6000C2B4E4 /* person.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = person.json; sourceTree = "<group>"; };
+		B71AA07D2A4E7CC400C2B4E4 /* JigsawScene+touch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JigsawScene+touch.swift"; sourceTree = "<group>"; };
+		B71AA07F2A4E7D0A00C2B4E4 /* JigsawViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JigsawViewController.swift; sourceTree = "<group>"; };
 		B18E56342A4E8F9A00C3F9E1 /* TransOld.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = TransOld.mp4; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -253,6 +283,7 @@
 		34B9B2062A458BF3001F4A39 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				B71AA0622A4E7A5700C2B4E4 /* JigsawScene */,
 				533B760B2A4E7731009015F9 /* InnTotScene */,
 				34B9B2732A4DD132001F4A39 /* BGMScene */,
 				B18E56152A4C37C700C3F9E1 /* ShelfScene */,
@@ -299,6 +330,7 @@
 		34B9B2132A45A15A001F4A39 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				B71AA07B2A4E7C6000C2B4E4 /* person.json */,
 				04CAE9612A32D68100F59461 /* Assets.xcassets */,
 				B18E56292A4DDC7100C3F9E1 /* Video */,
 				34B9B20D2A45990C001F4A39 /* Sound */,
@@ -447,6 +479,27 @@
 			path = Video;
 			sourceTree = "<group>";
 		};
+		B71AA0622A4E7A5700C2B4E4 /* JigsawScene */ = {
+			isa = PBXGroup;
+			children = (
+				B71AA0632A4E7A7B00C2B4E4 /* JigsawScene.swift */,
+				B71AA07F2A4E7D0A00C2B4E4 /* JigsawViewController.swift */,
+				B71AA0652A4E7ABC00C2B4E4 /* Puzzle.swift */,
+				B71AA0672A4E7AE400C2B4E4 /* Piece.swift */,
+				B71AA0692A4E7B0000C2B4E4 /* SpriteComponent.swift */,
+				B71AA06B2A4E7B1D00C2B4E4 /* PositionComponent.swift */,
+				B71AA06D2A4E7B3900C2B4E4 /* InteractionComponent.swift */,
+				B71AA06F2A4E7B5000C2B4E4 /* SnappingComponent.swift */,
+				B71AA0712A4E7B6700C2B4E4 /* ScaleComponent.swift */,
+				B71AA0732A4E7B7D00C2B4E4 /* InteractionComponent+Interact.swift */,
+				B71AA0752A4E7B9800C2B4E4 /* SnappingComponent+Snap.swift */,
+				B71AA0772A4E7BB800C2B4E4 /* SpriteComponent+Render.swift */,
+				B71AA0792A4E7BC700C2B4E4 /* CGPoint+math.swift */,
+				B71AA07D2A4E7CC400C2B4E4 /* JigsawScene+touch.swift */,
+			);
+			name = JigsawScene;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -553,6 +606,7 @@
 			files = (
 				34B9B2822A4DD3C6001F4A39 /* number lock success.mp3 in Resources */,
 				5339FBEE2A49318A00647CF1 /* Assets.xcassets in Resources */,
+				B71AA07C2A4E7C6000C2B4E4 /* person.json in Resources */,
 				B18E56112A4C0FD500C3F9E1 /* k5.mp3 in Resources */,
 				B18E560E2A4C0FD500C3F9E1 /* k4.mp3 in Resources */,
 				B18E560F2A4C0FD500C3F9E1 /* k3.mp3 in Resources */,
@@ -610,20 +664,34 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B71AA0782A4E7BB800C2B4E4 /* SpriteComponent+Render.swift in Sources */,
 				53B979B02A433AD8004F71D5 /* MovementComponent.swift in Sources */,
 				B18E56262A4C919400C3F9E1 /* GameData.swift in Sources */,
+				B71AA0722A4E7B6700C2B4E4 /* ScaleComponent.swift in Sources */,
 				B18E56022A4A8DD700C3F9E1 /* ContentView.swift in Sources */,
 				534C8D052A4BFC440033D8D1 /* CorridorScene.swift in Sources */,
+				B71AA06E2A4E7B3900C2B4E4 /* InteractionComponent.swift in Sources */,
+				B71AA0742A4E7B7D00C2B4E4 /* InteractionComponent+Interact.swift in Sources */,
+				B71AA0682A4E7AE400C2B4E4 /* Piece.swift in Sources */,
+				B71AA0642A4E7A7B00C2B4E4 /* JigsawScene.swift in Sources */,
+				B71AA0802A4E7D0A00C2B4E4 /* JigsawViewController.swift in Sources */,
+				B71AA0762A4E7B9800C2B4E4 /* SnappingComponent+Snap.swift in Sources */,
+				B71AA06A2A4E7B0000C2B4E4 /* SpriteComponent.swift in Sources */,
+				B71AA07E2A4E7CC400C2B4E4 /* JigsawScene+touch.swift in Sources */,
 				53B979BB2A4746AF004F71D5 /* PlaytestScreen.swift in Sources */,
 				34B9B2152A45A310001F4A39 /* SoundComponent.swift in Sources */,
+				B71AA07A2A4E7BC700C2B4E4 /* CGPoint+math.swift in Sources */,
 				B18E56172A4C37D900C3F9E1 /* ShelfScene.swift in Sources */,
 				04CAE95B2A32D68000F59461 /* GameScene.swift in Sources */,
 				B119E13A2A472916001C7CEB /* LockScene.swift in Sources */,
+				B71AA0702A4E7B5000C2B4E4 /* SnappingComponent.swift in Sources */,
 				04CAE95D2A32D68000F59461 /* GameViewController.swift in Sources */,
 				04CAE9552A32D68000F59461 /* AppDelegate.swift in Sources */,
 				B185ED1D2A472BF900CA0241 /* Scene1.swift in Sources */,
 				534C8CFF2A4BD4A60033D8D1 /* ModernLibraryScene.swift in Sources */,
 				34B9B2752A4DD165001F4A39 /* BGMScene.swift in Sources */,
+				B71AA0662A4E7ABC00C2B4E4 /* Puzzle.swift in Sources */,
+				B71AA06C2A4E7B1D00C2B4E4 /* PositionComponent.swift in Sources */,
 				34B9B2042A458BA6001F4A39 /* KalimbaScene.swift in Sources */,
 				533B760D2A4E775D009015F9 /* InnTotScene.swift in Sources */,
 				04AF7D7D2A484862005D930F /* PeelOffScene.swift in Sources */,
