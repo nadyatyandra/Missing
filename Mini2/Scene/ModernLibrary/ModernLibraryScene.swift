@@ -111,7 +111,6 @@ class ModernLibraryScene: SKScene, SKPhysicsContactDelegate {
         cameraNode.constraints = [playerConstraint,edgeConstraint]
         
         //Hide InnTot
-//        viewModel.isInnTotVisible.toggle()
         innTot.alpha = 0
 //        createInnTot(duration: 3, label: "Its already 5 and I'm not picked up yet")
     }
@@ -177,7 +176,8 @@ class ModernLibraryScene: SKScene, SKPhysicsContactDelegate {
             initialTouchPosition = touch.location(in: view)
             startMoving = true
             viewModel.isPopUpVisible = false
-            self.isPaused = false
+            viewModel.isInnTotVisible = false
+//            self.isPaused = false
         }
         
         for touch in touches {
@@ -268,26 +268,42 @@ class ModernLibraryScene: SKScene, SKPhysicsContactDelegate {
     
     func processTouch(touchedNode: SKNode) {
         let combos: [String: String] = [
-            "Book":"Book"
+            "Window":"It is raining hard",
+            "Clock":"It is 17:07 right now",
+            "Door":"I don't feel like going back to the rain",
+            "Cupboard":"The cupboard is locked",
+            "BookshelfRight":"There are some books here",
+            "BookshelfMiddle":"There are some books here",
+            "BookshelfLeft":"Oh, there's something interesting here"
         ]
         
         if tutorialTriggered {
             if touchedNode.name == "Desk" {
                 presentImageDetail(imageDetailName: "DetailDeskML")
+                
+                viewModel.createInnTot(duration: 3, label: "I guess she's not here, nothing interesting otherwise")
+                
                 tutorialTriggered = false
             } else {
                 createInnTot(duration: 3, label: "I should check the librarian's desk")
             }
         } else if touchedNode.name == "Desk" {
             presentImageDetail(imageDetailName: "DetailDeskML")
+<<<<<<< Updated upstream
             tutorialTriggered = false
         } else if touchedNode.name == "Photo" {
+=======
+            
+            viewModel.createInnTot(duration: 3, label: "The librarian's not here")
+        } else if touchedNode.name == "BookGlowing" {
+            viewModel.playVideo(scene: self, videoName: "TransOld", videoExt: "mp4",  xPos: cameraNode.position.x, yPos: cameraNode.position.y, durationVideo: 3, toScene: "PlaytestScreen")
+        }else if touchedNode.name == "Photo" {
+            paintingSound.playSound(soundName: "painting interact")
+>>>>>>> Stashed changes
             presentImageDetail(imageDetailName: "DetailPhotoML")
+            viewModel.createInnTot(duration: 3, label: "These faces looks familiar")
         } else if let nodeName = touchedNode.name, let comboDescription = combos[nodeName] {
             createInnTot(duration: 3, label: comboDescription)
-        } else {
-            
-//            viewModel.isInnTotVisible.toggle()
         }
     }
 }
