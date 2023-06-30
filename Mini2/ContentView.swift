@@ -12,6 +12,7 @@ import SpriteKit
 class GameData : ObservableObject {
     @Published var isPopUpVisible = false //scene
     @Published var isSecondPopUpVisible = false //image
+    @Published var isInnTotVisible = false //InnTot
     
     @Published var popUpName = ""
     
@@ -41,6 +42,14 @@ struct ContentView: View {
         popup.backgroundColor = .clear
         popup.scaleMode = .aspectFill
         return popup
+    }
+    
+    var innTot: SKScene {
+        let innTot: SKScene = SKScene(fileNamed: "InnTotScene")!
+        innTot.size = CGSize(width: 2732, height: 2048)
+        innTot.backgroundColor = .clear
+        innTot.scaleMode = .aspectFill
+        return innTot
     }
     
     var body: some View {
@@ -74,6 +83,11 @@ struct ContentView: View {
                     .scaledToFit()
                     .frame(width: scene.size.width/2.5, height: scene.size.height/2.5)
                     .ignoresSafeArea()
+            }
+            
+            if viewModel.isInnTotVisible {
+                SpriteView(scene: innTot, options: [.allowsTransparency])
+                    .frame(width: scene.size.width/2.5, height: scene.size.height/2.5)
             }
         }
     }
