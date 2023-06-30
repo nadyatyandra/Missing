@@ -88,7 +88,6 @@ class KalimbaScene: SKScene {
 //                                self.successScreen()
                                 self.viewModel.isPopUpVisible = false
                             }
-                            
                             viewModel.windowSprite?.texture = SKTexture(imageNamed: "Broken window")
                             
                         }

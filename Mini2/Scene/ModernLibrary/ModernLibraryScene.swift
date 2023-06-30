@@ -30,6 +30,8 @@ class ModernLibraryScene: SKScene, SKPhysicsContactDelegate {
     var leftWall: SKSpriteNode!
     var rightWall: SKSpriteNode!
     var floor: SKSpriteNode!
+    var desk: SKSpriteNode!
+    var painting: SKSpriteNode!
     
     //Inner Thought
     var innTot: SKNode!
@@ -52,6 +54,8 @@ class ModernLibraryScene: SKScene, SKPhysicsContactDelegate {
     
     //Background Music
     var bgmScene: BGMScene!
+    var deskSound: SoundComponent!
+    var paintingSound: SoundComponent!
     
     override func sceneDidLoad() {
         self.lastUpdateTime = 0
@@ -63,7 +67,7 @@ class ModernLibraryScene: SKScene, SKPhysicsContactDelegate {
         self.isUserInteractionEnabled = true
         
         //Play Background Music
-        bgmScene = BGMScene(backgroundMusicFileName: "background music of old library")
+        bgmScene = BGMScene(backgroundMusicFileName: "background music of new library")
         bgmScene.size = self.size // Set the size of the BGMScene to match the parent scene
         bgmScene.scaleMode = self.scaleMode // Set the scale mode of the BGMScene
         self.addChild(bgmScene)
@@ -77,7 +81,11 @@ class ModernLibraryScene: SKScene, SKPhysicsContactDelegate {
         innTot = cameraNode.childNode(withName: "InnTot")
         innTotLabel = innTot.childNode(withName: "InnTotLabel") as? SKLabelNode
         tutorialCollision = self.childNode(withName: "TutorialCollision")
+        desk = self.childNode(withName: "Desk") as? SKSpriteNode
+        painting = self.childNode(withName: "Photo") as? SKSpriteNode
         
+        deskSound = SoundComponent(node: desk)
+        paintingSound = SoundComponent(node: painting)
         //Assign movement component to playerEntity
         playerEntity = createEntity(node: playerSprite, wantMovementComponent: true)
         entities.append(playerEntity)
@@ -111,8 +119,9 @@ class ModernLibraryScene: SKScene, SKPhysicsContactDelegate {
         cameraNode.constraints = [playerConstraint,edgeConstraint]
         
         //Hide InnTot
+//        viewModel.isInnTotVisible.toggle()
         innTot.alpha = 0
-        createInnTot(duration: 5, label: "TolGil")
+//        createInnTot(duration: 3, label: "Its already 5 and I'm not picked up yet")
     }
     
     override func willMove(from view: SKView) {
@@ -163,6 +172,13 @@ class ModernLibraryScene: SKScene, SKPhysicsContactDelegate {
 //        self.isPaused = true
     }
     
+    func presentImageDetail(imageDetailName: String){
+        viewModel.imageDetailName = imageDetailName
+        viewModel.isSecondPopUpVisible.toggle()
+//        self.isPaused = true
+    }
+    
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         // Get the initial touch position
         if let touch = touches.first {
@@ -175,7 +191,7 @@ class ModernLibraryScene: SKScene, SKPhysicsContactDelegate {
         for touch in touches {
             let location = touch.location(in: self)
             
-            guard let touchedNode = atPoint(location) as? SKNode else { return  }
+            guard let touchedNode = atPoint(location) as? SKSpriteNode else{ return}
             
             processTouch(touchedNode: touchedNode)
         }
@@ -263,25 +279,28 @@ class ModernLibraryScene: SKScene, SKPhysicsContactDelegate {
             "Book":"Book"
         ]
         
-//        if touchedNode == kalimbaSprite && kalimbaIsDropped{
-//            presentPopUpScene(popUpSceneName: "KalimbaScene")
-//        } else  if touchedNode == lockSprite {
-//            presentPopUpScene(popUpSceneName: "LockScene")
-//        } else {
-//            if let nodeName = touchedNode.name, let comboDescription = combos[nodeName] {
-//                createInnTot(duration: 3, label: comboDescription)
-//            }
-//        }
         if tutorialTriggered {
             if touchedNode.name == "Desk" {
-                presentPopUpScene(popUpSceneName: "KalimbaScene")
+                deskSound.playSound(soundName: "table interact")
+                presentImageDetail(imageDetailName: "DetailDeskML")
                 tutorialTriggered = false
-                innTot.alpha = 0
             } else {
                 createInnTot(duration: 3, label: "I should check the librarian's desk")
             }
+        } else if touchedNode.name == "Desk" {
+            deskSound.playSound(soundName: "table interact")
+            presentImageDetail(imageDetailName: "DetailDeskML")
+            tutorialTriggered = false
+        } else if touchedNode.name == "BookGlowing" {
+            viewModel.playVideo(scene: self, videoName: "TransOld", videoExt: "mp4",  xPos: cameraNode.position.x, durationVideo: 3, toScene: "PlaytestScreen")
+        }else if touchedNode.name == "Photo" {
+            paintingSound.playSound(soundName: "painting interact")
+            presentImageDetail(imageDetailName: "DetailPhotoML")
         } else if let nodeName = touchedNode.name, let comboDescription = combos[nodeName] {
             createInnTot(duration: 3, label: comboDescription)
+        } else {
+            
+//            viewModel.isInnTotVisible.toggle()
         }
     }
 }

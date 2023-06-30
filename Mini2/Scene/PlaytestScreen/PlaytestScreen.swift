@@ -69,31 +69,12 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
     
     //For animation
     var startMoving: Bool = false
-    
-    func playVideo(videoName: String, videoExt: String){
-        // Create an AVPlayerItem
-        let videoURL = Bundle.main.url(forResource: videoName, withExtension: videoExt)!
-        let playerItem = AVPlayerItem(url: videoURL)
-
-        // Create an AVPlayer
-        let player = AVPlayer(playerItem: playerItem)
-
-        // Create an SKVideoNode with the AVPlayer
-        let videoNode = SKVideoNode(avPlayer: player)
-
-        // Set the video node's size and position
-//        videoNode.size = CGSize(width: 2732, height: 2048)
-        videoNode.position = CGPoint(x: 0, y: 0)
-
-        // Add the video node to the scene
-        self.addChild(videoNode)
-
-        // Play the video
-        player.play()
-    }
   
     //Background Music
     var bgmScene: BGMScene!
+    var cupboardSound: SoundComponent!
+    var lockSound: SoundComponent!
+    var photoSound: SoundComponent!
     
     override func sceneDidLoad() {
         self.lastUpdateTime = 0
@@ -127,6 +108,9 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
         kalimbaCollision = kalimbaSprite.childNode(withName: "KalimbaCollision")
         kalimbaLight = kalimbaSprite.childNode(withName: "KalimbaLight") as? SKLightNode
         
+        photoSound = SoundComponent(node: photoSprite)
+        cupboardSound = SoundComponent(node: cupboardSprite)
+        lockSound = SoundComponent(node: viewModel.lockSprite!)
         //Assign movement component to playerEntity
         playerEntity = createEntity(node: playerSprite, wantMovementComponent: true)
         entities.append(playerEntity)
@@ -231,7 +215,7 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
         for touch in touches {
             let location = touch.location(in: self)
             
-            guard let touchedNode = atPoint(location) as? SKSpriteNode else{ return}
+            guard let touchedNode = atPoint(location) as? SKNode else{ return }
             
             processTouch(touchedNode: touchedNode)
         }
@@ -297,9 +281,16 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
             kalimbaSprite.physicsBody?.isDynamic = true
         }
         
+        let audioNode = SKAudioNode(fileNamed: "kalimba fall")
+        audioNode.autoplayLooped = false // Set it to not loop the sound
+        audioNode.isPositional = false // Set it to non-positional sound
+        
+        addChild(audioNode) // Add the audio node to your scene
+        
         if (nodeA == kalimbaSprite && nodeB == floor) || (nodeA == kalimbaSprite && nodeB == floor) {
             
             if !kalimbaIsDropped {
+                audioNode.run(SKAction.play())
                 createInnTot(duration: 5, label: "What was that?")
                 
                 kalimbaLight.falloff = 3
@@ -326,7 +317,7 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
         innTot.run(sequence)
     }
     
-    func processTouch(touchedNode: SKSpriteNode) {
+    func processTouch(touchedNode: SKNode) {
         let combos: [String: String] = [
             "Boxes":"There are boxes",
             "Books":"There are dropped books",
@@ -342,13 +333,15 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
         if touchedNode == kalimbaSprite && kalimbaIsDropped{
             presentPopUpScene(popUpSceneName: "KalimbaScene")
         } else  if touchedNode == viewModel.lockSprite {
+            lockSound.playSound(soundName: "lock interact")
             presentPopUpScene(popUpSceneName: "LockScene")
         }else if touchedNode == cupboardSprite && viewModel.lockUnlocked {
+            cupboardSound.playSound(soundName: "shelf interact")
             presentPopUpScene(popUpSceneName: "ShelfScene")
-        }else if touchedNode == viewModel.windowSprite {
-            print("window unlocked")
-            playVideo(videoName: "videoplayback", videoExt: "mp4")
+        }else if touchedNode == viewModel.windowSprite && viewModel.windowSprite?.texture?.description.components(separatedBy: "'")[1] == "Broken window" {
+            viewModel.transitionScene(scene: self, toScene: "CorridorScene")
         }else if touchedNode == photoSprite {
+            photoSound.playSound(soundName: "painting interact")
             presentImageDetail(imageDetailName: "OL Photo Detail")
         }else {
             if let nodeName = touchedNode.name, let comboDescription = combos[nodeName] {
