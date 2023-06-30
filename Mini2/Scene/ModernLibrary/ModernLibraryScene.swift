@@ -281,7 +281,9 @@ class ModernLibraryScene: SKScene, SKPhysicsContactDelegate {
         } else if touchedNode.name == "Desk" {
             presentImageDetail(imageDetailName: "DetailDeskML")
             tutorialTriggered = false
-        } else if touchedNode.name == "Photo" {
+        } else if touchedNode.name == "BookGlowing" {
+            viewModel.playVideo(scene: self, videoName: "TransOld", videoExt: "mp4",  xPos: cameraNode.position.x, durationVideo: 3, toScene: "PlaytestScreen")
+        }else if touchedNode.name == "Photo" {
             presentImageDetail(imageDetailName: "DetailPhotoML")
         } else if let nodeName = touchedNode.name, let comboDescription = combos[nodeName] {
             createInnTot(duration: 3, label: comboDescription)
