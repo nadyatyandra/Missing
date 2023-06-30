@@ -70,13 +70,19 @@ struct ContentView: View {
     var scene: SKScene {
         let scene: SKScene = SKScene(fileNamed: "CorridorScene")!
 //        let scene = JigsawScene.scene(named: "person.json")
+        //        let scene = JigsawScene.scene(named: "person.json")
         scene.size = CGSize(width: 2732, height: 2048)
         scene.scaleMode = .aspectFill
         return scene
     }
     
     var popUp: SKScene {
-        let popup: SKScene = SKScene(fileNamed: viewModel.popUpName)!
+        var popup: SKScene
+        if viewModel.popUpName == "JigsawScene"{
+            popup = JigsawScene.scene(named: "person.json")
+        }else {
+            popup = SKScene(fileNamed: viewModel.popUpName)!
+        }
         popup.backgroundColor = .clear
         popup.scaleMode = .aspectFill
         return popup
