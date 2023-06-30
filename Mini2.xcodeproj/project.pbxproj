@@ -29,6 +29,11 @@
 		34B9B2822A4DD3C6001F4A39 /* number lock success.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 34B9B27F2A4DD3C5001F4A39 /* number lock success.mp3 */; };
 		34B9B2832A4DD3C6001F4A39 /* number lock.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 34B9B2802A4DD3C5001F4A39 /* number lock.mp3 */; };
 		34B9B2862A4DDED5001F4A39 /* glass shatter.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 34B9B2852A4DDED5001F4A39 /* glass shatter.mp3 */; };
+		34B9B2892A4E7D65001F4A39 /* table interact.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 34B9B2882A4E7D65001F4A39 /* table interact.mp3 */; };
+		34B9B28B2A4E85D4001F4A39 /* shelf open.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 34B9B28A2A4E85D4001F4A39 /* shelf open.mp3 */; };
+		34B9B28D2A4E86AB001F4A39 /* kalimba fall.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 34B9B28C2A4E86AB001F4A39 /* kalimba fall.mp3 */; };
+		34B9B28F2A4E89FB001F4A39 /* lock interact.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 34B9B28E2A4E89FB001F4A39 /* lock interact.mp3 */; };
+		34B9B2912A4E8B01001F4A39 /* paper interact.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 34B9B2902A4E8B01001F4A39 /* paper interact.mp3 */; };
 		5339FBEE2A49318A00647CF1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04CAE9612A32D68100F59461 /* Assets.xcassets */; };
 		534C8CFF2A4BD4A60033D8D1 /* ModernLibraryScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 534C8CFE2A4BD4A60033D8D1 /* ModernLibraryScene.swift */; };
 		534C8D022A4BD4C50033D8D1 /* ModernLibraryScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 534C8D012A4BD4C50033D8D1 /* ModernLibraryScene.sks */; };
@@ -98,6 +103,11 @@
 		34B9B27F2A4DD3C5001F4A39 /* number lock success.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "number lock success.mp3"; sourceTree = "<group>"; };
 		34B9B2802A4DD3C5001F4A39 /* number lock.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "number lock.mp3"; sourceTree = "<group>"; };
 		34B9B2852A4DDED5001F4A39 /* glass shatter.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "glass shatter.mp3"; sourceTree = "<group>"; };
+		34B9B2882A4E7D65001F4A39 /* table interact.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "table interact.mp3"; sourceTree = "<group>"; };
+		34B9B28A2A4E85D4001F4A39 /* shelf open.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "shelf open.mp3"; sourceTree = "<group>"; };
+		34B9B28C2A4E86AB001F4A39 /* kalimba fall.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "kalimba fall.mp3"; sourceTree = "<group>"; };
+		34B9B28E2A4E89FB001F4A39 /* lock interact.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "lock interact.mp3"; sourceTree = "<group>"; };
+		34B9B2902A4E8B01001F4A39 /* paper interact.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "paper interact.mp3"; sourceTree = "<group>"; };
 		534C8CFE2A4BD4A60033D8D1 /* ModernLibraryScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModernLibraryScene.swift; sourceTree = "<group>"; };
 		534C8D012A4BD4C50033D8D1 /* ModernLibraryScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ModernLibraryScene.sks; sourceTree = "<group>"; };
 		534C8D042A4BFC440033D8D1 /* CorridorScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorridorScene.swift; sourceTree = "<group>"; };
@@ -238,6 +248,11 @@
 		34B9B20D2A45990C001F4A39 /* Sound */ = {
 			isa = PBXGroup;
 			children = (
+				34B9B28A2A4E85D4001F4A39 /* shelf open.mp3 */,
+				34B9B28C2A4E86AB001F4A39 /* kalimba fall.mp3 */,
+				34B9B28E2A4E89FB001F4A39 /* lock interact.mp3 */,
+				34B9B2902A4E8B01001F4A39 /* paper interact.mp3 */,
+				34B9B2872A4E7D55001F4A39 /* TableSound */,
 				34B9B2842A4DDEC9001F4A39 /* GlassSound */,
 				34B9B27D2A4DD3B8001F4A39 /* LockSound */,
 				34B9B2762A4DD20F001F4A39 /* BGMSound */,
@@ -321,6 +336,14 @@
 				34B9B2852A4DDED5001F4A39 /* glass shatter.mp3 */,
 			);
 			path = GlassSound;
+			sourceTree = "<group>";
+		};
+		34B9B2872A4E7D55001F4A39 /* TableSound */ = {
+			isa = PBXGroup;
+			children = (
+				34B9B2882A4E7D65001F4A39 /* table interact.mp3 */,
+			);
+			path = TableSound;
 			sourceTree = "<group>";
 		};
 		534C8D002A4BD4AC0033D8D1 /* ModernLibrary */ = {
@@ -495,15 +518,18 @@
 				B18E560E2A4C0FD500C3F9E1 /* k4.mp3 in Resources */,
 				B18E560F2A4C0FD500C3F9E1 /* k3.mp3 in Resources */,
 				B18E560D2A4C0FD500C3F9E1 /* k2.mp3 in Resources */,
+				34B9B28F2A4E89FB001F4A39 /* lock interact.mp3 in Resources */,
 				04CAE9602A32D68000F59461 /* Main.storyboard in Resources */,
 				34B9B27A2A4DD224001F4A39 /* background music of new library.mp3 in Resources */,
 				34B9B2832A4DD3C6001F4A39 /* number lock.mp3 in Resources */,
 				04CAE9572A32D68000F59461 /* GameScene.sks in Resources */,
 				34B9B2082A458C48001F4A39 /* KalimbaScene.sks in Resources */,
 				34B9B27B2A4DD224001F4A39 /* background music of old library.mp3 in Resources */,
+				34B9B28B2A4E85D4001F4A39 /* shelf open.mp3 in Resources */,
 				B119E1382A47290F001C7CEB /* LockScene.sks in Resources */,
 				53B979B92A4746A3004F71D5 /* PlaytestScreen.sks in Resources */,
 				34B9B2812A4DD3C6001F4A39 /* number lock failed.mp3 in Resources */,
+				34B9B2912A4E8B01001F4A39 /* paper interact.mp3 in Resources */,
 				534C8D072A4BFC590033D8D1 /* CorridorScene.sks in Resources */,
 				B18E56142A4C37C000C3F9E1 /* ShelfScene.sks in Resources */,
 				B185ED1F2A472C0400CA0241 /* Scene1.sks in Resources */,
@@ -511,7 +537,9 @@
 				04AF7D7F2A48486F005D930F /* PeelOffScene.sks in Resources */,
 				B18E56122A4C0FD500C3F9E1 /* k7.mp3 in Resources */,
 				534C8D022A4BD4C50033D8D1 /* ModernLibraryScene.sks in Resources */,
+				34B9B2892A4E7D65001F4A39 /* table interact.mp3 in Resources */,
 				04CAE9652A32D68100F59461 /* LaunchScreen.storyboard in Resources */,
+				34B9B28D2A4E86AB001F4A39 /* kalimba fall.mp3 in Resources */,
 				34B9B27C2A4DD224001F4A39 /* background music of corridor.mp3 in Resources */,
 				34B9B2862A4DDED5001F4A39 /* glass shatter.mp3 in Resources */,
 				B18E560C2A4C0FD500C3F9E1 /* k1.mp3 in Resources */,

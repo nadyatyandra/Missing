@@ -71,7 +71,8 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
     
     //Background Music
     var bgmScene: BGMScene!
-    
+    var cupboardSound: SoundComponent!
+    var lockSound: SoundComponent!
     override func sceneDidLoad() {
         self.lastUpdateTime = 0
     }
@@ -81,6 +82,7 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
         physicsWorld.contactDelegate = self
         self.isUserInteractionEnabled = true
         
+    
         //Play Background Music
         bgmScene = BGMScene(backgroundMusicFileName: "background music of old library")
         bgmScene.size = self.size // Set the size of the BGMScene to match the parent scene
@@ -104,7 +106,8 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
         kalimbaCollision = kalimbaSprite.childNode(withName: "KalimbaCollision")
         kalimbaLight = kalimbaSprite.childNode(withName: "KalimbaLight") as? SKLightNode
         
-        
+        cupboardSound = SoundComponent(node: cupboardSprite)
+        lockSound = SoundComponent(node: viewModel.lockSprite!)
         //Assign movement component to playerEntity
         playerEntity = createEntity(node: playerSprite, wantMovementComponent: true)
         entities.append(playerEntity)
@@ -274,10 +277,17 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
             
             kalimbaSprite.physicsBody?.isDynamic = true
         }
+       
+        let audioNode = SKAudioNode(fileNamed: "kalimba fall")
+        audioNode.autoplayLooped = false // Set it to not loop the sound
+        audioNode.isPositional = false // Set it to non-positional sound
+        
+        addChild(audioNode) // Add the audio node to your scene
         
         if (nodeA == kalimbaSprite && nodeB == floor) || (nodeA == kalimbaSprite && nodeB == floor) {
-            
+
             if !kalimbaIsDropped {
+                audioNode.run(SKAction.play())
                 createInnTot(duration: 5, label: "What was that?")
                 
                 kalimbaLight.falloff = 3
@@ -320,8 +330,10 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
         if touchedNode == kalimbaSprite && kalimbaIsDropped{
             presentPopUpScene(popUpSceneName: "KalimbaScene")
         } else  if touchedNode == viewModel.lockSprite {
+            lockSound.playSound(soundName: "lock interact")
             presentPopUpScene(popUpSceneName: "LockScene")
         }else if touchedNode == cupboardSprite && viewModel.lockUnlocked {
+            cupboardSound.playSound(soundName: "shelf open")
             presentPopUpScene(popUpSceneName: "ShelfScene")
         }else if touchedNode == viewModel.windowSprite {
             print("window unlocked")

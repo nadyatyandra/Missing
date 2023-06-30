@@ -15,13 +15,17 @@ class ShelfScene: SKScene{
     var paperShelves : [SKSpriteNode] = []
     var diaryShelf: SKSpriteNode?
     
+    var soundComponent: SoundComponent!
+    
     override func didMove(to view: SKView) {
+        
         for i in 0..<8 {
             let paper = childNode(withName: "PaperShelf\(i+1)") as? SKSpriteNode
             
             paperShelves.append(paper!)
         }
         bgShelf = childNode(withName: "bg_shelf") as? SKSpriteNode
+        soundComponent = SoundComponent(node: bgShelf!)
         bgShelf?.color = .clear
         diaryShelf = childNode(withName: "DiaryShelf") as? SKSpriteNode
     }
@@ -32,6 +36,7 @@ class ShelfScene: SKScene{
             
             for i in 0..<8{
                 if let touchedNode = atPoint(location) as? SKSpriteNode, touchedNode == paperShelves[i] {
+                    soundComponent.playSound(soundName: "paper interact")
                     print("\(paperShelves[i])")
                     viewModel.imageDetailName = "ShelfImageDetail\(i+1)"
                     viewModel.isSecondPopUpVisible = true

@@ -63,7 +63,7 @@ class ModernLibraryScene: SKScene, SKPhysicsContactDelegate {
         self.isUserInteractionEnabled = true
         
         //Play Background Music
-        bgmScene = BGMScene(backgroundMusicFileName: "background music of old library")
+        bgmScene = BGMScene(backgroundMusicFileName: "background music of new library")
         bgmScene.size = self.size // Set the size of the BGMScene to match the parent scene
         bgmScene.scaleMode = self.scaleMode // Set the scale mode of the BGMScene
         self.addChild(bgmScene)
@@ -281,6 +281,7 @@ class ModernLibraryScene: SKScene, SKPhysicsContactDelegate {
 //        }
         if tutorialTriggered {
             if touchedNode.name == "Desk" {
+                
                 presentPopUpScene(popUpSceneName: "KalimbaScene")
                 tutorialTriggered = false
                 innTot.alpha = 0
