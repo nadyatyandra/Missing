@@ -342,8 +342,16 @@ class CorridorScene: SKScene, SKPhysicsContactDelegate {
         
         addChild(audioNode) // Add the audio node to your scene
         
+        let audioNode2 = SKAudioNode(fileNamed: "ghost appear two")
+        audioNode2.autoplayLooped = false // Set it to not loop the sound
+        audioNode2.isPositional = false // Set it to non-positional sound
+        
+        addChild(audioNode2) // Add the audio node to your scene
+        
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + controlDelay) {
             audioNode.run(SKAction.play())
+            audioNode2.run(SKAction.play())
             self.chaseStarted = true
             self.enemyIsSpawning = false
             self.cameraNode.constraints = [self.playerConstraint!,self.edgeConstraint!]
