@@ -80,6 +80,10 @@
 		B18E56412A4EED9100C3F9E1 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18E56402A4EED9100C3F9E1 /* GameOverScene.swift */; };
 		B18E56432A4EED9A00C3F9E1 /* GameOverScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = B18E56422A4EED9A00C3F9E1 /* GameOverScene.sks */; };
 		B18E56472A50793800C3F9E1 /* TransitionOld.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = B18E56462A50793800C3F9E1 /* TransitionOld.mp4 */; };
+		B18E564A2A507EFE00C3F9E1 /* SplashScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18E56492A507EFE00C3F9E1 /* SplashScene.swift */; };
+		B18E564C2A507F0700C3F9E1 /* SplashScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = B18E564B2A507F0700C3F9E1 /* SplashScene.sks */; };
+		B18E56562A509DAC00C3F9E1 /* TBCScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18E56552A509DAC00C3F9E1 /* TBCScene.swift */; };
+		B18E56582A509DBC00C3F9E1 /* TBCScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = B18E56572A509DBC00C3F9E1 /* TBCScene.sks */; };
 		B71AA0642A4E7A7B00C2B4E4 /* JigsawScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71AA0632A4E7A7B00C2B4E4 /* JigsawScene.swift */; };
 		B71AA0662A4E7ABC00C2B4E4 /* Puzzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71AA0652A4E7ABC00C2B4E4 /* Puzzle.swift */; };
 		B71AA0682A4E7AE400C2B4E4 /* Piece.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71AA0672A4E7AE400C2B4E4 /* Piece.swift */; };
@@ -190,6 +194,10 @@
 		B18E56402A4EED9100C3F9E1 /* GameOverScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
 		B18E56422A4EED9A00C3F9E1 /* GameOverScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameOverScene.sks; sourceTree = "<group>"; };
 		B18E56462A50793800C3F9E1 /* TransitionOld.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = TransitionOld.mp4; sourceTree = "<group>"; };
+		B18E56492A507EFE00C3F9E1 /* SplashScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScene.swift; sourceTree = "<group>"; };
+		B18E564B2A507F0700C3F9E1 /* SplashScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SplashScene.sks; sourceTree = "<group>"; };
+		B18E56552A509DAC00C3F9E1 /* TBCScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TBCScene.swift; sourceTree = "<group>"; };
+		B18E56572A509DBC00C3F9E1 /* TBCScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TBCScene.sks; sourceTree = "<group>"; };
 		B71AA0632A4E7A7B00C2B4E4 /* JigsawScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JigsawScene.swift; sourceTree = "<group>"; };
 		B71AA0652A4E7ABC00C2B4E4 /* Puzzle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Puzzle.swift; sourceTree = "<group>"; };
 		B71AA0672A4E7AE400C2B4E4 /* Piece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Piece.swift; sourceTree = "<group>"; };
@@ -352,6 +360,8 @@
 		34B9B2062A458BF3001F4A39 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				B18E56542A509D9A00C3F9E1 /* TBCScene */,
+				B18E56482A507EF200C3F9E1 /* SplashScene */,
 				B18E563F2A4EED8000C3F9E1 /* GameOverScene */,
 				04EA36AA2A4EF624000AFEB0 /* DeskDetailScene */,
 				B71AA0622A4E7A5700C2B4E4 /* JigsawScene */,
@@ -571,6 +581,24 @@
 			path = GameOverScene;
 			sourceTree = "<group>";
 		};
+		B18E56482A507EF200C3F9E1 /* SplashScene */ = {
+			isa = PBXGroup;
+			children = (
+				B18E56492A507EFE00C3F9E1 /* SplashScene.swift */,
+				B18E564B2A507F0700C3F9E1 /* SplashScene.sks */,
+			);
+			path = SplashScene;
+			sourceTree = "<group>";
+		};
+		B18E56542A509D9A00C3F9E1 /* TBCScene */ = {
+			isa = PBXGroup;
+			children = (
+				B18E56552A509DAC00C3F9E1 /* TBCScene.swift */,
+				B18E56572A509DBC00C3F9E1 /* TBCScene.sks */,
+			);
+			path = TBCScene;
+			sourceTree = "<group>";
+		};
 		B71AA0622A4E7A5700C2B4E4 /* JigsawScene */ = {
 			isa = PBXGroup;
 			children = (
@@ -608,6 +636,8 @@
 			dependencies = (
 			);
 			name = Mini2;
+			packageProductDependencies = (
+			);
 			productName = Mini2;
 			productReference = 04CAE9512A32D68000F59461 /* Mini2.app */;
 			productType = "com.apple.product-type.application";
@@ -680,6 +710,9 @@
 				Base,
 			);
 			mainGroup = 04CAE9482A32D68000F59461;
+			packageReferences = (
+				B18E56512A5083A400C3F9E1 /* XCRemoteSwiftPackageReference "FLAnimatedImage" */,
+			);
 			productRefGroup = 04CAE9522A32D68000F59461 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -703,6 +736,7 @@
 				B18E56112A4C0FD500C3F9E1 /* k5.mp3 in Resources */,
 				34C2EBCC2A5044FF00D11119 /* turn diary.mp3 in Resources */,
 				B18E560E2A4C0FD500C3F9E1 /* k4.mp3 in Resources */,
+				B18E564C2A507F0700C3F9E1 /* SplashScene.sks in Resources */,
 				B18E560F2A4C0FD500C3F9E1 /* k3.mp3 in Resources */,
 				B18E56312A4DDDFC00C3F9E1 /* videoplayback.mp4 in Resources */,
 				3479E2562A4EBA0300F24D90 /* running.mp3 in Resources */,
@@ -713,6 +747,7 @@
 				34B9B27A2A4DD224001F4A39 /* background music of new library.mp3 in Resources */,
 				3479E2612A4EDF3A00F24D90 /* ghost appear.mp3 in Resources */,
 				34C2EBD42A504FA700D11119 /* ghost appear two.mp3 in Resources */,
+				B18E56582A509DBC00C3F9E1 /* TBCScene.sks in Resources */,
 				3479E2602A4EDF3A00F24D90 /* ghost scream.mp3 in Resources */,
 				34B9B2832A4DD3C6001F4A39 /* number lock.mp3 in Resources */,
 				B18E56352A4E8F9A00C3F9E1 /* TransOld.mp4 in Resources */,
@@ -772,6 +807,7 @@
 				B18E56262A4C919400C3F9E1 /* GameData.swift in Sources */,
 				B71AA0722A4E7B6700C2B4E4 /* ScaleComponent.swift in Sources */,
 				B18E56022A4A8DD700C3F9E1 /* ContentView.swift in Sources */,
+				B18E564A2A507EFE00C3F9E1 /* SplashScene.swift in Sources */,
 				044302232A501087005C4102 /* HorizontalYearbookPeelEffectView.swift in Sources */,
 				534C8D052A4BFC440033D8D1 /* CorridorScene.swift in Sources */,
 				B71AA06E2A4E7B3900C2B4E4 /* InteractionComponent.swift in Sources */,
@@ -800,6 +836,7 @@
 				34B9B2752A4DD165001F4A39 /* BGMScene.swift in Sources */,
 				04EA36AC2A4EF65D000AFEB0 /* DeskDetailScene.swift in Sources */,
 				B71AA0662A4E7ABC00C2B4E4 /* Puzzle.swift in Sources */,
+				B18E56562A509DAC00C3F9E1 /* TBCScene.swift in Sources */,
 				B71AA06C2A4E7B1D00C2B4E4 /* PositionComponent.swift in Sources */,
 				34B9B2042A458BA6001F4A39 /* KalimbaScene.swift in Sources */,
 				533B760D2A4E775D009015F9 /* InnTotScene.swift in Sources */,
@@ -1144,6 +1181,17 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B18E56512A5083A400C3F9E1 /* XCRemoteSwiftPackageReference "FLAnimatedImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Flipboard/FLAnimatedImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
 	};
 	rootObject = 04CAE9492A32D68000F59461 /* Project object */;
 }

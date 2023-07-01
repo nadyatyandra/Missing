@@ -20,9 +20,12 @@ class GameData : ObservableObject {
     @Published var isPeeled = false
     @Published var isMove = true
     
+    
     @Published var popUpName = ""
     @Published var imageDetailName = ""
     @Published var animationDetailName = ""
+    
+    @Published var enemySprite: SKSpriteNode?
     
     @Published var lockSprite: SKSpriteNode?
     @Published var lockUnlocked = false
@@ -34,13 +37,22 @@ class GameData : ObservableObject {
     
     static let shared = GameData()
     
+    func closePopUp(){
+        if isThirdPopUpVisible{
+            isThirdPopUpVisible = false
+            isSecondPopUpVisible = false
+        }else if isSecondPopUpVisible{
+            isSecondPopUpVisible = false
+        }else if isPopUpVisible{
+            isPopUpVisible = false
+        }
+    }
+    
     func transitionScene(scene: SKScene, toScene: String) {
+        closePopUp()
         let transitionScene = SKScene(fileNamed: toScene)
         transitionScene!.scaleMode = scene.scaleMode
-        
-//        let fadeInAction = SKAction.fadeIn(withDuration: 1.5)
-//        scene.run(fadeInAction)
-        
+
         let transition = SKTransition.fade(with: UIColor.black, duration: 3)
         scene.view?.presentScene(transitionScene!, transition: transition)
     }
@@ -62,7 +74,6 @@ class GameData : ObservableObject {
         scene.addChild(videoNode)
         self.isMove = false
         // Play the video
-        
         player.play()
         DispatchQueue.main.asyncAfter(deadline: .now() + durationVideo) {
             videoNode.removeFromParent()
