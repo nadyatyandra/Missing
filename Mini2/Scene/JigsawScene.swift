@@ -7,9 +7,10 @@
 
 import SpriteKit
 import GameplayKit
+import SwiftUI
 
 class JigsawScene: SKScene {
-    
+    @ObservedObject var viewModel = GameData.shared
     var entities = [GKEntity]()
     var puzzle : Puzzle!
     var debug = false
@@ -119,12 +120,14 @@ class JigsawScene: SKScene {
             if let hasNewPuzzle = self.puzzle.nextPuzzle {
                 scene = JigsawScene.scene(named: hasNewPuzzle)
             } else {
-                scene = JigsawScene(size: self.size)
-                scene.puzzle = self.puzzle
-                scene.scaleMode = self.scaleMode
+                self.viewModel.isPopUpVisible = false
+
+//                scene = JigsawScene(size: self.size)
+//                scene.puzzle = self.puzzle
+//                scene.scaleMode = self.scaleMode
             }
-            let transition = SKTransition.crossFade(withDuration: 1)
-            self.view?.presentScene(scene, transition: transition)
+            let transition = SKTransition.crossFade(withDuration: 0.3)
+//            self.view?.presentScene(scene, transition: transition)
         }
         let newScene = SKAction.sequence([wait, transition])
         self.run(newScene)
