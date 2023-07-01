@@ -11,7 +11,6 @@ import SwiftUI
 
 class DeskDetailScene: SKScene{
     @ObservedObject var viewModel: GameData = GameData.shared
-//    var bgDesk : SKSpriteNode?
     var employeeFileBook : SKSpriteNode?
     
     override func didMove(to view: SKView) {
@@ -27,15 +26,6 @@ class DeskDetailScene: SKScene{
                 viewModel.isSecondPopUpVisible = true
                 viewModel.isThirdPopUpVisible = true
             }
-//
-//            if let touchedNode = atPoint(location) as? SKSpriteNode, touchedNode == bgDesk {
-//                if viewModel.isSecondPopUpVisible{
-//                    viewModel.isSecondPopUpVisible = false
-//                } else{
-//                    viewModel.isPopUpVisible = false
-//                }
-//            }
         }
     }
 }
-

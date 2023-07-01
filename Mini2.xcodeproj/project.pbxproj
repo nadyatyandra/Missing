@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		044302212A501038005C4102 /* YearbookPeelEffectLoopingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044302202A501038005C4102 /* YearbookPeelEffectLoopingView.swift */; };
+		044302232A501087005C4102 /* HorizontalYearbookPeelEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044302222A501087005C4102 /* HorizontalYearbookPeelEffectView.swift */; };
 		04CAE9552A32D68000F59461 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CAE9542A32D68000F59461 /* AppDelegate.swift */; };
 		04CAE9572A32D68000F59461 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 04CAE9562A32D68000F59461 /* GameScene.sks */; };
 		04CAE95B2A32D68000F59461 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CAE95A2A32D68000F59461 /* GameScene.swift */; };
@@ -16,9 +18,9 @@
 		04CAE96F2A32D68100F59461 /* Mini2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CAE96E2A32D68100F59461 /* Mini2Tests.swift */; };
 		04CAE9792A32D68100F59461 /* Mini2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CAE9782A32D68100F59461 /* Mini2UITests.swift */; };
 		04CAE97B2A32D68100F59461 /* Mini2UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CAE97A2A32D68100F59461 /* Mini2UITestsLaunchTests.swift */; };
-		04EA36A52A4EF33B000AFEB0 /* PeelEffectLoopingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EA36A42A4EF33B000AFEB0 /* PeelEffectLoopingView.swift */; };
+		04EA36A52A4EF33B000AFEB0 /* EmployeeDiaryPeelEffectLoopingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EA36A42A4EF33B000AFEB0 /* EmployeeDiaryPeelEffectLoopingView.swift */; };
 		04EA36A72A4EF428000AFEB0 /* HorizontalEmployeeDiaryPeelEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EA36A62A4EF428000AFEB0 /* HorizontalEmployeeDiaryPeelEffectView.swift */; };
-		04EA36A92A4EF47A000AFEB0 /* VerticalEmployeeDiaryPeelEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EA36A82A4EF47A000AFEB0 /* VerticalEmployeeDiaryPeelEffectView.swift */; };
+		04EA36A92A4EF47A000AFEB0 /* VerticalYearbookPeelEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EA36A82A4EF47A000AFEB0 /* VerticalYearbookPeelEffectView.swift */; };
 		04EA36AC2A4EF65D000AFEB0 /* DeskDetailScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EA36AB2A4EF65D000AFEB0 /* DeskDetailScene.swift */; };
 		04EA36AE2A4EF676000AFEB0 /* DeskDetailScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 04EA36AD2A4EF676000AFEB0 /* DeskDetailScene.sks */; };
 		3479E2562A4EBA0300F24D90 /* running.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3479E2542A4EBA0300F24D90 /* running.mp3 */; };
@@ -105,6 +107,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		044302202A501038005C4102 /* YearbookPeelEffectLoopingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearbookPeelEffectLoopingView.swift; sourceTree = "<group>"; };
+		044302222A501087005C4102 /* HorizontalYearbookPeelEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalYearbookPeelEffectView.swift; sourceTree = "<group>"; };
 		04CAE9512A32D68000F59461 /* Mini2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mini2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04CAE9542A32D68000F59461 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04CAE9562A32D68000F59461 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -118,9 +122,9 @@
 		04CAE9742A32D68100F59461 /* Mini2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Mini2UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		04CAE9782A32D68100F59461 /* Mini2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mini2UITests.swift; sourceTree = "<group>"; };
 		04CAE97A2A32D68100F59461 /* Mini2UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mini2UITestsLaunchTests.swift; sourceTree = "<group>"; };
-		04EA36A42A4EF33B000AFEB0 /* PeelEffectLoopingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeelEffectLoopingView.swift; sourceTree = "<group>"; };
+		04EA36A42A4EF33B000AFEB0 /* EmployeeDiaryPeelEffectLoopingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeDiaryPeelEffectLoopingView.swift; sourceTree = "<group>"; };
 		04EA36A62A4EF428000AFEB0 /* HorizontalEmployeeDiaryPeelEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalEmployeeDiaryPeelEffectView.swift; sourceTree = "<group>"; };
-		04EA36A82A4EF47A000AFEB0 /* VerticalEmployeeDiaryPeelEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalEmployeeDiaryPeelEffectView.swift; sourceTree = "<group>"; };
+		04EA36A82A4EF47A000AFEB0 /* VerticalYearbookPeelEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalYearbookPeelEffectView.swift; sourceTree = "<group>"; };
 		04EA36AB2A4EF65D000AFEB0 /* DeskDetailScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeskDetailScene.swift; sourceTree = "<group>"; };
 		04EA36AD2A4EF676000AFEB0 /* DeskDetailScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = DeskDetailScene.sks; sourceTree = "<group>"; };
 		3479E2542A4EBA0300F24D90 /* running.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = running.mp3; sourceTree = "<group>"; };
@@ -270,8 +274,10 @@
 			isa = PBXGroup;
 			children = (
 				04EA36A62A4EF428000AFEB0 /* HorizontalEmployeeDiaryPeelEffectView.swift */,
-				04EA36A82A4EF47A000AFEB0 /* VerticalEmployeeDiaryPeelEffectView.swift */,
-				04EA36A42A4EF33B000AFEB0 /* PeelEffectLoopingView.swift */,
+				04EA36A42A4EF33B000AFEB0 /* EmployeeDiaryPeelEffectLoopingView.swift */,
+				044302222A501087005C4102 /* HorizontalYearbookPeelEffectView.swift */,
+				04EA36A82A4EF47A000AFEB0 /* VerticalYearbookPeelEffectView.swift */,
+				044302202A501038005C4102 /* YearbookPeelEffectLoopingView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -711,6 +717,7 @@
 				B18E56262A4C919400C3F9E1 /* GameData.swift in Sources */,
 				B71AA0722A4E7B6700C2B4E4 /* ScaleComponent.swift in Sources */,
 				B18E56022A4A8DD700C3F9E1 /* ContentView.swift in Sources */,
+				044302232A501087005C4102 /* HorizontalYearbookPeelEffectView.swift in Sources */,
 				534C8D052A4BFC440033D8D1 /* CorridorScene.swift in Sources */,
 				B71AA06E2A4E7B3900C2B4E4 /* InteractionComponent.swift in Sources */,
 				B71AA0742A4E7B7D00C2B4E4 /* InteractionComponent+Interact.swift in Sources */,
@@ -718,13 +725,14 @@
 				B71AA0642A4E7A7B00C2B4E4 /* JigsawScene.swift in Sources */,
 				B71AA0802A4E7D0A00C2B4E4 /* JigsawViewController.swift in Sources */,
 				B71AA0762A4E7B9800C2B4E4 /* SnappingComponent+Snap.swift in Sources */,
-				04EA36A52A4EF33B000AFEB0 /* PeelEffectLoopingView.swift in Sources */,
+				04EA36A52A4EF33B000AFEB0 /* EmployeeDiaryPeelEffectLoopingView.swift in Sources */,
 				B71AA06A2A4E7B0000C2B4E4 /* SpriteComponent.swift in Sources */,
 				B71AA07E2A4E7CC400C2B4E4 /* JigsawScene+touch.swift in Sources */,
 				53B979BB2A4746AF004F71D5 /* PlaytestScreen.swift in Sources */,
 				34B9B2152A45A310001F4A39 /* SoundComponent.swift in Sources */,
 				B71AA07A2A4E7BC700C2B4E4 /* CGPoint+math.swift in Sources */,
 				B18E56172A4C37D900C3F9E1 /* ShelfScene.swift in Sources */,
+				044302212A501038005C4102 /* YearbookPeelEffectLoopingView.swift in Sources */,
 				04CAE95B2A32D68000F59461 /* GameScene.swift in Sources */,
 				B119E13A2A472916001C7CEB /* LockScene.swift in Sources */,
 				B71AA0702A4E7B5000C2B4E4 /* SnappingComponent.swift in Sources */,
@@ -739,7 +747,7 @@
 				B71AA06C2A4E7B1D00C2B4E4 /* PositionComponent.swift in Sources */,
 				34B9B2042A458BA6001F4A39 /* KalimbaScene.swift in Sources */,
 				533B760D2A4E775D009015F9 /* InnTotScene.swift in Sources */,
-				04EA36A92A4EF47A000AFEB0 /* VerticalEmployeeDiaryPeelEffectView.swift in Sources */,
+				04EA36A92A4EF47A000AFEB0 /* VerticalYearbookPeelEffectView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

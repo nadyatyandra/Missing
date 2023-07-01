@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct HorizontalEmployeeDiaryPeelEffect<Content: View>: View {
+struct HorizontalEmployeeDiaryPeelEffectView<Content: View>: View {
     @State private var dragProgress: CGFloat = 0
     var content: Content
     var onComplete: (() -> ())?
