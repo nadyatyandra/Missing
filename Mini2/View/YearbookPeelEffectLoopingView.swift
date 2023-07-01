@@ -10,6 +10,7 @@ import SwiftUI
 import AVFoundation
 
 struct YearbookPeelEffectLoopingView: View {
+    @ObservedObject var viewModel = GameData.shared
     @State var openedPages: Set<String> = []
     var numberOfPages: Int
     var bookType: String
@@ -57,6 +58,9 @@ struct YearbookPeelEffectLoopingView: View {
                             .ignoresSafeArea()
                     } onComplete: {
                         self.openedPages.insert("\(bookType)\(pageID)")
+                        if self.openedPages.count > 2 {
+                                viewModel.createInnTot(duration: 3, label: "Why is the bottom of the page peeling off?")
+                        }
                     }
                     .offset(x: xOffset, y: yOffset)
                     .zIndex(Double(pageID))

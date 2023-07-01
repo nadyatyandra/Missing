@@ -171,7 +171,7 @@ class ModernLibraryScene: SKScene, SKPhysicsContactDelegate {
             initialTouchPosition = touch.location(in: view)
             startMoving = true
             viewModel.isPopUpVisible = false
-            viewModel.isInnTotVisible = false
+            self.viewModel.isInnTotVisible = false  
         }
         
         for touch in touches {
@@ -284,7 +284,7 @@ class ModernLibraryScene: SKScene, SKPhysicsContactDelegate {
         } else if touchedNode.name == "Desk" {
             deskSound.playSound(soundName: "table interact")
             presentImageDetail(imageDetailName: "DetailDeskML")
-            viewModel.createInnTot(duration: 3, label: "The librarian's not here")
+            viewModel.createInnTot(duration: 3, label: "The desk is empty")
         } else if touchedNode.name == "BookGlowing" {
             bookSound.playSound(soundName: "book interact")
             viewModel.isFourthPopUpVisible = true

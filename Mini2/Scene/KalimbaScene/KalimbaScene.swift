@@ -108,6 +108,7 @@ class KalimbaScene: SKScene {
             
             if let touchedNode = atPoint(location) as? SKSpriteNode, touchedNode == bgKalimba {
                 viewModel.isPopUpVisible = false
+                viewModel.isInnTotVisible = false
             }
         }
     }

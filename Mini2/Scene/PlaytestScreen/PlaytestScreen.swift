@@ -213,7 +213,7 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
             
             viewModel.isPopUpVisible = false
             viewModel.isSecondPopUpVisible = false
-            self.isPaused = false
+            viewModel.isInnTotVisible = false
         }
         
         for touch in touches {
@@ -333,7 +333,7 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
         } else if touchedNode == cupboardSprite && viewModel.lockUnlocked {
             cupboardSound.playSound(soundName: "shelf interact")
             presentPopUpScene(popUpSceneName: "ShelfScene")
-            viewModel.createInnTot(duration: 3, label: "Nice, i
+            viewModel.createInnTot(duration: 3, label: "Nice, its open")
         } else if touchedNode == viewModel.windowSprite && viewModel.windowSprite?.texture?.description.components(separatedBy: "'")[1] == "Broken window" {
             viewModel.transitionScene(scene: self, toScene: "CorridorScene")
         } else if touchedNode == photoSprite {

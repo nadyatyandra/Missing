@@ -92,6 +92,7 @@ class LockScene: SKScene{
             
             if let touchedNode = atPoint(location) as? SKSpriteNode, touchedNode == bgLock {
                 viewModel.isPopUpVisible = false
+                viewModel.isInnTotVisible = false
             }
         }
     }
