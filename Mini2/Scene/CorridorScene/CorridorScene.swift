@@ -25,7 +25,6 @@ class CorridorScene: SKScene, SKPhysicsContactDelegate {
     var playerMovementComponent: MovementComponent!
     
     //Enemy
-    var enemySprite: SKSpriteNode!
     var enemyEntity: GKEntity!
     var enemyMovementComponent: MovementComponent!
     
@@ -93,7 +92,7 @@ class CorridorScene: SKScene, SKPhysicsContactDelegate {
         floor = self.childNode(withName: "Floor") as? SKSpriteNode
         innTot = cameraNode.childNode(withName: "InnTot")
         innTotLabel = innTot.childNode(withName: "InnTotLabel") as? SKLabelNode
-        enemySprite = self.childNode(withName: "Enemy") as? SKSpriteNode
+        viewModel.enemySprite = self.childNode(withName: "Enemy") as? SKSpriteNode
         brokenWindow = self.childNode(withName: "BrokenWindow") as? SKSpriteNode
         doorRight = self.childNode(withName: "DoorRight") as? SKSpriteNode
         cameraMarker = self.childNode(withName: "CameraMarker")
@@ -105,7 +104,7 @@ class CorridorScene: SKScene, SKPhysicsContactDelegate {
         playerMovementComponent = playerEntity.component(ofType: MovementComponent.self)
         
         //Assign movement component to enemy
-        enemyEntity = createEntity(node: enemySprite, wantMovementComponent: true)
+        enemyEntity = createEntity(node: viewModel.enemySprite!, wantMovementComponent: true)
         entities.append(enemyEntity)
         enemyMovementComponent = enemyEntity.component(ofType: MovementComponent.self)
         
@@ -254,7 +253,7 @@ class CorridorScene: SKScene, SKPhysicsContactDelegate {
             spawnEnemy()
         }
         if chaseStarted {
-            if (nodeA == playerSprite && nodeB == enemySprite) || (nodeA == enemySprite && nodeB == playerSprite) {
+            if (nodeA == playerSprite && nodeB == viewModel.enemySprite) || (nodeA == viewModel.enemySprite && nodeB == playerSprite) {
                 if nodeA == playerSprite {
                     nodeA?.removeFromParent()
                     viewModel.transitionScene(scene: self, toScene: "GameOverScene")
@@ -314,6 +313,12 @@ class CorridorScene: SKScene, SKPhysicsContactDelegate {
         
         if touchedNode.name == "Mading"{
             presentJigsawPuzzle(popUpSceneName: "JigsawScene")
+            viewModel.enemySprite?.isPaused = true
+            playerSprite.isPaused = true
+        }
+        
+        if touchedNode.name == "DoorRight"{
+            viewModel.transitionScene(scene: self, toScene: "TBCScene")
         }
         
     }
@@ -328,15 +333,16 @@ class CorridorScene: SKScene, SKPhysicsContactDelegate {
         
         let enemyWait = SKAction.wait(forDuration: cameraMoveTime)
         let fadeIn = SKAction.fadeIn(withDuration: fadeTime)
-        let chase = SKAction.move(to: CGPoint(x: doorRight!.position.x,y: enemySprite.position.y), duration: chaseTime)
+        let chase = SKAction.move(to: CGPoint(x: doorRight!.position.x,y: viewModel.enemySprite!.position.y), duration: chaseTime)
         let spawnEnemy = SKAction.sequence([enemyWait,fadeIn,chase])
         
-        let moveToWindow = SKAction.move(to: enemySprite.position, duration: cameraMoveTime)
+        let moveToWindow = SKAction.move(to: viewModel.enemySprite!.position, duration: cameraMoveTime)
         let markerWait = SKAction.wait(forDuration: moveBackTime)
-        let moveToPlayer = SKAction.move(to: CGPoint(x: playerSprite!.position.x,y: enemySprite.position.y), duration: cameraMoveBackTime)
+        let moveToPlayer = SKAction.move(to: CGPoint(x: playerSprite!.position.x,y: viewModel.enemySprite!.position.y), duration: cameraMoveBackTime)
         let moveCamera = SKAction.sequence([moveToWindow,markerWait,moveToPlayer])
         
-        enemySprite.run(spawnEnemy)
+        viewModel.enemySprite!.run(spawnEnemy)
+        
         cameraMarker.run(moveCamera)
         cameraNode.constraints = [enemyConstraint!,edgeConstraint!]
         playerMovementComponent.stopMoving()
@@ -366,7 +372,5 @@ class CorridorScene: SKScene, SKPhysicsContactDelegate {
             self.playerMovementComponent.maxSpriteSpeed = 15
             self.playerMovementComponent.isRunning = true
         }
-        
-        
     }
 }

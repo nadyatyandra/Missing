@@ -15,7 +15,7 @@ struct ContentView: View {
     @State var isPopupOn = GameData.shared
     
     var scene: SKScene {
-        let scene: SKScene = SKScene(fileNamed: "ModernLibraryScene")!
+        let scene: SKScene = SKScene(fileNamed: "SplashScene")!
         scene.size = CGSize(width: 2732, height: 2048)
         scene.scaleMode = .aspectFill
         return scene
@@ -62,6 +62,7 @@ struct ContentView: View {
                         viewModel.isPopUpVisible = false
                     }
                     viewModel.isInnTotVisible = false
+                    viewModel.enemySprite?.isPaused = false
                 } label: {
                     Rectangle()
                         .fill(Color.black.opacity(0.5))

@@ -146,6 +146,7 @@ class ModernLibraryScene: SKScene, SKPhysicsContactDelegate {
         
         if viewModel.isPeeled {
             viewModel.isPeeled = false
+            playerSprite.removeFromParent()
             viewModel.playVideo(scene: self, videoName: "TransitionOld", videoExt: "mp4",  xPos: cameraNode.position.x, yPos: cameraNode.position.y, durationVideo: 3, toScene: "PlaytestScreen")
             viewModel.isFourthPopUpVisible = false
         }

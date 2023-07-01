@@ -72,7 +72,7 @@ class LockScene: SKScene{
             }
             
             if let touchedNode = atPoint(location) as? SKSpriteNode, touchedNode == confirmLock {
-                if(lockNumbers[0].texture?.description.components(separatedBy: "'")[1] == "number9" && lockNumbers[1].texture?.description.components(separatedBy: "'")[1] == "number9" && lockNumbers[2].texture?.description.components(separatedBy: "'")[1] == "number9" && lockNumbers[3].texture?.description.components(separatedBy: "'")[1] == "number9" ){
+                if(lockNumbers[0].texture?.description.components(separatedBy: "'")[1] == "number1" && lockNumbers[1].texture?.description.components(separatedBy: "'")[1] == "number9" && lockNumbers[2].texture?.description.components(separatedBy: "'")[1] == "number6" && lockNumbers[3].texture?.description.components(separatedBy: "'")[1] == "number4" ){
                     print("success")
                     soundComponent.playSound(soundName: "number lock success")
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
