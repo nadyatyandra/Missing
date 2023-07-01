@@ -314,7 +314,6 @@ class CorridorScene: SKScene, SKPhysicsContactDelegate {
         if touchedNode.name == "Mading"{
             presentJigsawPuzzle(popUpSceneName: "JigsawScene")
             viewModel.enemySprite?.isPaused = true
-            playerSprite.isPaused = true
         }
         
         if touchedNode.name == "DoorRight"{
