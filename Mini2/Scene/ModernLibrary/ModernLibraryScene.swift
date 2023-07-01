@@ -32,7 +32,7 @@ class ModernLibraryScene: SKScene, SKPhysicsContactDelegate {
     var floor: SKSpriteNode!
     var desk: SKSpriteNode!
     var painting: SKSpriteNode!
-    
+    var book: SKSpriteNode!
     //Inner Thought
     var innTot: SKNode!
     var innTotLabel: SKLabelNode!
@@ -56,6 +56,7 @@ class ModernLibraryScene: SKScene, SKPhysicsContactDelegate {
     var bgmScene: BGMScene!
     var deskSound: SoundComponent!
     var paintingSound: SoundComponent!
+    var bookSound: SoundComponent!
     
     override func sceneDidLoad() {
         self.lastUpdateTime = 0
@@ -83,7 +84,9 @@ class ModernLibraryScene: SKScene, SKPhysicsContactDelegate {
         tutorialCollision = self.childNode(withName: "TutorialCollision")
         desk = self.childNode(withName: "Desk") as? SKSpriteNode
         painting = self.childNode(withName: "Photo") as? SKSpriteNode
+        book = self.childNode(withName: "BookGlowing") as? SKSpriteNode
         
+        bookSound = SoundComponent(node: book)
         deskSound = SoundComponent(node: desk)
         paintingSound = SoundComponent(node: painting)
         //Assign movement component to playerEntity
@@ -93,16 +96,6 @@ class ModernLibraryScene: SKScene, SKPhysicsContactDelegate {
         
         //Load animation frames
         playerMovementComponent.loadWalkAnim(frames: 14, framesInterval: 0.08)
-        
-        //Assign movement component to enemy
-        //        enemyEntity = createEntity(node: enemySprite, wantMovementComponent: true)
-        //        entities.append(enemyEntity)
-        
-        //Add movement component to system
-        //        for entity in entities {
-        //            movementComponentSystem.addComponent(foundIn: entity)
-        //        }
-        
         
         //Camera Constraints
         let range = SKRange(constantValue: 0)
@@ -120,7 +113,6 @@ class ModernLibraryScene: SKScene, SKPhysicsContactDelegate {
         
         //Hide InnTot
         innTot.alpha = 0
-//        createInnTot(duration: 3, label: "Its already 5 and I'm not picked up yet")
     }
     
     override func willMove(from view: SKView) {
@@ -148,18 +140,15 @@ class ModernLibraryScene: SKScene, SKPhysicsContactDelegate {
         
         self.lastUpdateTime = currentTime
         
-        //Move Player
-        //        for case let component as MovementComponent in movementComponentSystem.components {
-        //            if component.node.name == "Player" {
-        //                component.move(to: joystickVelocity)
-        //            } else {
-        //                component.move(to: 50)
-        //            }
-        //        }
         if !tutorialTriggered {
             playerMovementComponent.move(to: joystickVelocity)
         }
         
+        if viewModel.isPeeled {
+            viewModel.isPeeled = false
+            viewModel.playVideo(scene: self, videoName: "TransOld", videoExt: "mp4",  xPos: cameraNode.position.x, yPos: cameraNode.position.y, durationVideo: 3, toScene: "PlaytestScreen")
+            viewModel.isFourthPopUpVisible = false
+        }
     }
     
     func presentPopUpScene(popUpSceneName: String){
@@ -168,13 +157,11 @@ class ModernLibraryScene: SKScene, SKPhysicsContactDelegate {
         
         viewModel.popUpName = popUpSceneName
         viewModel.isPopUpVisible.toggle()
-//        self.isPaused = true
     }
     
     func presentImageDetail(imageDetailName: String){
         viewModel.imageDetailName = imageDetailName
         viewModel.isSecondPopUpVisible.toggle()
-//        self.isPaused = true
     }
     
     
@@ -185,7 +172,6 @@ class ModernLibraryScene: SKScene, SKPhysicsContactDelegate {
             startMoving = true
             viewModel.isPopUpVisible = false
             viewModel.isInnTotVisible = false
-//            self.isPaused = false
         }
         
         for touch in touches {
@@ -212,7 +198,6 @@ class ModernLibraryScene: SKScene, SKPhysicsContactDelegate {
                     }
                 }
             }
-            
         }
     }
     
@@ -301,8 +286,9 @@ class ModernLibraryScene: SKScene, SKPhysicsContactDelegate {
             presentImageDetail(imageDetailName: "DetailDeskML")
             viewModel.createInnTot(duration: 3, label: "The librarian's not here")
         } else if touchedNode.name == "BookGlowing" {
-            viewModel.playVideo(scene: self, videoName: "TransOld", videoExt: "mp4",  xPos: cameraNode.position.x, yPos: cameraNode.position.y, durationVideo: 3, toScene: "PlaytestScreen")
-        }else if touchedNode.name == "Photo" {
+            bookSound.playSound(soundName: "book interact")
+            viewModel.isFourthPopUpVisible = true
+        } else if touchedNode.name == "Photo" {
             paintingSound.playSound(soundName: "painting interact")
             presentImageDetail(imageDetailName: "DetailPhotoML")
             viewModel.createInnTot(duration: 3, label: "These faces looks familiar")
