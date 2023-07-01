@@ -18,6 +18,7 @@ class GameData : ObservableObject {
     @Published var isFifthPopUpVisible = false //diary animation
     @Published var isInnTotVisible = false //InnTot
     @Published var isPeeled = false
+    @Published var isMove = true
     
     @Published var popUpName = ""
     @Published var imageDetailName = ""
@@ -37,10 +38,10 @@ class GameData : ObservableObject {
         let transitionScene = SKScene(fileNamed: toScene)
         transitionScene!.scaleMode = scene.scaleMode
         
-        let fadeInAction = SKAction.fadeIn(withDuration: 1.5)
-        scene.run(fadeInAction)
+//        let fadeInAction = SKAction.fadeIn(withDuration: 1.5)
+//        scene.run(fadeInAction)
         
-        let transition = SKTransition.fade(withDuration: 1.5)
+        let transition = SKTransition.fade(with: UIColor.black, duration: 3)
         scene.view?.presentScene(transitionScene!, transition: transition)
     }
     
@@ -53,17 +54,20 @@ class GameData : ObservableObject {
         // Create an SKVideoNode with the AVPlayer
         let videoNode = SKVideoNode(avPlayer: player)
         // Set the video node's size and position
+        videoNode.size = CGSize(width: 2732, height: 2048)
         videoNode.position = CGPoint(x: xPos, y: yPos)
         videoNode.zPosition = 2
         
         // Add the video node to the scene
         scene.addChild(videoNode)
+        self.isMove = false
         // Play the video
         
         player.play()
         DispatchQueue.main.asyncAfter(deadline: .now() + durationVideo) {
             videoNode.removeFromParent()
             self.transitionScene(scene: scene, toScene: toScene)
+            self.isMove = true
         }
     }
     

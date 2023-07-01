@@ -79,6 +79,7 @@
 		B18E56352A4E8F9A00C3F9E1 /* TransOld.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = B18E56342A4E8F9A00C3F9E1 /* TransOld.mp4 */; };
 		B18E56412A4EED9100C3F9E1 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18E56402A4EED9100C3F9E1 /* GameOverScene.swift */; };
 		B18E56432A4EED9A00C3F9E1 /* GameOverScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = B18E56422A4EED9A00C3F9E1 /* GameOverScene.sks */; };
+		B18E56472A50793800C3F9E1 /* TransitionOld.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = B18E56462A50793800C3F9E1 /* TransitionOld.mp4 */; };
 		B71AA0642A4E7A7B00C2B4E4 /* JigsawScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71AA0632A4E7A7B00C2B4E4 /* JigsawScene.swift */; };
 		B71AA0662A4E7ABC00C2B4E4 /* Puzzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71AA0652A4E7ABC00C2B4E4 /* Puzzle.swift */; };
 		B71AA0682A4E7AE400C2B4E4 /* Piece.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71AA0672A4E7AE400C2B4E4 /* Piece.swift */; };
@@ -188,6 +189,7 @@
 		B18E56342A4E8F9A00C3F9E1 /* TransOld.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = TransOld.mp4; sourceTree = "<group>"; };
 		B18E56402A4EED9100C3F9E1 /* GameOverScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
 		B18E56422A4EED9A00C3F9E1 /* GameOverScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameOverScene.sks; sourceTree = "<group>"; };
+		B18E56462A50793800C3F9E1 /* TransitionOld.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = TransitionOld.mp4; sourceTree = "<group>"; };
 		B71AA0632A4E7A7B00C2B4E4 /* JigsawScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JigsawScene.swift; sourceTree = "<group>"; };
 		B71AA0652A4E7ABC00C2B4E4 /* Puzzle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Puzzle.swift; sourceTree = "<group>"; };
 		B71AA0672A4E7AE400C2B4E4 /* Piece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Piece.swift; sourceTree = "<group>"; };
@@ -553,6 +555,7 @@
 		B18E56292A4DDC7100C3F9E1 /* Video */ = {
 			isa = PBXGroup;
 			children = (
+				B18E56462A50793800C3F9E1 /* TransitionOld.mp4 */,
 				B18E56342A4E8F9A00C3F9E1 /* TransOld.mp4 */,
 				B18E56302A4DDDFC00C3F9E1 /* videoplayback.mp4 */,
 			);
@@ -721,6 +724,7 @@
 				53B979B92A4746A3004F71D5 /* PlaytestScreen.sks in Resources */,
 				34B9B29C2A4EA7C3001F4A39 /* paper interact.mp3 in Resources */,
 				34B9B2812A4DD3C6001F4A39 /* number lock failed.mp3 in Resources */,
+				B18E56472A50793800C3F9E1 /* TransitionOld.mp4 in Resources */,
 				534C8D072A4BFC590033D8D1 /* CorridorScene.sks in Resources */,
 				3479E25C2A4ED2BC00F24D90 /* painting interact.mp3 in Resources */,
 				B18E56142A4C37C000C3F9E1 /* ShelfScene.sks in Resources */,
