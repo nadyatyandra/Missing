@@ -301,11 +301,13 @@ class ModernLibraryScene: SKScene, SKPhysicsContactDelegate {
             presentImageDetail(imageDetailName: "DetailDeskML")
             viewModel.createInnTot(duration: 3, label: "The librarian's not here")
         } else if touchedNode.name == "BookGlowing" {
-            viewModel.playVideo(scene: self, videoName: "TransOld", videoExt: "mp4",  xPos: cameraNode.position.x, yPos: cameraNode.position.y, durationVideo: 3, toScene: "PlaytestScreen")
-        }else if touchedNode.name == "Photo" {
+            bookSound.playSound(soundName: "book interact")
+            viewModel.isFourthPopUpVisible = true
+            viewModel.createInnTot(duration: 3, label: "I guess this is the school's history book")
+        } else if touchedNode.name == "Photo" {
             paintingSound.playSound(soundName: "painting interact")
             presentImageDetail(imageDetailName: "DetailPhotoML")
-            viewModel.createInnTot(duration: 3, label: "These faces looks familiar")
+            viewModel.createInnTot(duration: 3, label: "This was taken recently")
         } else if let nodeName = touchedNode.name, let comboDescription = combos[nodeName] {
             createInnTot(duration: 3, label: comboDescription)
         }

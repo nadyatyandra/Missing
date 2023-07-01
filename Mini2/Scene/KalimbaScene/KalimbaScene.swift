@@ -88,6 +88,7 @@ class KalimbaScene: SKScene {
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
 //                                self.successScreen()
                                 self.viewModel.isPopUpVisible = false
+                                self.viewModel.createInnTot(duration: 3, label: "What the? Did something break?")
                             }
                             viewModel.windowSprite?.texture = SKTexture(imageNamed: "Broken window")
                             

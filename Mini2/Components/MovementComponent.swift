@@ -103,9 +103,11 @@ class MovementComponent: GKComponent{
             })
         } else {
             spriteNode?.run(walkAnimation!, withKey: "moving")
-            spriteNode?.run(SKAction.run {
-                self.playSoundEffect(soundName: "walking")
-            })
+            if node.name != "Enemy" {
+                spriteNode?.run(SKAction.run {
+                    self.playSoundEffect(soundName: "walking")
+                })
+            }
         }
     }
     
