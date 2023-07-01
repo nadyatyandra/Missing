@@ -42,6 +42,7 @@ class KalimbaScene: SKScene {
     }
     
     func validationKalimbaKeys(userInputKalimba:String, index:Int) -> Bool{
+        guard !viewModel.kalimbaSolved else {return false}
         if userInputKalimba.elementsEqual(correctKalimbaKeys[index]){
             return true
         } else {
@@ -82,7 +83,8 @@ class KalimbaScene: SKScene {
                     
                     if validationKalimbaKeys(userInputKalimba: "k\(id)", index: index){
                         userInputKalimbaKeys.append("k\(id)")
-                        if userInputKalimbaKeys.count == correctKalimbaKeys.count{
+                        if userInputKalimbaKeys.count == correctKalimbaKeys.count && !viewModel.kalimbaSolved{
+                            viewModel.kalimbaSolved = true
                             soundComponent.playSound(soundName: "glass shatter")
                             soundComponent.playSound(soundName: "ghost scream")
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {

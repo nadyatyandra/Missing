@@ -32,6 +32,8 @@ class GameData : ObservableObject {
     @Published var innTotText: String = ""
     @Published var innTotDuration: Double = 1
     
+    @Published var kalimbaSolved: Bool = false
+    
     static let shared = GameData()
     
     func transitionScene(scene: SKScene, toScene: String) {
