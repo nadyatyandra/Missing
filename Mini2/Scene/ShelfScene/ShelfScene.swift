@@ -55,6 +55,7 @@ class ShelfScene: SKScene{
                 }else{
                     viewModel.isPopUpVisible = false
                 }
+                viewModel.isInnTotVisible = false
             }
         }
     }

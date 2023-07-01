@@ -35,6 +35,8 @@ class GameData : ObservableObject {
     @Published var innTotText: String = ""
     @Published var innTotDuration: Double = 1
     
+    @Published var kalimbaSolved: Bool = false
+    
     static let shared = GameData()
     
     func closePopUp(){
@@ -86,13 +88,16 @@ class GameData : ObservableObject {
         innTotText = label
         innTotDuration = duration
         
-        if isInnTotVisible {
-            isInnTotVisible = false
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+        DispatchQueue.main.async {
+            if self.isInnTotVisible {
+                self.isInnTotVisible = false
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    self.isInnTotVisible = true
+                }
+            } else {
                 self.isInnTotVisible = true
             }
-        } else {
-            isInnTotVisible = true
         }
+        
     }
 }

@@ -10,7 +10,7 @@ import AVFoundation
 
 struct VerticalYearbookPeelEffectView<Content: View>: View {
     @ObservedObject var viewModel = GameData.shared
-    @State private var dragProgress: CGFloat = 0
+    @State private var dragProgress: CGFloat = 0.1
     @State private var audioPlayer: AVAudioPlayer?
     
     var content: Content
