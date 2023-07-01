@@ -33,10 +33,10 @@ class GameData : ObservableObject {
         let transitionScene = SKScene(fileNamed: toScene)
         transitionScene!.scaleMode = scene.scaleMode
         
-        let fadeInAction = SKAction.fadeIn(withDuration: 1.5)
+        let fadeInAction = SKAction.fadeIn(withDuration: 2)
         scene.run(fadeInAction)
         
-        let transition = SKTransition.fade(withDuration: 1.5)
+        let transition = SKTransition.fade(withDuration: 2)
         scene.view?.presentScene(transitionScene!, transition: transition)
     }
     
@@ -85,7 +85,7 @@ struct ContentView: View {
     @ObservedObject var viewModel = GameData.shared
     @State var isPopupOn = GameData.shared
     var scene: SKScene {
-        let scene: SKScene = SKScene(fileNamed: "CorridorScene")!
+        let scene: SKScene = SKScene(fileNamed: "GameOverScene")!
 //        let scene = JigsawScene.scene(named: "person.json")
         //        let scene = JigsawScene.scene(named: "person.json")
         scene.size = CGSize(width: 2732, height: 2048)

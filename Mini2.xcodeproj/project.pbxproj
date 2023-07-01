@@ -67,6 +67,8 @@
 		B18E56262A4C919400C3F9E1 /* GameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18E56252A4C919400C3F9E1 /* GameData.swift */; };
 		B18E56312A4DDDFC00C3F9E1 /* videoplayback.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = B18E56302A4DDDFC00C3F9E1 /* videoplayback.mp4 */; };
 		B18E56352A4E8F9A00C3F9E1 /* TransOld.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = B18E56342A4E8F9A00C3F9E1 /* TransOld.mp4 */; };
+		B18E56412A4EED9100C3F9E1 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18E56402A4EED9100C3F9E1 /* GameOverScene.swift */; };
+		B18E56432A4EED9A00C3F9E1 /* GameOverScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = B18E56422A4EED9A00C3F9E1 /* GameOverScene.sks */; };
 		B71AA0642A4E7A7B00C2B4E4 /* JigsawScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71AA0632A4E7A7B00C2B4E4 /* JigsawScene.swift */; };
 		B71AA0662A4E7ABC00C2B4E4 /* Puzzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71AA0652A4E7ABC00C2B4E4 /* Puzzle.swift */; };
 		B71AA0682A4E7AE400C2B4E4 /* Piece.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71AA0672A4E7AE400C2B4E4 /* Piece.swift */; };
@@ -164,6 +166,8 @@
 		B18E56252A4C919400C3F9E1 /* GameData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameData.swift; sourceTree = "<group>"; };
 		B18E56302A4DDDFC00C3F9E1 /* videoplayback.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = videoplayback.mp4; sourceTree = "<group>"; };
 		B18E56342A4E8F9A00C3F9E1 /* TransOld.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = TransOld.mp4; sourceTree = "<group>"; };
+		B18E56402A4EED9100C3F9E1 /* GameOverScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
+		B18E56422A4EED9A00C3F9E1 /* GameOverScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameOverScene.sks; sourceTree = "<group>"; };
 		B71AA0632A4E7A7B00C2B4E4 /* JigsawScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JigsawScene.swift; sourceTree = "<group>"; };
 		B71AA0652A4E7ABC00C2B4E4 /* Puzzle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Puzzle.swift; sourceTree = "<group>"; };
 		B71AA0672A4E7AE400C2B4E4 /* Piece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Piece.swift; sourceTree = "<group>"; };
@@ -310,6 +314,7 @@
 		34B9B2062A458BF3001F4A39 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				B18E563F2A4EED8000C3F9E1 /* GameOverScene */,
 				B71AA0622A4E7A5700C2B4E4 /* JigsawScene */,
 				533B760B2A4E7731009015F9 /* InnTotScene */,
 				34B9B2732A4DD132001F4A39 /* BGMScene */,
@@ -500,6 +505,15 @@
 			path = Video;
 			sourceTree = "<group>";
 		};
+		B18E563F2A4EED8000C3F9E1 /* GameOverScene */ = {
+			isa = PBXGroup;
+			children = (
+				B18E56402A4EED9100C3F9E1 /* GameOverScene.swift */,
+				B18E56422A4EED9A00C3F9E1 /* GameOverScene.sks */,
+			);
+			path = GameOverScene;
+			sourceTree = "<group>";
+		};
 		B71AA0622A4E7A5700C2B4E4 /* JigsawScene */ = {
 			isa = PBXGroup;
 			children = (
@@ -634,6 +648,7 @@
 				B18E56312A4DDDFC00C3F9E1 /* videoplayback.mp4 in Resources */,
 				3479E2562A4EBA0300F24D90 /* running.mp3 in Resources */,
 				34B9B29B2A4EA7C3001F4A39 /* glass shatter.mp3 in Resources */,
+				B18E56432A4EED9A00C3F9E1 /* GameOverScene.sks in Resources */,
 				B18E560D2A4C0FD500C3F9E1 /* k2.mp3 in Resources */,
 				04CAE9602A32D68000F59461 /* Main.storyboard in Resources */,
 				34B9B27A2A4DD224001F4A39 /* background music of new library.mp3 in Resources */,
@@ -707,6 +722,7 @@
 				34B9B2152A45A310001F4A39 /* SoundComponent.swift in Sources */,
 				B71AA07A2A4E7BC700C2B4E4 /* CGPoint+math.swift in Sources */,
 				B18E56172A4C37D900C3F9E1 /* ShelfScene.swift in Sources */,
+				B18E56412A4EED9100C3F9E1 /* GameOverScene.swift in Sources */,
 				04CAE95B2A32D68000F59461 /* GameScene.swift in Sources */,
 				B119E13A2A472916001C7CEB /* LockScene.swift in Sources */,
 				B71AA0702A4E7B5000C2B4E4 /* SnappingComponent.swift in Sources */,

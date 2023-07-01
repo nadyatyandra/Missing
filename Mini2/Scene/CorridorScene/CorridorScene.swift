@@ -259,6 +259,18 @@ class CorridorScene: SKScene, SKPhysicsContactDelegate {
             }
             spawnEnemy()
         }
+        if chaseStarted {
+            if (nodeA == playerSprite && nodeB == enemySprite) || (nodeA == enemySprite && nodeB == playerSprite) {
+                if nodeA == playerSprite {
+                    nodeA?.removeFromParent()
+                    viewModel.transitionScene(scene: self, toScene: "GameOverScene")
+                } else {
+                    nodeB?.removeFromParent()
+                    viewModel.transitionScene(scene: self, toScene: "GameOverScene")
+                }
+            }
+        }
+        
         
     }
     
