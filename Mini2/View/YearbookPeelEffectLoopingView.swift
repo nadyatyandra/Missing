@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import AVFoundation
 
 struct YearbookPeelEffectLoopingView: View {
     @State var openedPages: Set<String> = []
@@ -18,7 +19,7 @@ struct YearbookPeelEffectLoopingView: View {
     var flippedYOffset: CGFloat
     var xOffset: CGFloat
     var yOffset: CGFloat
-
+    
     init(numberOfPages: Int, bookType: String, frameWidth: CGFloat, frameHeight: CGFloat, flippedXOffset: CGFloat, flippedYOffset: CGFloat, xOffset: CGFloat, yOffset: CGFloat) {
         self.numberOfPages = numberOfPages
         self.bookType = bookType

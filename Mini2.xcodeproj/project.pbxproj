@@ -45,6 +45,11 @@
 		34B9B29D2A4EA7C3001F4A39 /* kalimba fall.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 34B9B2962A4EA7C3001F4A39 /* kalimba fall.mp3 */; };
 		34B9B29E2A4EA7C3001F4A39 /* table interact.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 34B9B2982A4EA7C3001F4A39 /* table interact.mp3 */; };
 		34B9B29F2A4EA7C3001F4A39 /* shelf interact.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 34B9B2992A4EA7C3001F4A39 /* shelf interact.mp3 */; };
+		34C2EBCC2A5044FF00D11119 /* turn diary.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 34C2EBC92A5044FF00D11119 /* turn diary.mp3 */; };
+		34C2EBCD2A5044FF00D11119 /* turn yearbook.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 34C2EBCA2A5044FF00D11119 /* turn yearbook.mp3 */; };
+		34C2EBCE2A5044FF00D11119 /* book interact.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 34C2EBCB2A5044FF00D11119 /* book interact.mp3 */; };
+		34C2EBD22A504AEA00D11119 /* diary interact.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 34C2EBD12A504AEA00D11119 /* diary interact.mp3 */; };
+		34C2EBD42A504FA700D11119 /* ghost appear two.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 34C2EBD32A504FA700D11119 /* ghost appear two.mp3 */; };
 		5339FBEE2A49318A00647CF1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04CAE9612A32D68100F59461 /* Assets.xcassets */; };
 		533B760D2A4E775D009015F9 /* InnTotScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533B760C2A4E775D009015F9 /* InnTotScene.swift */; };
 		533B760F2A4E777F009015F9 /* InnTotScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 533B760E2A4E777F009015F9 /* InnTotScene.sks */; };
@@ -148,6 +153,11 @@
 		34B9B2962A4EA7C3001F4A39 /* kalimba fall.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "kalimba fall.mp3"; sourceTree = "<group>"; };
 		34B9B2982A4EA7C3001F4A39 /* table interact.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "table interact.mp3"; sourceTree = "<group>"; };
 		34B9B2992A4EA7C3001F4A39 /* shelf interact.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "shelf interact.mp3"; sourceTree = "<group>"; };
+		34C2EBC92A5044FF00D11119 /* turn diary.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "turn diary.mp3"; sourceTree = "<group>"; };
+		34C2EBCA2A5044FF00D11119 /* turn yearbook.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "turn yearbook.mp3"; sourceTree = "<group>"; };
+		34C2EBCB2A5044FF00D11119 /* book interact.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "book interact.mp3"; sourceTree = "<group>"; };
+		34C2EBD12A504AEA00D11119 /* diary interact.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "diary interact.mp3"; sourceTree = "<group>"; };
+		34C2EBD32A504FA700D11119 /* ghost appear two.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "ghost appear two.mp3"; sourceTree = "<group>"; };
 		533B760C2A4E775D009015F9 /* InnTotScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InnTotScene.swift; sourceTree = "<group>"; };
 		533B760E2A4E777F009015F9 /* InnTotScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = InnTotScene.sks; sourceTree = "<group>"; };
 		534C8CFE2A4BD4A60033D8D1 /* ModernLibraryScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModernLibraryScene.swift; sourceTree = "<group>"; };
@@ -304,6 +314,7 @@
 			isa = PBXGroup;
 			children = (
 				3479E25F2A4EDF3A00F24D90 /* ghost appear.mp3 */,
+				34C2EBD32A504FA700D11119 /* ghost appear two.mp3 */,
 				3479E25E2A4EDF3A00F24D90 /* ghost scream.mp3 */,
 			);
 			path = GhostSound;
@@ -312,6 +323,8 @@
 		34A1CB4A2A4EAF080056FEA5 /* InteractSound */ = {
 			isa = PBXGroup;
 			children = (
+				34C2EBD12A504AEA00D11119 /* diary interact.mp3 */,
+				34C2EBCB2A5044FF00D11119 /* book interact.mp3 */,
 				34B9B2922A4EA7C3001F4A39 /* lock interact.mp3 */,
 				3479E25B2A4ED2BC00F24D90 /* painting interact.mp3 */,
 				34B9B2952A4EA7C3001F4A39 /* paper interact.mp3 */,
@@ -352,6 +365,8 @@
 		34B9B20D2A45990C001F4A39 /* Sound */ = {
 			isa = PBXGroup;
 			children = (
+				34C2EBD02A50499C00D11119 /* YearbookSound */,
+				34C2EBCF2A50450D00D11119 /* DiarySound */,
 				3479E25D2A4EDF2200F24D90 /* GhostSound */,
 				3479E2532A4EB9F300F24D90 /* MovementSound */,
 				34A1CB4A2A4EAF080056FEA5 /* InteractSound */,
@@ -441,6 +456,22 @@
 				34B9B2942A4EA7C3001F4A39 /* glass shatter.mp3 */,
 			);
 			path = GlassSound;
+			sourceTree = "<group>";
+		};
+		34C2EBCF2A50450D00D11119 /* DiarySound */ = {
+			isa = PBXGroup;
+			children = (
+				34C2EBC92A5044FF00D11119 /* turn diary.mp3 */,
+			);
+			path = DiarySound;
+			sourceTree = "<group>";
+		};
+		34C2EBD02A50499C00D11119 /* YearbookSound */ = {
+			isa = PBXGroup;
+			children = (
+				34C2EBCA2A5044FF00D11119 /* turn yearbook.mp3 */,
+			);
+			path = YearbookSound;
 			sourceTree = "<group>";
 		};
 		533B760B2A4E7731009015F9 /* InnTotScene */ = {
@@ -650,8 +681,10 @@
 			files = (
 				34B9B2822A4DD3C6001F4A39 /* number lock success.mp3 in Resources */,
 				5339FBEE2A49318A00647CF1 /* Assets.xcassets in Resources */,
+				34C2EBCE2A5044FF00D11119 /* book interact.mp3 in Resources */,
 				B71AA07C2A4E7C6000C2B4E4 /* person.json in Resources */,
 				B18E56112A4C0FD500C3F9E1 /* k5.mp3 in Resources */,
+				34C2EBCC2A5044FF00D11119 /* turn diary.mp3 in Resources */,
 				B18E560E2A4C0FD500C3F9E1 /* k4.mp3 in Resources */,
 				B18E560F2A4C0FD500C3F9E1 /* k3.mp3 in Resources */,
 				B18E56312A4DDDFC00C3F9E1 /* videoplayback.mp4 in Resources */,
@@ -661,6 +694,7 @@
 				04CAE9602A32D68000F59461 /* Main.storyboard in Resources */,
 				34B9B27A2A4DD224001F4A39 /* background music of new library.mp3 in Resources */,
 				3479E2612A4EDF3A00F24D90 /* ghost appear.mp3 in Resources */,
+				34C2EBD42A504FA700D11119 /* ghost appear two.mp3 in Resources */,
 				3479E2602A4EDF3A00F24D90 /* ghost scream.mp3 in Resources */,
 				34B9B2832A4DD3C6001F4A39 /* number lock.mp3 in Resources */,
 				B18E56352A4E8F9A00C3F9E1 /* TransOld.mp4 in Resources */,
@@ -677,6 +711,7 @@
 				B18E56142A4C37C000C3F9E1 /* ShelfScene.sks in Resources */,
 				34B9B29A2A4EA7C3001F4A39 /* lock interact.mp3 in Resources */,
 				3479E25A2A4ED05500F24D90 /* walking.mp3 in Resources */,
+				34C2EBCD2A5044FF00D11119 /* turn yearbook.mp3 in Resources */,
 				533B760F2A4E777F009015F9 /* InnTotScene.sks in Resources */,
 				B185ED1F2A472C0400CA0241 /* Scene1.sks in Resources */,
 				B18E56102A4C0FD500C3F9E1 /* k6.mp3 in Resources */,
@@ -688,6 +723,7 @@
 				34B9B27C2A4DD224001F4A39 /* background music of corridor.mp3 in Resources */,
 				34B9B29D2A4EA7C3001F4A39 /* kalimba fall.mp3 in Resources */,
 				B18E560C2A4C0FD500C3F9E1 /* k1.mp3 in Resources */,
+				34C2EBD22A504AEA00D11119 /* diary interact.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

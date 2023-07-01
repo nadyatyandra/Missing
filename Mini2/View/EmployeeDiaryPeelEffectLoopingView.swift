@@ -7,9 +7,12 @@
 
 import Foundation
 import SwiftUI
+import AVFoundation
 
 struct EmployeeDiaryPeelEffectLoopingView: View {
     @State var openedPages: Set<String> = []
+    @State private var audioPlayer: AVAudioPlayer?
+    
     var numberOfPages: Int
     var bookType: String
     var frameWidth: CGFloat
@@ -53,12 +56,26 @@ struct EmployeeDiaryPeelEffectLoopingView: View {
                             .frame(width: frameWidth, height: frameHeight)
                             .ignoresSafeArea()
                     } onComplete: {
+                        playSound(soundName: "turn yearbook")
                         self.openedPages.insert("\(bookType)\(pageID)")
                     }
                     .offset(x: xOffset, y: yOffset)
                     .zIndex(Double(pageID))
                 }
             }
+        }
+    }
+    func playSound(soundName: String) {
+        guard let soundURL = Bundle.main.url(forResource: soundName, withExtension: "mp3") else {
+            print("Sound file not found.")
+            return
+        }
+
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: soundURL)
+            audioPlayer?.play()
+        } catch {
+            print("Failed to play sound: \(error.localizedDescription)")
         }
     }
 }

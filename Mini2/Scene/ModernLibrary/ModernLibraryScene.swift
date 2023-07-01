@@ -32,7 +32,7 @@ class ModernLibraryScene: SKScene, SKPhysicsContactDelegate {
     var floor: SKSpriteNode!
     var desk: SKSpriteNode!
     var painting: SKSpriteNode!
-    
+    var book: SKSpriteNode!
     //Inner Thought
     var innTot: SKNode!
     var innTotLabel: SKLabelNode!
@@ -56,6 +56,7 @@ class ModernLibraryScene: SKScene, SKPhysicsContactDelegate {
     var bgmScene: BGMScene!
     var deskSound: SoundComponent!
     var paintingSound: SoundComponent!
+    var bookSound: SoundComponent!
     
     override func sceneDidLoad() {
         self.lastUpdateTime = 0
@@ -83,7 +84,9 @@ class ModernLibraryScene: SKScene, SKPhysicsContactDelegate {
         tutorialCollision = self.childNode(withName: "TutorialCollision")
         desk = self.childNode(withName: "Desk") as? SKSpriteNode
         painting = self.childNode(withName: "Photo") as? SKSpriteNode
+        book = self.childNode(withName: "BookGlowing") as? SKSpriteNode
         
+        bookSound = SoundComponent(node: book)
         deskSound = SoundComponent(node: desk)
         paintingSound = SoundComponent(node: painting)
         //Assign movement component to playerEntity
@@ -283,6 +286,7 @@ class ModernLibraryScene: SKScene, SKPhysicsContactDelegate {
             presentImageDetail(imageDetailName: "DetailDeskML")
             viewModel.createInnTot(duration: 3, label: "The librarian's not here")
         } else if touchedNode.name == "BookGlowing" {
+            bookSound.playSound(soundName: "book interact")
             viewModel.isFourthPopUpVisible = true
         } else if touchedNode.name == "Photo" {
             paintingSound.playSound(soundName: "painting interact")

@@ -6,9 +6,12 @@
 //
 
 import SwiftUI
+import AVFoundation
 
 struct HorizontalYearbookPeelEffectView<Content: View>: View {
     @State private var dragProgress: CGFloat = 0
+    @State private var audioPlayer: AVAudioPlayer?
+    
     var content: Content
     var onComplete: (() -> ())?
 
@@ -94,6 +97,7 @@ struct HorizontalYearbookPeelEffectView<Content: View>: View {
                     withAnimation(.spring(response: 0.6, dampingFraction: 0.7, blendDuration: 0.7)) {
                         if dragProgress > 0.9 {
                             dragProgress = 0.98
+                            playSound(soundName: "turn yearbook")
                             if let onComplete {
                                 onComplete()
                             }
@@ -104,5 +108,19 @@ struct HorizontalYearbookPeelEffectView<Content: View>: View {
                     }
                 })
         )
+    }
+    
+    func playSound(soundName: String) {
+        guard let soundURL = Bundle.main.url(forResource: soundName, withExtension: "mp3") else {
+            print("Sound file not found.")
+            return
+        }
+
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: soundURL)
+            audioPlayer?.play()
+        } catch {
+            print("Failed to play sound: \(error.localizedDescription)")
+        }
     }
 }

@@ -99,6 +99,7 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
     var cupboardSound: SoundComponent!
     var lockSound: SoundComponent!
     var photoSound: SoundComponent!
+    var deskSound: SoundComponent!
     
     override func sceneDidLoad() {
         self.lastUpdateTime = 0
@@ -133,6 +134,7 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
         kalimbaCollision = kalimbaSprite.childNode(withName: "KalimbaCollision")
         kalimbaLight = kalimbaSprite.childNode(withName: "KalimbaLight") as? SKLightNode
         
+        deskSound = SoundComponent(node: deskSprite)
         photoSound = SoundComponent(node: photoSprite)
         cupboardSound = SoundComponent(node: cupboardSprite)
         lockSound = SoundComponent(node: viewModel.lockSprite!)
@@ -335,6 +337,7 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
             photoSound.playSound(soundName: "painting interact")
             presentImageDetail(imageDetailName: "OL Photo Detail")
         } else if touchedNode == deskSprite {
+            deskSound.playSound(soundName: "table interact")
             presentPopUpScene(popUpSceneName: "DeskDetailScene")
         } else {
             if let nodeName = touchedNode.name, let comboDescription = combos[nodeName] {
