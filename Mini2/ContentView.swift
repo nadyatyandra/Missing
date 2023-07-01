@@ -46,9 +46,11 @@ struct ContentView: View {
             SpriteView(scene: scene)
                 .ignoresSafeArea()
             
-            if viewModel.isPopUpVisible || viewModel.isSecondPopUpVisible || viewModel.isThirdPopUpVisible || viewModel.isFourthPopUpVisible {
+            if viewModel.isPopUpVisible || viewModel.isSecondPopUpVisible || viewModel.isThirdPopUpVisible || viewModel.isFourthPopUpVisible || viewModel.isFifthPopUpVisible {
                 Button {
-                    if viewModel.isFourthPopUpVisible {
+                    if viewModel.isFifthPopUpVisible {
+                        viewModel.isFifthPopUpVisible = false
+                    } else if viewModel.isFourthPopUpVisible {
                         viewModel.isFourthPopUpVisible = false
                     }
                     else if viewModel.isThirdPopUpVisible {
@@ -101,7 +103,16 @@ struct ContentView: View {
                     
                 }
                 .offset(x: 275.0, y: -46.0)
-                YearbookPeelEffectLoopingView(numberOfPages: 4, bookType: "ML Yearbook", frameWidth: 483.0, frameHeight: 733.0, flippedXOffset: -190.0, flippedYOffset: -46.0, xOffset: 274.0, yOffset: -44.0)
+                YearbookPeelEffectLoopingView(numberOfPages: 4, bookType: "ML Yearbook", frameWidth: 483.0, frameHeight: 733.0, flippedXOffset: -190.0, flippedYOffset: -48.0, xOffset: 274.0, yOffset: -44.0)
+            }
+            
+            if viewModel.isFifthPopUpVisible { //diary animation
+                Image("OL Diary Base")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: scene.size.width/2.5, height: scene.size.height/2.5)
+                    .ignoresSafeArea()
+                EmployeeDiaryPeelEffectLoopingView(numberOfPages: 3, bookType: "OL Diary", frameWidth: 520.0, frameHeight: 741.0, flippedXOffset: -250.0, xOffset: 265.0, yOffset: -3.0)
             }
             
             if viewModel.isInnTotVisible {

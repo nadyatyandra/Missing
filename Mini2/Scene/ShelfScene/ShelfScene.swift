@@ -43,7 +43,7 @@ class ShelfScene: SKScene{
             }
             
             if let touchedNode = atPoint(location) as? SKSpriteNode, touchedNode == diaryShelf {
-                print("diary")
+                viewModel.isFifthPopUpVisible = true
             }
             
             if let touchedNode = atPoint(location) as? SKSpriteNode, touchedNode == bgShelf {
@@ -55,5 +55,4 @@ class ShelfScene: SKScene{
             }
         }
     }
-    
 }

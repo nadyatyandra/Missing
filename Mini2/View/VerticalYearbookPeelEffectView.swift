@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct VerticalYearbookPeelEffectView<Content: View>: View {
+    @ObservedObject var viewModel = GameData.shared
     @State private var dragProgress: CGFloat = 0
     
     var content: Content
@@ -58,7 +59,7 @@ struct VerticalYearbookPeelEffectView<Content: View>: View {
             let minOpacity = dragProgress / 0.05
             let opacity = min(1, minOpacity)
             
-            Image("ML Yearbook Peel Off") // Image("ML Yearbook Peel Off Backpage")
+            Image("ML Yearbook Peel Off Backpage")
                 .resizable()
                 .scaledToFit()
                 .frame(width: 480.0, height: 730.0)
@@ -95,8 +96,7 @@ struct VerticalYearbookPeelEffectView<Content: View>: View {
                     withAnimation(.spring(response: 0.6, dampingFraction: 0.7, blendDuration: 0.7)) {
                         if dragProgress > 0.9 {
                             dragProgress = 0.9
-                            
-//                            viewModel.playVideo(scene: self, videoName: "TransOld", videoExt: "mp4",  xPos: cameraNode.position.x, yPos: cameraNode.position.y, durationVideo: 3, toScene: "PlaytestScreen")
+                            viewModel.isPeeled = true
                             if let onComplete {
                                 onComplete()
                             }

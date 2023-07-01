@@ -15,7 +15,9 @@ class GameData : ObservableObject {
     @Published var isSecondPopUpVisible = false //image
     @Published var isThirdPopUpVisible = false //employee file animation
     @Published var isFourthPopUpVisible = false //yearbook animation
+    @Published var isFifthPopUpVisible = false //diary animation
     @Published var isInnTotVisible = false //InnTot
+    @Published var isPeeled = false
     
     @Published var popUpName = ""
     @Published var imageDetailName = ""

@@ -140,6 +140,12 @@ class ModernLibraryScene: SKScene, SKPhysicsContactDelegate {
         if !tutorialTriggered {
             playerMovementComponent.move(to: joystickVelocity)
         }
+        
+        if viewModel.isPeeled {
+            viewModel.isPeeled = false
+            viewModel.playVideo(scene: self, videoName: "TransOld", videoExt: "mp4",  xPos: cameraNode.position.x, yPos: cameraNode.position.y, durationVideo: 3, toScene: "PlaytestScreen")
+            viewModel.isFourthPopUpVisible = false
+        }
     }
     
     func presentPopUpScene(popUpSceneName: String){
@@ -278,7 +284,6 @@ class ModernLibraryScene: SKScene, SKPhysicsContactDelegate {
             viewModel.createInnTot(duration: 3, label: "The librarian's not here")
         } else if touchedNode.name == "BookGlowing" {
             viewModel.isFourthPopUpVisible = true
-//            viewModel.playVideo(scene: self, videoName: "TransOld", videoExt: "mp4",  xPos: cameraNode.position.x, yPos: cameraNode.position.y, durationVideo: 3, toScene: "PlaytestScreen")
         } else if touchedNode.name == "Photo" {
             paintingSound.playSound(soundName: "painting interact")
             presentImageDetail(imageDetailName: "DetailPhotoML")
