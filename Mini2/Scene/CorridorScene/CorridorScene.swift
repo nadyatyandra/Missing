@@ -114,13 +114,7 @@ class CorridorScene: SKScene, SKPhysicsContactDelegate {
         enemyMovementComponent.loadWalkAnim(frames: 8, framesInterval: 0.12)
         playerMovementComponent.loadRunAnim(frames: 7, framesInterval: 0.07)
         
-        //enemy
-        enemyMovementComponent.startMoving()
         
-        //Add movement component to system
-        //        for entity in entities {
-        //            movementComponentSystem.addComponent(foundIn: entity)
-        //        }
         
         
         //Camera Constraints
@@ -140,8 +134,8 @@ class CorridorScene: SKScene, SKPhysicsContactDelegate {
         
         //Hide InnTot
         innTot.alpha = 0
-        createInnTot(duration: 2, label: "I've escaped")
-        
+        createInnTot(duration: 2, label: "What is going on")
+        enemyMovementComponent.startMoving()
     }
     
     
@@ -359,11 +353,13 @@ class CorridorScene: SKScene, SKPhysicsContactDelegate {
         audioNode2.isPositional = false // Set it to non-positional sound
         
         addChild(audioNode2) // Add the audio node to your scene
+        audioNode2.run(SKAction.play())
         
+        createInnTot(duration: 3, label: "What was that?")
         
         DispatchQueue.main.asyncAfter(deadline: .now() + controlDelay) {
             audioNode.run(SKAction.play())
-            audioNode2.run(SKAction.play())
+            self.createInnTot(duration: 3, label: "I need to run")
             self.chaseStarted = true
             self.enemyIsSpawning = false
             self.cameraNode.constraints = [self.playerConstraint!,self.edgeConstraint!]

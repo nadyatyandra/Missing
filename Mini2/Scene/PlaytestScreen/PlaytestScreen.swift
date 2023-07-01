@@ -162,7 +162,7 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
         
         //Hide InnTot
         innTot.alpha = 0
-        createInnTot(duration: 5, label: "What the, where am I?")
+        createInnTot(duration: 5, label: "Ughh... What just happened? Where am I?")
     }
     
     override func willMove(from view: SKView) {
@@ -286,7 +286,7 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
         if (nodeA == kalimbaSprite && nodeB == floor) || (nodeA == kalimbaSprite && nodeB == floor) {
             if !kalimbaIsDropped {
                 audioNode.run(SKAction.play())
-                createInnTot(duration: 5, label: "What was that?")
+                createInnTot(duration: 5, label: "What was that sound?")
                 
                 kalimbaLight.falloff = 3
                 kalimbaIsDropped = true
@@ -312,12 +312,12 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
     
     func processTouch(touchedNode: SKSpriteNode) {
         let combos: [String: String] = [
-            "Boxes":"There are boxes",
-            "Books":"There are dropped books",
-            "BookshelfLeft":"There are old bookshelves",
-            "BookshelfMid":"There are old bookshelves",
-            "BookshelfRight":"There are old bookshelves",
-            "Clock":"There is a clock",
+            "Boxes":"There are boxes blocking the door",
+            "Books":"There are scattered books all around",
+            "BookshelfLeft":"The bookshelf looks broken down",
+            "BookshelfMid":"The bookshelf looks broken down",
+            "BookshelfRight":"The bookshelf looks broken down",
+            "Clock":"There is an old-looking clock",
             "Window":"The window is locked shut",
             "Door":"The door is stuck",
             "Cupboard":"The cupboard is locked up"
@@ -325,20 +325,25 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
         
         if touchedNode == kalimbaSprite && kalimbaIsDropped{
             presentPopUpScene(popUpSceneName: "KalimbaScene")
+            viewModel.createInnTot(duration: 3, label: "This looks like a kalimba")
         } else if touchedNode == viewModel.lockSprite {
             lockSound.playSound(soundName: "lock interact")
             presentPopUpScene(popUpSceneName: "LockScene")
+            viewModel.createInnTot(duration: 3, label: "Seems to be locked tight, need to find the right combination")
         } else if touchedNode == cupboardSprite && viewModel.lockUnlocked {
             cupboardSound.playSound(soundName: "shelf interact")
             presentPopUpScene(popUpSceneName: "ShelfScene")
+            viewModel.createInnTot(duration: 3, label: "Nice, i
         } else if touchedNode == viewModel.windowSprite && viewModel.windowSprite?.texture?.description.components(separatedBy: "'")[1] == "Broken window" {
             viewModel.transitionScene(scene: self, toScene: "CorridorScene")
         } else if touchedNode == photoSprite {
             photoSound.playSound(soundName: "painting interact")
             presentImageDetail(imageDetailName: "OL Photo Detail")
+            viewModel.createInnTot(duration: 3, label: "Is the photo different?")
         } else if touchedNode == deskSprite {
             deskSound.playSound(soundName: "table interact")
             presentPopUpScene(popUpSceneName: "DeskDetailScene")
+            viewModel.createInnTot(duration: 3, label: "Oh, there's a book here")
         } else {
             if let nodeName = touchedNode.name, let comboDescription = combos[nodeName] {
                 createInnTot(duration: 3, label: comboDescription)
