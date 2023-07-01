@@ -146,7 +146,7 @@ class ModernLibraryScene: SKScene, SKPhysicsContactDelegate {
         
         if viewModel.isPeeled {
             viewModel.isPeeled = false
-            viewModel.playVideo(scene: self, videoName: "TransOld", videoExt: "mp4",  xPos: cameraNode.position.x, yPos: cameraNode.position.y, durationVideo: 3, toScene: "PlaytestScreen")
+            viewModel.playVideo(scene: self, videoName: "TransitionOld", videoExt: "mp4",  xPos: cameraNode.position.x, yPos: cameraNode.position.y, durationVideo: 3, toScene: "PlaytestScreen")
             viewModel.isFourthPopUpVisible = false
         }
     }
@@ -190,7 +190,7 @@ class ModernLibraryScene: SKScene, SKPhysicsContactDelegate {
             let delta = currentPosition.x - initialPosition.x
             
             if delta > 25 || delta < -25 {
-                if !tutorialTriggered {
+                if !tutorialTriggered && viewModel.isMove {
                     joystickVelocity = delta
                     if startMoving {
                         startMoving = false
