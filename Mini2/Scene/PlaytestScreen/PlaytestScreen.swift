@@ -37,15 +37,17 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
     var kalimbaIsDropped: Bool = false
     
     //Lock
-    //    var lockSprite: SKSpriteNode!
     var lockScene: SKScene!
     
     //Shelf
     var cupboardSprite: SKSpriteNode!
     var shelfScene: SKScene!
     
-    //photo
+    //Photo
     var photoSprite: SKSpriteNode!
+    
+    //Desk
+    var deskSprite: SKSpriteNode!
     
     //Camera
     var cameraNode: SKCameraNode!
@@ -97,6 +99,7 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
     var cupboardSound: SoundComponent!
     var lockSound: SoundComponent!
     var photoSound: SoundComponent!
+    var deskSound: SoundComponent!
     
     override func sceneDidLoad() {
         self.lastUpdateTime = 0
@@ -118,6 +121,7 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
         cameraNode = self.childNode(withName: "Camera") as? SKCameraNode
         cupboardSprite = self.childNode(withName: "Cupboard") as? SKSpriteNode
         photoSprite = self.childNode(withName: "Photo") as? SKSpriteNode
+        deskSprite = self.childNode(withName: "Desk") as? SKSpriteNode
         leftWall = self.childNode(withName: "LeftWall") as? SKSpriteNode
         rightWall = self.childNode(withName: "RightWall") as? SKSpriteNode
         floor = self.childNode(withName: "Floor") as? SKSpriteNode
@@ -130,9 +134,11 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
         kalimbaCollision = kalimbaSprite.childNode(withName: "KalimbaCollision")
         kalimbaLight = kalimbaSprite.childNode(withName: "KalimbaLight") as? SKLightNode
         
+        deskSound = SoundComponent(node: deskSprite)
         photoSound = SoundComponent(node: photoSprite)
         cupboardSound = SoundComponent(node: cupboardSprite)
         lockSound = SoundComponent(node: viewModel.lockSprite!)
+        
         //Assign movement component to playerEntity
         playerEntity = createEntity(node: playerSprite, wantMovementComponent: true)
         entities.append(playerEntity)
@@ -140,16 +146,6 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
         
         //Load animation frames
         playerMovementComponent.loadWalkAnim(frames: 14, framesInterval: 0.08)
-        
-        //Assign movement component to enemy
-        //        enemyEntity = createEntity(node: enemySprite, wantMovementComponent: true)
-        //        entities.append(enemyEntity)
-        
-        //Add movement component to system
-        //        for entity in entities {
-        //            movementComponentSystem.addComponent(foundIn: entity)
-        //        }
-        
         
         //Camera Constraints
         let range = SKRange(constantValue: 0)
@@ -161,7 +157,6 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
         let xRange = SKRange(lowerLimit: leftWall.frame.maxX + xInset, upperLimit: rightWall.frame.minX - xInset)
         let yRange = SKRange(lowerLimit: floor.frame.minY + yInset, upperLimit: 1000)
         let edgeConstraint = SKConstraint.positionX(xRange, y: yRange)
-        
         
         cameraNode.constraints = [playerConstraint,edgeConstraint]
         
@@ -194,19 +189,8 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
         }
         
         self.lastUpdateTime = currentTime
-        
-        //Move Player
-        //        for case let component as MovementComponent in movementComponentSystem.components {
-        //            if component.node.name == "Player" {
-        //                component.move(to: joystickVelocity)
-        //            } else {
-        //                component.move(to: 50)
-        //            }
-        //        }
         playerMovementComponent.move(to: joystickVelocity)
     }
-    
-    //    @EnvironmentObject var gameData: GameData
     
     func presentPopUpScene(popUpSceneName: String){
         let popUpScene = SKScene(fileNamed: popUpSceneName)
@@ -214,13 +198,11 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
         
         viewModel.popUpName = popUpSceneName
         viewModel.isPopUpVisible.toggle()
-//        self.isPaused = true
     }
     
     func presentImageDetail(imageDetailName: String){
         viewModel.imageDetailName = imageDetailName
         viewModel.isSecondPopUpVisible.toggle()
-//        self.isPaused = true
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -256,7 +238,6 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
                     playerMovementComponent.startMoving()
                 }
             }
-            
         }
     }
     
@@ -285,13 +266,6 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
         let nodeA = contact.bodyA.node
         let nodeB = contact.bodyB.node
         
-        //        if (nodeA == playerSprite && nodeB == enemySprite) || (nodeA == enemySprite && nodeB == playerSprite) {
-        //            if nodeA == playerSprite {
-        //                nodeA?.removeFromParent()
-        //            } else {
-        //                nodeB?.removeFromParent()
-        //            }
-        //        }
         if (nodeA == playerSprite && nodeB == kalimbaCollision) || (nodeA == kalimbaCollision && nodeB == playerSprite) {
             
             if nodeA == kalimbaCollision {
@@ -310,7 +284,6 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
         addChild(audioNode) // Add the audio node to your scene
         
         if (nodeA == kalimbaSprite && nodeB == floor) || (nodeA == kalimbaSprite && nodeB == floor) {
-            
             if !kalimbaIsDropped {
                 audioNode.run(SKAction.play())
                 createInnTot(duration: 5, label: "What was that sound?")
@@ -333,9 +306,7 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
         
         innTot.alpha = 0
         innTot.removeAllActions()
-        
         innTotLabel.text = label
-        
         innTot.run(sequence)
     }
     
@@ -362,10 +333,10 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
         } else if touchedNode == cupboardSprite && viewModel.lockUnlocked {
             cupboardSound.playSound(soundName: "shelf interact")
             presentPopUpScene(popUpSceneName: "ShelfScene")
-            viewModel.createInnTot(duration: 3, label: "Nice, its open")
+            viewModel.createInnTot(duration: 3, label: "Nice, i
         } else if touchedNode == viewModel.windowSprite && viewModel.windowSprite?.texture?.description.components(separatedBy: "'")[1] == "Broken window" {
             viewModel.transitionScene(scene: self, toScene: "CorridorScene")
-        }else if touchedNode == photoSprite {
+        } else if touchedNode == photoSprite {
             photoSound.playSound(soundName: "painting interact")
             presentImageDetail(imageDetailName: "OL Photo Detail")
             viewModel.createInnTot(duration: 3, label: "Is the photo different?")

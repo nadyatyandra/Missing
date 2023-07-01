@@ -16,6 +16,7 @@ class ShelfScene: SKScene{
     var diaryShelf: SKSpriteNode?
     
     var soundComponent: SoundComponent!
+    var diarySound: SoundComponent!
     
     override func didMove(to view: SKView) {
         for i in 0..<8 {
@@ -27,6 +28,7 @@ class ShelfScene: SKScene{
         soundComponent = SoundComponent(node: bgShelf!)
         bgShelf?.color = .clear
         diaryShelf = childNode(withName: "DiaryShelf") as? SKSpriteNode
+        diarySound = SoundComponent(node: diaryShelf!)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -43,7 +45,8 @@ class ShelfScene: SKScene{
             }
             
             if let touchedNode = atPoint(location) as? SKSpriteNode, touchedNode == diaryShelf {
-                print("diary")
+                diarySound.playSound(soundName: "diary interact")
+                viewModel.isFifthPopUpVisible = true
             }
             
             if let touchedNode = atPoint(location) as? SKSpriteNode, touchedNode == bgShelf {
@@ -55,5 +58,4 @@ class ShelfScene: SKScene{
             }
         }
     }
-    
 }
