@@ -36,6 +36,7 @@ class GameData : ObservableObject {
     @Published var innTotDuration: Double = 1
     
     @Published var kalimbaSolved: Bool = false
+    @Published var keyDropped: Bool = false
     
     static let shared = GameData()
     
