@@ -13,7 +13,13 @@ class TBCScene: SKScene{
     @ObservedObject var viewModel = GameData.shared
     
     override func didMove(to view: SKView) {
+        let audioNode = SKAudioNode(fileNamed: "background music of to be continued")
+        audioNode.autoplayLooped = false // Set it to not loop the sound
+        audioNode.isPositional = false // Set it to non-positional sound
         
+        addChild(audioNode) // Add the audio node to your scene
+        
+        audioNode.run(SKAction.play())
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
