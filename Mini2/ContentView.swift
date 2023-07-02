@@ -15,7 +15,7 @@ struct ContentView: View {
     @State var isPopupOn = GameData.shared
     
     var scene: SKScene {
-        let scene: SKScene = SKScene(fileNamed: "CorridorScene")!
+        let scene: SKScene = SKScene(fileNamed: "SplashScene")!
         scene.size = CGSize(width: 2732, height: 2048)
         scene.scaleMode = .aspectFill
         return scene
