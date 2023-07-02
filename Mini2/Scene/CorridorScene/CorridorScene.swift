@@ -308,12 +308,21 @@ class CorridorScene: SKScene, SKPhysicsContactDelegate {
             spawnEnemy()
         }
         if chaseStarted {
+            let audioNode = SKAudioNode(fileNamed: "ghost scream")
+            audioNode.autoplayLooped = false // Set it to not loop the sound
+            audioNode.isPositional = false // Set it to non-positional sound
+            
+            addChild(audioNode) // Add the audio node to your scene
+            
+            audioNode.run(SKAction.play())
             if (nodeA == playerSprite && nodeB == viewModel.enemySprite) || (nodeA == viewModel.enemySprite && nodeB == playerSprite) {
                 if nodeA == playerSprite {
                     nodeA?.removeFromParent()
+                    audioNode.run(SKAction.play())
                     viewModel.transitionScene(scene: self, toScene: "GameOverScene")
                 } else {
                     nodeB?.removeFromParent()
+                    audioNode.run(SKAction.play())
                     viewModel.transitionScene(scene: self, toScene: "GameOverScene")
                 }
             }
