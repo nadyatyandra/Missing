@@ -103,7 +103,7 @@ struct ContentView: View {
                 } onComplete: {
                     
                 }
-                .offset(x: 275.0, y: -46.0)
+                .offset(x: 277.0, y: -50.0)
                 YearbookPeelEffectLoopingView(numberOfPages: 4, bookType: "ML Yearbook", frameWidth: 483.0, frameHeight: 733.0, flippedXOffset: -190.0, flippedYOffset: -48.0, xOffset: 274.0, yOffset: -44.0)
             }
             

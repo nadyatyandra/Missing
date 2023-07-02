@@ -36,6 +36,7 @@ struct EmployeeDiaryPeelEffectLoopingView: View {
             ForEach((1 ..< numberOfPages).reversed(), id: \.self) { pageID in
                 if self.openedPages.contains("\(bookType)\(pageID)") {
                     Button {
+                        playSound(soundName: "turn diary")
                         self.openedPages.remove("\(bookType)\(pageID)")
                     } label: {
                         Image("OL Backpage")
@@ -56,7 +57,7 @@ struct EmployeeDiaryPeelEffectLoopingView: View {
                             .frame(width: frameWidth, height: frameHeight)
                             .ignoresSafeArea()
                     } onComplete: {
-                        playSound(soundName: "turn yearbook")
+                        playSound(soundName: "turn diary")
                         self.openedPages.insert("\(bookType)\(pageID)")
                     }
                     .offset(x: xOffset, y: yOffset)
@@ -65,6 +66,7 @@ struct EmployeeDiaryPeelEffectLoopingView: View {
             }
         }
     }
+    
     func playSound(soundName: String) {
         guard let soundURL = Bundle.main.url(forResource: soundName, withExtension: "mp3") else {
             print("Sound file not found.")

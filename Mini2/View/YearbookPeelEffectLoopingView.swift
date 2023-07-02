@@ -11,7 +11,9 @@ import AVFoundation
 
 struct YearbookPeelEffectLoopingView: View {
     @ObservedObject var viewModel = GameData.shared
+    @State private var audioPlayer: AVAudioPlayer?
     @State var openedPages: Set<String> = []
+    
     var numberOfPages: Int
     var bookType: String
     var frameWidth: CGFloat
@@ -37,6 +39,7 @@ struct YearbookPeelEffectLoopingView: View {
             ForEach((1 ..< numberOfPages).reversed(), id: \.self) { pageID in
                 if self.openedPages.contains("\(bookType)\(pageID)") {
                     Button {
+                        playSound(soundName: "turn yearbook")
                         self.openedPages.remove("\(bookType)\(pageID)")
                     } label: {
                         Image("ML Backpage")
@@ -57,6 +60,7 @@ struct YearbookPeelEffectLoopingView: View {
                             .frame(width: frameWidth, height: frameHeight)
                             .ignoresSafeArea()
                     } onComplete: {
+                        playSound(soundName: "turn yearbook")
                         self.openedPages.insert("\(bookType)\(pageID)")
                         if self.openedPages.count > 2 {
                                 viewModel.createInnTot(duration: 3, label: "Why is the bottom of the page peeling off?")
@@ -66,6 +70,20 @@ struct YearbookPeelEffectLoopingView: View {
                     .zIndex(Double(pageID))
                 }
             }
+        }
+    }
+    
+    func playSound(soundName: String) {
+        guard let soundURL = Bundle.main.url(forResource: soundName, withExtension: "mp3") else {
+            print("Sound file not found.")
+            return
+        }
+
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: soundURL)
+            audioPlayer?.play()
+        } catch {
+            print("Failed to play sound: \(error.localizedDescription)")
         }
     }
 }
