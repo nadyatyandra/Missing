@@ -70,9 +70,17 @@ class CorridorScene: SKScene, SKPhysicsContactDelegate {
     //Thresholds
     var brokenWindow: SKSpriteNode!
     var doorRight: SKSpriteNode!
-  
+    var doorLeft: SKSpriteNode!
+    var doorMid: SKSpriteNode!
+    var madingSprite: SKSpriteNode!
+    
     //Background Music
     var bgmScene: BGMScene!
+    var keySound: SoundComponent!
+    var doorRightSound: SoundComponent!
+    var doorMidSound: SoundComponent!
+    var doorLeftSound: SoundComponent!
+    var madingSound: SoundComponent!
     
     override func sceneDidLoad() {
         self.lastUpdateTime = 0
@@ -100,10 +108,18 @@ class CorridorScene: SKScene, SKPhysicsContactDelegate {
         viewModel.enemySprite = self.childNode(withName: "Enemy") as? SKSpriteNode
         brokenWindow = self.childNode(withName: "BrokenWindow") as? SKSpriteNode
         doorRight = self.childNode(withName: "DoorRight") as? SKSpriteNode
+        doorLeft = self.childNode(withName: "DoorLeft") as? SKSpriteNode
+        doorMid = self.childNode(withName: "DoorMid") as? SKSpriteNode
         cameraMarker = self.childNode(withName: "CameraMarker")
         chaseCollision = cameraMarker.childNode(withName: "ChaseCollision")
         keySprite = self.childNode(withName: "key") as? SKSpriteNode
-
+        madingSprite = self.childNode(withName: "Mading") as? SKSpriteNode
+        
+        doorLeftSound = SoundComponent(node: doorLeft!)
+        doorMidSound = SoundComponent(node: doorMid!)
+        doorRightSound = SoundComponent(node: doorRight!)
+        keySound = SoundComponent(node: keySprite!)
+        madingSound = SoundComponent(node: madingSprite!)
         
         //Assign movement component to playerEntity
         playerEntity = createEntity(node: playerSprite, wantMovementComponent: true)
@@ -183,6 +199,13 @@ class CorridorScene: SKScene, SKPhysicsContactDelegate {
             toggleKeyVisibility(isVisible: true)
             puzzleSolved = true
             viewModel.createInnTot(duration: 3, label: "Something dropped")
+            let audioNode = SKAudioNode(fileNamed: "key dropped")
+            audioNode.autoplayLooped = false // Set it to not loop the sound
+            audioNode.isPositional = false // Set it to non-positional sound
+            
+            addChild(audioNode) // Add the audio node to your scene
+            
+            audioNode.run(SKAction.play())
         }
         
     }
@@ -203,6 +226,7 @@ class CorridorScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func toggleKeyVisibility(isVisible: Bool) {
+        
         keySprite?.isHidden = !isVisible
     }
     
@@ -319,6 +343,7 @@ class CorridorScene: SKScene, SKPhysicsContactDelegate {
     func processTouch(touchedNode: SKSpriteNode) {
         
         if touchedNode.name == "Mading"{
+            madingSound.playSound(soundName: "painting interact")
             if !puzzleSolved{
                 presentJigsawPuzzle(popUpSceneName: "JigsawScene")
             }else{
@@ -327,15 +352,24 @@ class CorridorScene: SKScene, SKPhysicsContactDelegate {
             viewModel.enemySprite?.isPaused = true
         }else if keyPickedUp{
             if touchedNode.name == "DoorRight"{
+                doorRightSound.playSound(soundName: "door open")
                 viewModel.transitionScene(scene: self, toScene: "TBCScene")
-            }else if touchedNode.name == "DoorLeft" || touchedNode.name == "DoorMiddle"{
+            }else if touchedNode.name == "DoorLeft" || touchedNode.name == "DoorMid"{
 //                masukkin suara door stuck @togi
-                enemyIsSpawning = true
+                doorLeftSound.playSound(soundName: "door stuck")
+                doorMidSound.playSound(soundName: "door stuck")
+                
+//                enemyIsSpawning = true
                 createInnTot(duration: 3, label: "Uh oh the key is stuck")
+                keyPickedUp = false
             }
             
-        }else if touchedNode.name == "DoorRight" || touchedNode.name == "DoorMiddle" || touchedNode.name == "DoorLeft"{
+        }else if touchedNode.name == "DoorRight" || touchedNode.name == "DoorMid" || touchedNode.name == "DoorLeft"{
             createInnTot(duration: 3, label: "The door can't be opened")
+            doorRightSound.playSound(soundName: "door stuck")
+            doorLeftSound.playSound(soundName: "door stuck")
+            doorMidSound.playSound(soundName: "door stuck")
+            
         }else if touchedNode.name == "key"{
             toggleKeyVisibility(isVisible: false)
             keyPickedUp = true
@@ -352,7 +386,7 @@ class CorridorScene: SKScene, SKPhysicsContactDelegate {
     func spawnEnemy() {
         let cameraMoveTime: Double = 2
         let fadeTime: Double = 3
-        let chaseTime: Double = 20
+        let chaseTime: Double = 25
         let moveBackTime: Double = fadeTime + 1
         let cameraMoveBackTime: Double = 1
         let controlDelay: Double = moveBackTime + cameraMoveBackTime + cameraMoveTime - 0.2

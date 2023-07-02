@@ -21,6 +21,13 @@ class GameOverScene: SKScene{
             
             textures.append(texture)
         }
+        let audioNode = SKAudioNode(fileNamed: "background music of game over")
+        audioNode.autoplayLooped = false // Set it to not loop the sound
+        audioNode.isPositional = false // Set it to non-positional sound
+        
+        addChild(audioNode) // Add the audio node to your scene
+        
+        audioNode.run(SKAction.play())
         
         logoGameOver = childNode(withName: "LogoGameOver") as? SKSpriteNode
 
