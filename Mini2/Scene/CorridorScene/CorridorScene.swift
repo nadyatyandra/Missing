@@ -210,7 +210,7 @@ class CorridorScene: SKScene, SKPhysicsContactDelegate {
             
             if delta > 25 || delta < -25 {
                 joystickVelocity = delta
-                if startMoving {
+                if startMoving && !enemyIsSpawning {
                     startMoving = false
                     playerMovementComponent.startMoving()
                 }
