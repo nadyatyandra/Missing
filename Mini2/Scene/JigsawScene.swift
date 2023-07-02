@@ -108,6 +108,7 @@ class JigsawScene: SKScene {
         
         if hasWon {
             handleWinCondition()
+            print("win")
         }
     }
     
@@ -121,16 +122,16 @@ class JigsawScene: SKScene {
                 scene = JigsawScene.scene(named: hasNewPuzzle)
             } else {
                 self.viewModel.isPopUpVisible = false
-
-//                scene = JigsawScene(size: self.size)
-//                scene.puzzle = self.puzzle
-//                scene.scaleMode = self.scaleMode
+                viewModel.key.texture = SKTexture(imageNamed: "Key")
+                
             }
             let transition = SKTransition.crossFade(withDuration: 0.3)
 //            self.view?.presentScene(scene, transition: transition)
         }
         let newScene = SKAction.sequence([wait, transition])
         self.run(newScene)
+        
+        
     }
     
     func topNode(  at point : CGPoint ) -> SKNode? {

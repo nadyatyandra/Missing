@@ -63,10 +63,14 @@ class CorridorScene: SKScene, SKPhysicsContactDelegate {
     var edgeConstraint: SKConstraint!
     var cameraMarker: SKNode!
     
+    //key
+    var key: SKSpriteNode!
+//    var keyIsDropped: Bool = false
+    
     //Thresholds
     var brokenWindow: SKSpriteNode!
     var doorRight: SKSpriteNode!
-  
+    
     //Background Music
     var bgmScene: BGMScene!
     
@@ -98,6 +102,7 @@ class CorridorScene: SKScene, SKPhysicsContactDelegate {
         doorRight = self.childNode(withName: "DoorRight") as? SKSpriteNode
         cameraMarker = self.childNode(withName: "CameraMarker")
         chaseCollision = cameraMarker.childNode(withName: "ChaseCollision")
+        key = self.childNode(withName: "key") as? SKSpriteNode
         
         //Assign movement component to playerEntity
         playerEntity = createEntity(node: playerSprite, wantMovementComponent: true)
