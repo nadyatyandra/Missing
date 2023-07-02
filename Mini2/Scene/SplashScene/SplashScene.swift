@@ -9,6 +9,7 @@ import Foundation
 import SpriteKit
 import SwiftUI
 
+
 class SplashScene: SKScene{
     @ObservedObject var viewModel = GameData.shared
     
@@ -18,14 +19,15 @@ class SplashScene: SKScene{
     
     override func didMove(to view: SKView) {
         
-        for i in 0...49 {
-            let texture = SKTexture(imageNamed: "logo_\(i).png")
+        for i in 100...159 {
+            let texture = SKTexture(imageNamed: "Comp\(i).png")
+            
             textures.append(texture)
         }
         
         logoMissing = childNode(withName: "LogoMissing") as? SKSpriteNode
 
-        let animationAction = SKAction.animate(with: textures, timePerFrame: 0.07)
+        let animationAction = SKAction.animate(with: textures, timePerFrame: 0.08)
         let sequence = SKAction.repeatForever(animationAction)
         logoMissing!.run(sequence)
     }
