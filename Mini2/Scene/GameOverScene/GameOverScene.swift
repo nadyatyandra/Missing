@@ -16,6 +16,11 @@ class GameOverScene: SKScene{
     var textures: [SKTexture] = []
     
     override func didMove(to view: SKView) {
+        let audioNode2 = SKAudioNode(fileNamed: "ghost scream")
+        audioNode2.autoplayLooped = false // Set it to not loop the sound
+        audioNode2.isPositional = false // Set it to non-positional sound
+        
+        addChild(audioNode2)
         for i in 100...159 {
             let texture = SKTexture(imageNamed: "Comp1_\(i).png")
             
@@ -27,7 +32,10 @@ class GameOverScene: SKScene{
         
         addChild(audioNode) // Add the audio node to your scene
         
-        audioNode.run(SKAction.play())
+//        audioNode2.run(SKAction.play())
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            audioNode.run(SKAction.play())
+        }
         
         logoGameOver = childNode(withName: "LogoGameOver") as? SKSpriteNode
 
