@@ -44,6 +44,9 @@ class CorridorScene: SKScene, SKPhysicsContactDelegate {
     let movementComponentSystem = GKComponentSystem(componentClass: MovementComponent.self)
     var movementComponent: MovementComponent?
     
+    //key
+    var keySprite: SKSpriteNode?
+    
     //Joystick variables
     var initialTouchPosition: CGPoint?
     var joystickVelocity: CGFloat = 0
@@ -97,6 +100,8 @@ class CorridorScene: SKScene, SKPhysicsContactDelegate {
         doorRight = self.childNode(withName: "DoorRight") as? SKSpriteNode
         cameraMarker = self.childNode(withName: "CameraMarker")
         chaseCollision = cameraMarker.childNode(withName: "ChaseCollision")
+        keySprite = self.childNode(withName: "key") as? SKSpriteNode
+
         
         //Assign movement component to playerEntity
         playerEntity = createEntity(node: playerSprite, wantMovementComponent: true)
@@ -184,6 +189,21 @@ class CorridorScene: SKScene, SKPhysicsContactDelegate {
         viewModel.popUpName = popUpSceneName
         viewModel.isPopUpVisible.toggle()
         
+    }
+    
+    func toggleKeyVisibility(isVisible: Bool) {
+        keySprite?.isHidden = !isVisible
+    }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if keyPath == "isPopUpVisible" {
+            if let newValue = change?[.newKey] as? Bool {
+                if newValue {
+                    // Jigsaw puzzle is completed, show the key
+                    toggleKeyVisibility(isVisible: true)
+                } 
+            }
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
