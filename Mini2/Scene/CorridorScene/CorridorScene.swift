@@ -44,6 +44,11 @@ class CorridorScene: SKScene, SKPhysicsContactDelegate {
     let movementComponentSystem = GKComponentSystem(componentClass: MovementComponent.self)
     var movementComponent: MovementComponent?
     
+    //key
+    var keySprite: SKSpriteNode?
+    var keyPickedUp: Bool = false
+    var puzzleSolved: Bool = false
+    
     //Joystick variables
     var initialTouchPosition: CGPoint?
     var joystickVelocity: CGFloat = 0
@@ -97,6 +102,8 @@ class CorridorScene: SKScene, SKPhysicsContactDelegate {
         doorRight = self.childNode(withName: "DoorRight") as? SKSpriteNode
         cameraMarker = self.childNode(withName: "CameraMarker")
         chaseCollision = cameraMarker.childNode(withName: "ChaseCollision")
+        keySprite = self.childNode(withName: "key") as? SKSpriteNode
+
         
         //Assign movement component to playerEntity
         playerEntity = createEntity(node: playerSprite, wantMovementComponent: true)
@@ -112,7 +119,8 @@ class CorridorScene: SKScene, SKPhysicsContactDelegate {
         playerMovementComponent.loadWalkAnim(frames: 14, framesInterval: 0.08)
         enemyMovementComponent.loadWalkAnim(frames: 8, framesInterval: 0.12)
         playerMovementComponent.loadRunAnim(frames: 7, framesInterval: 0.07)
-        
+        toggleKeyVisibility(isVisible: false)
+
         
         
         
@@ -169,6 +177,14 @@ class CorridorScene: SKScene, SKPhysicsContactDelegate {
             playerMovementComponent.move(to: joystickVelocity)
         }
         
+        if viewModel.keyDropped {
+            presentImageDetail(imageDetailName: "puzzle full")
+            viewModel.keyDropped = false
+            toggleKeyVisibility(isVisible: true)
+            puzzleSolved = true
+            viewModel.createInnTot(duration: 3, label: "Something dropped")
+        }
+        
     }
     override func willMove(from view: SKView) {
             super.willMove(from: view)
@@ -185,6 +201,21 @@ class CorridorScene: SKScene, SKPhysicsContactDelegate {
         viewModel.isPopUpVisible.toggle()
         
     }
+    
+    func toggleKeyVisibility(isVisible: Bool) {
+        keySprite?.isHidden = !isVisible
+    }
+    
+//    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+//        if keyPath == "isPopUpVisible" {
+//            if let newValue = change?[.newKey] as? Bool {
+//                if newValue {
+//                    // Jigsaw puzzle is completed, show the key
+//                    toggleKeyVisibility(isVisible: true)
+//                }
+//            }
+//        }
+//    }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         // Get the initial touch position
@@ -286,40 +317,36 @@ class CorridorScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func processTouch(touchedNode: SKSpriteNode) {
-        let combos: [String: String] = [
-            "Boxes":"There are boxes",
-            "Books":"There are dropped books",
-            "BookshelfLeft":"There are old bookshelves",
-            "BookshelfMid":"There are old bookshelves",
-            "BookshelfRight":"There are old bookshelves",
-            "Clock":"There is a clock",
-            "Window":"The window is locked shut",
-            "Door":"The door is stuck"
-        ]
-        
-        //        if touchedNode == kalimbaSprite && kalimbaIsDropped{
-        //            presentPopUpScene(popUpSceneName: "KalimbaScene")
-        //        } else  if touchedNode == lockSprite {
-        //            presentPopUpScene(popUpSceneName: "LockScene")
-        //        } else {
-        //            if let nodeName = touchedNode.name, let comboDescription = combos[nodeName] {
-        //                createInnTot(duration: 3, label: comboDescription)
-        //            }
-        //        }
-        
-        if let nodeName = touchedNode.name, let comboDescription = combos[nodeName] {
-            createInnTot(duration: 3, label: comboDescription)
-        }
         
         if touchedNode.name == "Mading"{
-            presentJigsawPuzzle(popUpSceneName: "JigsawScene")
+            if !puzzleSolved{
+                presentJigsawPuzzle(popUpSceneName: "JigsawScene")
+            }else{
+                presentImageDetail(imageDetailName: "puzzle full")
+            }
             viewModel.enemySprite?.isPaused = true
+        }else if keyPickedUp{
+            if touchedNode.name == "DoorRight"{
+                viewModel.transitionScene(scene: self, toScene: "TBCScene")
+            }else if touchedNode.name == "DoorLeft" || touchedNode.name == "DoorMiddle"{
+//                masukkin suara door stuck @togi
+                enemyIsSpawning = true
+                createInnTot(duration: 3, label: "Uh oh the key is stuck")
+            }
+            
+        }else if touchedNode.name == "DoorRight" || touchedNode.name == "DoorMiddle" || touchedNode.name == "DoorLeft"{
+            createInnTot(duration: 3, label: "The door can't be opened")
+        }else if touchedNode.name == "key"{
+            toggleKeyVisibility(isVisible: false)
+            keyPickedUp = true
+            createInnTot(duration: 3, label: "There's a key")
         }
-        
-        if touchedNode.name == "DoorRight"{
-            viewModel.transitionScene(scene: self, toScene: "TBCScene")
-        }
-        
+          
+    }
+    
+    func presentImageDetail(imageDetailName: String){
+        viewModel.imageDetailName = imageDetailName
+        viewModel.isSecondPopUpVisible.toggle()
     }
     
     func spawnEnemy() {

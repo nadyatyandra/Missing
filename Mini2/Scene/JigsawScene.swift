@@ -113,6 +113,8 @@ class JigsawScene: SKScene {
     
     func handleWinCondition() {
         self.winLabel.isHidden = false
+        self.viewModel.isPopUpVisible = false
+        self.viewModel.keyDropped = true
         entities.forEach() { $0.removeComponent(ofType: InteractionComponent.self) }
         let wait = SKAction.wait(forDuration: 3)
         let transition = SKAction.run {
@@ -121,10 +123,6 @@ class JigsawScene: SKScene {
                 scene = JigsawScene.scene(named: hasNewPuzzle)
             } else {
                 self.viewModel.isPopUpVisible = false
-
-//                scene = JigsawScene(size: self.size)
-//                scene.puzzle = self.puzzle
-//                scene.scaleMode = self.scaleMode
             }
             let transition = SKTransition.crossFade(withDuration: 0.3)
 //            self.view?.presentScene(scene, transition: transition)
