@@ -67,8 +67,6 @@
 		53B979BB2A4746AF004F71D5 /* PlaytestScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B979BA2A4746AF004F71D5 /* PlaytestScreen.swift */; };
 		B119E1382A47290F001C7CEB /* LockScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = B119E1372A47290F001C7CEB /* LockScene.sks */; };
 		B119E13A2A472916001C7CEB /* LockScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B119E1392A472916001C7CEB /* LockScene.swift */; };
-		B185ED1D2A472BF900CA0241 /* Scene1.swift in Sources */ = {isa = PBXBuildFile; fileRef = B185ED1C2A472BF900CA0241 /* Scene1.swift */; };
-		B185ED1F2A472C0400CA0241 /* Scene1.sks in Resources */ = {isa = PBXBuildFile; fileRef = B185ED1E2A472C0400CA0241 /* Scene1.sks */; };
 		B18E56022A4A8DD700C3F9E1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18E56012A4A8DD700C3F9E1 /* ContentView.swift */; };
 		B18E560C2A4C0FD500C3F9E1 /* k1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B18E56052A4C0FD500C3F9E1 /* k1.mp3 */; };
 		B18E560D2A4C0FD500C3F9E1 /* k2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B18E56062A4C0FD500C3F9E1 /* k2.mp3 */; };
@@ -186,8 +184,6 @@
 		53B979BA2A4746AF004F71D5 /* PlaytestScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaytestScreen.swift; sourceTree = "<group>"; };
 		B119E1372A47290F001C7CEB /* LockScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LockScene.sks; sourceTree = "<group>"; };
 		B119E1392A472916001C7CEB /* LockScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScene.swift; sourceTree = "<group>"; };
-		B185ED1C2A472BF900CA0241 /* Scene1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene1.swift; sourceTree = "<group>"; };
-		B185ED1E2A472C0400CA0241 /* Scene1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Scene1.sks; sourceTree = "<group>"; };
 		B18E56012A4A8DD700C3F9E1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		B18E56052A4C0FD500C3F9E1 /* k1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = k1.mp3; sourceTree = "<group>"; };
 		B18E56062A4C0FD500C3F9E1 /* k2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = k2.mp3; sourceTree = "<group>"; };
@@ -381,7 +377,6 @@
 				534C8D032A4BFC360033D8D1 /* CorridorScene */,
 				534C8D002A4BD4AC0033D8D1 /* ModernLibrary */,
 				53B979B72A47466A004F71D5 /* PlaytestScreen */,
-				B119E13B2A472A82001C7CEB /* DummyScreen */,
 				B119E1362A4728ED001C7CEB /* LockScene */,
 				34B9B2212A45A60B001F4A39 /* GameScene */,
 				34B9B2052A458BBB001F4A39 /* KalimbaScene */,
@@ -557,15 +552,6 @@
 				B119E1372A47290F001C7CEB /* LockScene.sks */,
 			);
 			path = LockScene;
-			sourceTree = "<group>";
-		};
-		B119E13B2A472A82001C7CEB /* DummyScreen */ = {
-			isa = PBXGroup;
-			children = (
-				B185ED1C2A472BF900CA0241 /* Scene1.swift */,
-				B185ED1E2A472C0400CA0241 /* Scene1.sks */,
-			);
-			path = DummyScreen;
 			sourceTree = "<group>";
 		};
 		B18E56152A4C37C700C3F9E1 /* ShelfScene */ = {
@@ -795,7 +781,6 @@
 				3479E25A2A4ED05500F24D90 /* walking.mp3 in Resources */,
 				34C2EBCD2A5044FF00D11119 /* turn yearbook.mp3 in Resources */,
 				533B760F2A4E777F009015F9 /* InnTotScene.sks in Resources */,
-				B185ED1F2A472C0400CA0241 /* Scene1.sks in Resources */,
 				B18E56102A4C0FD500C3F9E1 /* k6.mp3 in Resources */,
 				34B9B29E2A4EA7C3001F4A39 /* table interact.mp3 in Resources */,
 				B18E56122A4C0FD500C3F9E1 /* k7.mp3 in Resources */,
@@ -859,7 +844,6 @@
 				04CAE95D2A32D68000F59461 /* GameViewController.swift in Sources */,
 				04EA36A72A4EF428000AFEB0 /* HorizontalEmployeeDiaryPeelEffectView.swift in Sources */,
 				04CAE9552A32D68000F59461 /* AppDelegate.swift in Sources */,
-				B185ED1D2A472BF900CA0241 /* Scene1.swift in Sources */,
 				534C8CFF2A4BD4A60033D8D1 /* ModernLibraryScene.swift in Sources */,
 				34B9B2752A4DD165001F4A39 /* BGMScene.swift in Sources */,
 				04EA36AC2A4EF65D000AFEB0 /* DeskDetailScene.swift in Sources */,
