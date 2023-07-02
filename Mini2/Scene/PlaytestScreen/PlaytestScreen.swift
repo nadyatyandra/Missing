@@ -329,7 +329,7 @@ class PlaytestScreen: SKScene, SKPhysicsContactDelegate {
         } else if touchedNode == viewModel.lockSprite {
             lockSound.playSound(soundName: "lock interact")
             presentPopUpScene(popUpSceneName: "LockScene")
-            viewModel.createInnTot(duration: 3, label: "Seems to be locked tight, need to find the right combination")
+//            viewModel.createInnTot(duration: 3, label: "Seems to be locked tight, need to find the right combination")
         } else if touchedNode == cupboardSprite && viewModel.lockUnlocked {
             cupboardSound.playSound(soundName: "shelf interact")
             presentPopUpScene(popUpSceneName: "ShelfScene")
