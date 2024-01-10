@@ -8,10 +8,10 @@ MISSING's narrative revolves around a female student who is immersed in the past
 MISSING provides a combination of progression, competition, storytelling, assets, unpredictability, clear objectives, addiction, accomplishment, and challenges.
 
 ## Contributors
-- [Nadya Tyandra](https://github.com/nadyatyandra)
-- [Leo Harnadi Marlin](https://github.com/TrotskyLeon)
-- [Beni Garcia](https://github.com/beni2704)
-- [Brandon Nicolas Marlim](https://github.com/itsbrandonlim)
-- [Matthew Togi](https://github.com/matthewtogi)
-- [Rahel Kristhea Supandi](https://www.behance.net/rahelkristhea)
-- [Jessica Rachel Santoso](https://github.com/jessicarachel)
+- [Nadya Tyandra](https://github.com/nadyatyandra) - Tech Lead
+- [Leo Harnadi Marlin](https://github.com/TrotskyLeon) - iOS Developer
+- [Beni Garcia](https://github.com/beni2704) - iOS Developer
+- [Brandon Nicolas Marlim](https://github.com/itsbrandonlim) - iOS Developer, Project Manager
+- [Matthew Togi](https://github.com/matthewtogi) - iOS Developer
+- [Rahel Kristhea Supandi](https://www.behance.net/rahelkristhea) - Design Lead
+- [Jessica Rachel Santoso](https://github.com/jessicarachel) - Designer, Project Manager
