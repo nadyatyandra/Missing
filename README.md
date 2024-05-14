@@ -1,5 +1,5 @@
 # MISSING
-"MISSING" is an iPadOS-based game that immerses players into an enigmatic world filled with hidden surprises and perplexing puzzles. Players take on the role of a female student who must navigate through the ruins of her school to uncover a missing piece of history.
+"MISSING" is an iPadOS-based game that immerses players into an enigmatic world filled with hidden surprises and perplexing puzzles. Players take on the role of a female student who must navigate through the ruins of her school to uncover a missing piece of history. The explanation of the project can be accessed from [this link](https://nadyatyandra.notion.site/MISSING-ffef7a9b1ec24dbf8de18f30a3f220e1?pvs=4).
 
 ## Description
 MISSING's narrative revolves around a female student who is immersed in the past, where she has to unveil the hidden secrets of the missing history of her school. She needs to accomplish all the riddles in order to escape herself, otherwise she will trapped forever.
