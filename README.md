@@ -1,7 +1,7 @@
 # MISSING
 "MISSING" is an iPadOS-based game that immerses players into an enigmatic world filled with hidden surprises and perplexing puzzles. Players take on the role of a female student who must navigate through the ruins of her school to uncover a missing piece of history. The explanation of the project can be accessed from [this link](https://nadyatyandra.notion.site/MISSING-ffef7a9b1ec24dbf8de18f30a3f220e1?pvs=4).
 
-![MISSING](https://github.com/nadyatyandra/Missing/assets/84224607/6556fc86-90e8-4649-b1dd-001b10b1cb71)
+<img width="1920" alt="Github" src="https://github.com/nadyatyandra/Missing/assets/84224607/3367cbf7-2fdd-436e-822e-75486cec432e">
 
 ## Description
 MISSING's narrative revolves around a female student who is immersed in the past, where she has to unveil the hidden secrets of the missing history of her school. She needs to accomplish all the riddles in order to escape herself, otherwise she will trapped forever.
